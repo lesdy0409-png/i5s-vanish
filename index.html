@@ -3,388 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>i5s Store</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
-}
-
-body::before{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(255,0,0,0.12);
-    filter:blur(120px);
-    top:-200px;
-    left:-150px;
-    z-index:-1;
-}
-
-body::after{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(255,0,0,0.12);
-    filter:blur(120px);
-    bottom:-200px;
-    right:-150px;
-    z-index:-1;
+background:#050505;
+color:white;
 }
 
 .hidden{
-    display:none !important;
+display:none;
 }
 
 .login-screen{
-    width:100%;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .login-box{
-    width:420px;
-    background:#0d0d0d;
-    border:1px solid #222;
-    border-radius:30px;
-    padding:45px;
-    box-shadow:0 0 40px rgba(255,0,0,0.15);
-}
-
-.logo-login,
-.logo{
-    font-family:'Orbitron',sans-serif;
-    font-weight:900;
-    background:linear-gradient(90deg,#ff2e2e,#ffffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.logo-login{
-    font-size:56px;
-    margin-bottom:10px;
+width:350px;
+background:#111;
+padding:30px;
+border-radius:20px;
+border:1px solid #333;
 }
 
 .logo{
-    font-size:38px;
+font-size:45px;
+font-weight:bold;
+color:#ff2e2e;
+margin-bottom:10px;
 }
 
-.login-sub{
-    color:#777;
-    margin-bottom:25px;
+.sub{
+color:#888;
+margin-bottom:20px;
 }
 
 input{
-    width:100%;
-    height:58px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    padding:0 18px;
-    color:white;
-    margin-bottom:15px;
-    outline:none;
+width:100%;
+height:50px;
+background:#1a1a1a;
+border:1px solid #333;
+border-radius:10px;
+padding:10px;
+color:white;
+margin-bottom:15px;
+}
+
+button{
+height:50px;
+border:none;
+border-radius:10px;
+background:#ff2e2e;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
 
 .login-btn{
-    width:100%;
-    height:58px;
-    border:none;
-    border-radius:14px;
-    background:#ff2e2e;
-    color:white;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+width:100%;
 }
 
-.register-btn{
-    text-align:center;
-    color:#999;
-    margin-top:18px;
-    cursor:pointer;
+.create-btn{
+margin-top:10px;
+width:100%;
+background:#222;
 }
 
 .navbar{
-    height:80px;
-    background:#080808;
-    border-bottom:1px solid #1b1b1b;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 28px;
+height:70px;
+background:#111;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 20px;
+border-bottom:1px solid #222;
 }
 
 .nav-right{
-    display:flex;
-    gap:12px;
-    align-items:center;
-    flex-wrap:wrap;
+display:flex;
+gap:10px;
+align-items:center;
 }
 
-.balance,
-.nav-btn,
-.logout-btn{
-    height:44px;
-    padding:0 22px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    color:white;
-    font-weight:700;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.balance{
+padding:10px 15px;
+background:#1a1a1a;
+border-radius:10px;
 }
 
-.nav-btn,
-.logout-btn{
-    cursor:pointer;
-}
-
-.active-btn,
-.nav-btn:hover,
-.logout-btn:hover{
-    background:#ff2e2e;
-    border-color:#ff2e2e;
+.nav-btn{
+padding:10px 15px;
+background:#1a1a1a;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
 }
 
 .page{
-    display:none;
-    padding:35px;
+padding:20px;
 }
 
-.active-page{
-    display:block;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.hero{
-    background:linear-gradient(135deg,#090909,#190707);
-    border:1px solid #221111;
-    border-radius:30px;
-    padding:60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-    margin-bottom:35px;
+.card{
+background:#111;
+padding:20px;
+border-radius:20px;
+border:1px solid #222;
 }
 
-.hero h1{
-    font-size:60px;
-    font-weight:900;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:18px;
-    color:#999;
-    max-width:700px;
-    line-height:1.7;
-}
-
-.hero img{
-    width:220px;
-}
-
-.section-title{
-    font-size:38px;
-    font-weight:900;
-    margin-bottom:25px;
-}
-
-.product-grid,
-.inventory-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
-}
-
-.product-card,
-.inventory-item,
-.request-box{
-    background:#0b0b0b;
-    border:1px solid #1f1f1f;
-    border-radius:28px;
-    padding:30px;
-}
-
-.product-card img{
-    width:70px;
-    margin-bottom:20px;
-}
-
-.product-card h3,
-.inventory-item h3{
-    font-size:32px;
-    margin-bottom:15px;
+.card h2{
+margin-bottom:10px;
 }
 
 .price{
-    font-size:42px;
-    font-weight:900;
-    color:#ff2e2e;
-    margin-bottom:20px;
+font-size:35px;
+font-weight:bold;
+color:#ff2e2e;
+margin-bottom:15px;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn,
-.reject-btn{
-    width:100%;
-    height:58px;
-    border:none;
-    border-radius:16px;
-    color:white;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+.buy-btn{
+width:100%;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn{
-    background:#ff2e2e;
+.topup-box{
+max-width:500px;
+background:#111;
+padding:20px;
+border-radius:20px;
+border:1px solid #222;
 }
 
-.reject-btn{
-    background:#222;
+.inventory-item{
+background:#111;
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+border:1px solid #222;
 }
 
-.topup-container{
-    max-width:1000px;
-    margin:auto;
-    background:#0b0b0b;
-    border:1px solid #1f1f1f;
-    border-radius:30px;
-    padding:45px;
+.request{
+background:#111;
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+border:1px solid #222;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.topup-container h1{
-    font-size:58px;
-    margin-bottom:10px;
+.actions{
+display:flex;
+gap:10px;
 }
 
-.topup-container p{
-    color:#888;
-    margin-bottom:30px;
+.approve{
+background:#ff2e2e;
+padding:10px 15px;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
 }
 
-.crypto-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:18px;
-    margin-bottom:28px;
-}
-
-.crypto-card{
-    background:#101010;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:24px;
-    cursor:pointer;
-}
-
-.crypto-card.active{
-    border-color:#ff2e2e;
-    background:#170909;
-}
-
-.amount-box{
-    height:65px;
-    background:#101010;
-    border:1px solid #222;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    padding:0 22px;
-    margin-bottom:20px;
-}
-
-.amount-box input{
-    flex:1;
-    background:none;
-    border:none;
-    outline:none;
-    color:white;
-    font-size:22px;
-    margin:0;
-}
-
-.quick-amounts{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:22px;
-}
-
-.quick-amounts button{
-    height:55px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    color:white;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.request-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.request-actions{
-    display:flex;
-    gap:10px;
-}
-
-.request-actions button{
-    width:auto;
-    padding:0 18px;
-}
-
-@media(max-width:768px){
-
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .hero h1{
-        font-size:42px;
-    }
-
-    .navbar{
-        height:auto;
-        padding:20px;
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .nav-right{
-        justify-content:center;
-    }
-
+.reject{
+background:#333;
+padding:10px 15px;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
 }
 
 </style>
@@ -394,211 +201,167 @@ input{
 
 <div id="loginPage" class="login-screen">
 
-    <div class="login-box">
+<div class="login-box">
 
-        <h1 class="logo-login">i5s</h1>
+<div class="logo">
+i5s
+</div>
 
-        <p class="login-sub">
-            Secure Digital Store Login
-        </p>
+<div class="sub">
+Secure Digital Store
+</div>
 
-        <input type="text" id="username" placeholder="Username">
+<input type="text" id="username" placeholder="Username">
 
-        <input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
-        <button class="login-btn" onclick="login()">
-            Login
-        </button>
+<button class="login-btn" onclick="login()">
+Login
+</button>
 
-        <div class="register-btn" onclick="register()">
-            Create Account
-        </div>
+<button class="create-btn" onclick="register()">
+Create Account
+</button>
 
-    </div>
+</div>
 
 </div>
 
 <div id="mainSite" class="hidden">
 
-    <div class="navbar">
+<div class="navbar">
 
-        <div class="logo">i5s</div>
+<div class="logo">
+i5s
+</div>
 
-        <div class="nav-right">
+<div class="nav-right">
 
-            <div class="balance">
-                Balance: $
-                <span id="balance">0</span>
-            </div>
+<div class="balance">
+$<span id="balance">0</span>
+</div>
 
-            <button class="nav-btn active-btn" onclick="showPage('purchase',this)">
-                Purchase
-            </button>
+<button class="nav-btn" onclick="showPage('shop')">
+Shop
+</button>
 
-            <button class="nav-btn" onclick="showPage('topup',this)">
-                Top Up
-            </button>
+<button class="nav-btn" onclick="showPage('topup')">
+TopUp
+</button>
 
-            <button class="nav-btn" onclick="showPage('inventory',this)">
-                Inventory
-            </button>
+<button class="nav-btn" onclick="showPage('inventory')">
+Inventory
+</button>
 
-            <button id="adminBtn" class="nav-btn hidden" onclick="showPage('admin',this)">
-                Admin
-            </button>
+<button id="adminButton" class="nav-btn hidden" onclick="showPage('admin')">
+Admin
+</button>
 
-            <button class="logout-btn" onclick="logout()">
-                Logout
-            </button>
+<button class="nav-btn" onclick="logout()">
+Logout
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div id="purchase" class="page active-page">
+<div id="shop" class="page">
 
-        <div class="hero">
+<h1 style="margin-bottom:20px;">
+Products
+</h1>
 
-            <div>
+<div class="grid">
 
-                <h1>Premium Digital Store</h1>
+<div class="card">
+<h2>1D</h2>
+<div class="price">$10</div>
+<button class="buy-btn" onclick="buy(10,'1D Access')">
+Purchase
+</button>
+</div>
 
-                <p>
-                    Modern black & red premium dashboard with balance system,
-                    inventory and admin approvals.
-                </p>
+<div class="card">
+<h2>3D</h2>
+<div class="price">$25</div>
+<button class="buy-btn" onclick="buy(25,'3D Access')">
+Purchase
+</button>
+</div>
 
-            </div>
+<div class="card">
+<h2>5D</h2>
+<div class="price">$40</div>
+<button class="buy-btn" onclick="buy(40,'5D Access')">
+Purchase
+</button>
+</div>
 
-            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<div class="card">
+<h2>7D</h2>
+<div class="price">$60</div>
+<button class="buy-btn" onclick="buy(60,'7D Access')">
+Purchase
+</button>
+</div>
 
-        </div>
+<div class="card">
+<h2>10D</h2>
+<div class="price">$85</div>
+<button class="buy-btn" onclick="buy(85,'10D Access')">
+Purchase
+</button>
+</div>
 
-        <h2 class="section-title">Products</h2>
+<div class="card">
+<h2>Permanent</h2>
+<div class="price">$150</div>
+<button class="buy-btn" onclick="buy(150,'Permanent Access')">
+Purchase
+</button>
+</div>
 
-        <div class="product-grid">
+</div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>1D</h3>
-                <div class="price">$10</div>
-                <button class="buy-btn" onclick="buyProduct(10,'1D Access')">
-                    Purchase
-                </button>
-            </div>
+</div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>3D</h3>
-                <div class="price">$25</div>
-                <button class="buy-btn" onclick="buyProduct(25,'3D Access')">
-                    Purchase
-                </button>
-            </div>
+<div id="topup" class="page hidden">
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>5D</h3>
-                <div class="price">$40</div>
-                <button class="buy-btn" onclick="buyProduct(40,'5D Access')">
-                    Purchase
-                </button>
-            </div>
+<h1 style="margin-bottom:20px;">
+Top Up
+</h1>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>7D</h3>
-                <div class="price">$60</div>
-                <button class="buy-btn" onclick="buyProduct(60,'7D Access')">
-                    Purchase
-                </button>
-            </div>
+<div class="topup-box">
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>10D</h3>
-                <div class="price">$85</div>
-                <button class="buy-btn" onclick="buyProduct(85,'10D Access')">
-                    Purchase
-                </button>
-            </div>
+<input type="number" id="amount" placeholder="Amount">
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>Permanent</h3>
-                <div class="price">$150</div>
-                <button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
-                    Purchase
-                </button>
-            </div>
+<button style="width:100%;" onclick="createRequest()">
+Create TopUp Request
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div id="topup" class="page">
+<div id="inventory" class="page hidden">
 
-        <div class="topup-container">
+<h1 style="margin-bottom:20px;">
+Inventory
+</h1>
 
-            <h1>Top Up Balance</h1>
+<div id="inventoryList"></div>
 
-            <p>
-                Create payment requests for admin approval
-            </p>
+</div>
 
-            <div class="crypto-grid">
+<div id="admin" class="page hidden">
 
-                <div class="crypto-card active">BTC</div>
-                <div class="crypto-card">LTC</div>
-                <div class="crypto-card">USDT</div>
-                <div class="crypto-card">SOL</div>
+<h1 style="margin-bottom:20px;">
+Admin Requests
+</h1>
 
-            </div>
+<div id="requests"></div>
 
-            <div class="amount-box">
-
-                <span>$</span>
-
-                <input type="number" id="topupAmount" placeholder="100">
-
-                <span>USD</span>
-
-            </div>
-
-            <div class="quick-amounts">
-
-                <button onclick="setAmount(10)">$10</button>
-                <button onclick="setAmount(25)">$25</button>
-                <button onclick="setAmount(50)">$50</button>
-                <button onclick="setAmount(100)">$100</button>
-                <button onclick="setAmount(250)">$250</button>
-                <button onclick="setAmount(500)">$500</button>
-
-            </div>
-
-            <button class="create-payment-btn" onclick="createPaymentRequest()">
-                Create Payment Request
-            </button>
-
-        </div>
-
-    </div>
-
-    <div id="inventory" class="page">
-
-        <h2 class="section-title">Inventory</h2>
-
-        <div id="inventoryGrid" class="inventory-grid"></div>
-
-    </div>
-
-    <div id="admin" class="page">
-
-        <h2 class="section-title">Admin Requests</h2>
-
-        <div id="requestsContainer"></div>
-
-    </div>
+</div>
 
 </div>
 
@@ -616,430 +379,367 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-if(!users.find(u => u.username === ADMIN_USERNAME)){
+const adminExists =
+users.find(u => u.username === ADMIN_USERNAME);
 
-    users.push({
-        username:ADMIN_USERNAME,
-        password:ADMIN_PASSWORD,
-        balance:0,
-        inventory:[]
-    });
+if(!adminExists){
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+users.push({
+
+username:ADMIN_USERNAME,
+password:ADMIN_PASSWORD,
+balance:0,
+inventory:[]
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
 }
 
-window.onload = () => {
+if(currentUser){
 
-    if(currentUser){
+showSite();
 
-        showSite();
-
-    }
-
-};
+}
 
 function register(){
 
-    const username =
-    document.getElementById("username").value.trim();
+const username =
+document.getElementById("username").value.trim();
 
-    const password =
-    document.getElementById("password").value.trim();
+const password =
+document.getElementById("password").value.trim();
 
-    if(!username || !password){
+if(!username || !password){
 
-        alert("Fill all fields");
-        return;
+alert("Fill all fields");
+return;
 
-    }
+}
 
-    const exists =
-    users.find(u => u.username === username);
+const exists =
+users.find(u => u.username === username);
 
-    if(exists){
+if(exists){
 
-        alert("Username already exists");
-        return;
+alert("Username already exists");
+return;
 
-    }
+}
 
-    const user = {
+const user = {
 
-        username,
-        password,
-        balance:0,
-        inventory:[]
+username:username,
+password:password,
+balance:0,
+inventory:[]
 
-    };
+};
 
-    users.push(user);
+users.push(user);
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
-    alert("Account Created");
+alert("Account Created");
 
 }
 
 function login(){
 
-    const username =
-    document.getElementById("username").value.trim();
+const username =
+document.getElementById("username").value.trim();
 
-    const password =
-    document.getElementById("password").value.trim();
+const password =
+document.getElementById("password").value.trim();
 
-    const user =
-    users.find(u =>
-        u.username === username &&
-        u.password === password
-    );
+const user =
+users.find(u =>
+u.username === username &&
+u.password === password
+);
 
-    if(!user){
+if(!user){
 
-        alert("Invalid Account");
-        return;
+alert("Invalid Account");
+return;
 
-    }
+}
 
-    currentUser = user;
+currentUser = user;
 
-    localStorage.setItem(
-        "currentUser",
-        JSON.stringify(currentUser)
-    );
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
 
-    showSite();
+showSite();
 
 }
 
 function showSite(){
 
-    document.getElementById("loginPage")
-    .classList.add("hidden");
+document.getElementById("loginPage")
+.classList.add("hidden");
 
-    document.getElementById("mainSite")
-    .classList.remove("hidden");
+document.getElementById("mainSite")
+.classList.remove("hidden");
 
-    updateBalance();
+document.getElementById("balance")
+.innerText = currentUser.balance;
 
-    renderInventory();
+renderInventory();
 
-    renderRequests();
+renderRequests();
 
-    if(
-        currentUser.username === ADMIN_USERNAME &&
-        currentUser.password === ADMIN_PASSWORD
-    ){
+if(
+currentUser.username === ADMIN_USERNAME &&
+currentUser.password === ADMIN_PASSWORD
+){
 
-        document.getElementById("adminBtn")
-        .classList.remove("hidden");
+document.getElementById("adminButton")
+.classList.remove("hidden");
 
-    }
+}
 
 }
 
 function logout(){
 
-    localStorage.removeItem("currentUser");
+localStorage.removeItem("currentUser");
 
-    location.reload();
+location.reload();
 
 }
 
-function updateBalance(){
+function showPage(page){
 
-    document.getElementById("balance")
-    .innerText = currentUser.balance;
+document.getElementById("shop")
+.classList.add("hidden");
+
+document.getElementById("topup")
+.classList.add("hidden");
+
+document.getElementById("inventory")
+.classList.add("hidden");
+
+document.getElementById("admin")
+.classList.add("hidden");
+
+document.getElementById(page)
+.classList.remove("hidden");
 
 }
 
 function saveUser(){
 
-    users = users.map(u => {
+users = users.map(u => {
 
-        if(u.username === currentUser.username){
+if(u.username === currentUser.username){
 
-            return currentUser;
-
-        }
-
-        return u;
-
-    });
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    localStorage.setItem(
-        "currentUser",
-        JSON.stringify(currentUser)
-    );
+return currentUser;
 
 }
 
-function showPage(page,btn){
+return u;
 
-    document
-    .querySelectorAll(".page")
-    .forEach(p => {
+});
 
-        p.classList.remove("active-page");
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
-    });
-
-    document
-    .getElementById(page)
-    .classList.add("active-page");
-
-    document
-    .querySelectorAll(".nav-btn")
-    .forEach(b => {
-
-        b.classList.remove("active-btn");
-
-    });
-
-    btn.classList.add("active-btn");
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
 
 }
 
-function buyProduct(price,name){
+function buy(price,name){
 
-    if(currentUser.balance < price){
+if(currentUser.balance < price){
 
-        alert("Not enough balance");
-        return;
+alert("Not enough balance");
+return;
 
-    }
+}
 
-    currentUser.balance -= price;
+currentUser.balance -= price;
 
-    currentUser.inventory.push(name);
+currentUser.inventory.push(name);
 
-    saveUser();
+saveUser();
 
-    updateBalance();
+document.getElementById("balance")
+.innerText = currentUser.balance;
 
-    renderInventory();
+renderInventory();
 
-    alert("Purchased: " + name);
+alert("Purchased");
 
 }
 
 function renderInventory(){
 
-    const grid =
-    document.getElementById("inventoryGrid");
+const list =
+document.getElementById("inventoryList");
 
-    grid.innerHTML = "";
+list.innerHTML = "";
 
-    if(currentUser.inventory.length === 0){
+if(currentUser.inventory.length === 0){
 
-        grid.innerHTML = `
-        <div class="inventory-item">
-            <h3>Empty</h3>
-            <p>No items purchased yet.</p>
-        </div>
-        `;
+list.innerHTML = `
+<div class="inventory-item">
+No Items
+</div>
+`;
 
-        return;
-
-    }
-
-    currentUser.inventory.forEach(item => {
-
-        grid.innerHTML += `
-        <div class="inventory-item">
-            <h3>${item}</h3>
-            <p>Purchased Successfully</p>
-        </div>
-        `;
-
-    });
+return;
 
 }
 
-document.querySelectorAll(".crypto-card")
-.forEach(card => {
+currentUser.inventory.forEach(item => {
 
-    card.addEventListener("click",() => {
-
-        document
-        .querySelectorAll(".crypto-card")
-        .forEach(c => {
-
-            c.classList.remove("active");
-
-        });
-
-        card.classList.add("active");
-
-    });
+list.innerHTML += `
+<div class="inventory-item">
+${item}
+</div>
+`;
 
 });
 
-function setAmount(amount){
+}
 
-    document.getElementById("topupAmount")
-    .value = amount;
+function createRequest(){
+
+const amount =
+document.getElementById("amount").value;
+
+if(!amount || amount <= 0){
+
+alert("Invalid Amount");
+return;
 
 }
 
-function createPaymentRequest(){
+requests.push({
 
-    const amount =
-    document.getElementById("topupAmount").value;
+id:Date.now(),
+user:currentUser.username,
+amount:Number(amount)
 
-    if(!amount || amount <= 0){
+});
 
-        alert("Enter valid amount");
-        return;
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
 
-    }
+renderRequests();
 
-    requests.push({
-
-        id:Date.now(),
-        user:currentUser.username,
-        amount:Number(amount)
-
-    });
-
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
-
-    renderRequests();
-
-    alert("Payment Request Created");
+alert("Request Created");
 
 }
 
 function renderRequests(){
 
-    const container =
-    document.getElementById("requestsContainer");
+const box =
+document.getElementById("requests");
 
-    if(!container){
+box.innerHTML = "";
 
-        return;
+requests.forEach(req => {
 
-    }
+box.innerHTML += `
 
-    container.innerHTML = "";
+<div class="request">
 
-    requests.forEach(req => {
+<div>
+${req.user} - $${req.amount}
+</div>
 
-        container.innerHTML += `
+<div class="actions">
 
-        <div class="request-box">
+<button class="approve"
+onclick="approve(${req.id})">
 
-            <div class="request-row">
+Approve
 
-                <div>
+</button>
 
-                    <h2>$${req.amount}</h2>
+<button class="reject"
+onclick="rejectReq(${req.id})">
 
-                    <p>${req.user}</p>
+Reject
 
-                </div>
+</button>
 
-                <div class="request-actions">
+</div>
 
-                    <button
-                    class="approve-btn"
-                    onclick="approveRequest(${req.id})">
+</div>
 
-                    Approve
+`;
 
-                    </button>
-
-                    <button
-                    class="reject-btn"
-                    onclick="rejectRequest(${req.id})">
-
-                    Reject
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
+});
 
 }
 
-function approveRequest(id){
+function approve(id){
 
-    const req =
-    requests.find(r => r.id === id);
+const req =
+requests.find(r => r.id === id);
 
-    if(!req){
+if(!req){
 
-        return;
-
-    }
-
-    const user =
-    users.find(u => u.username === req.user);
-
-    user.balance += Number(req.amount);
-
-    if(currentUser.username === user.username){
-
-        currentUser.balance = user.balance;
-
-        updateBalance();
-
-    }
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    requests =
-    requests.filter(r => r.id !== id);
-
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
-
-    renderRequests();
-
-    alert("Approved");
+return;
 
 }
 
-function rejectRequest(id){
+const user =
+users.find(u => u.username === req.user);
 
-    requests =
-    requests.filter(r => r.id !== id);
+user.balance += Number(req.amount);
 
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
-    renderRequests();
+requests =
+requests.filter(r => r.id !== id);
 
-    alert("Rejected");
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Approved");
+
+}
+
+function rejectReq(id){
+
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Rejected");
 
 }
 
