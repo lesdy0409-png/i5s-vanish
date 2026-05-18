@@ -23,16 +23,14 @@ color:white;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 body::before{
 content:'';
 position:fixed;
-top:-300px;
-left:-300px;
-width:700px;
-height:700px;
-background:rgba(255,0,0,.15);
+top:-250px;
+left:-250px;
+width:650px;
+height:650px;
+background:rgba(255,0,0,.12);
 filter:blur(140px);
 z-index:-1;
 }
@@ -40,11 +38,11 @@ z-index:-1;
 body::after{
 content:'';
 position:fixed;
-bottom:-300px;
-right:-300px;
-width:700px;
-height:700px;
-background:rgba(255,0,0,.15);
+bottom:-250px;
+right:-250px;
+width:650px;
+height:650px;
+background:rgba(255,0,0,.12);
 filter:blur(140px);
 z-index:-1;
 }
@@ -65,36 +63,36 @@ padding:20px;
 }
 
 .login-box{
-width:440px;
-background:#0b0b0b;
+width:450px;
+background:#090909;
 border:1px solid #1f1f1f;
 border-radius:34px;
 padding:45px;
-box-shadow:0 0 45px rgba(255,0,0,.18);
+box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:68px;
+font-size:72px;
 font-weight:900;
 color:#ff2d2d;
 margin-bottom:8px;
 }
 
 .login-sub{
+font-size:15px;
 color:#777;
 margin-bottom:28px;
-font-size:15px;
 }
 
 input{
 width:100%;
-height:58px;
+height:60px;
 background:#111;
-border:1px solid #222;
-border-radius:15px;
+border:1px solid #232323;
+border-radius:16px;
 padding:0 18px;
-font-size:16px;
 color:white;
+font-size:16px;
 outline:none;
 margin-bottom:15px;
 }
@@ -105,86 +103,73 @@ cursor:pointer;
 transition:.2s;
 }
 
-.login-btn,
-.register-btn,
-.buy-btn,
-.topup-btn,
-.approve-btn,
-.reject-btn{
-border-radius:15px;
-font-weight:800;
-color:white;
-}
-
 .login-btn{
 width:100%;
-height:58px;
+height:60px;
 background:#ff2d2d;
+border-radius:16px;
+font-size:16px;
+font-weight:800;
+color:white;
 margin-bottom:12px;
 }
 
 .register-btn{
 width:100%;
-height:58px;
+height:60px;
 background:#151515;
+border-radius:16px;
+font-size:16px;
+font-weight:800;
+color:white;
 }
 
-.login-btn:hover{
-opacity:.92;
-}
-
+.login-btn:hover,
 .register-btn:hover{
-background:#222;
+transform:translateY(-2px);
 }
 
-/* NAVBAR */
+/* NAV */
 
 .navbar{
 height:85px;
 background:#080808;
-border-bottom:1px solid #1f1f1f;
+border-bottom:1px solid #1c1c1c;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 24px;
+padding:0 25px;
 }
 
 .nav-logo{
-font-size:40px;
+font-size:42px;
 font-weight:900;
 color:#ff2d2d;
 }
 
 .nav-right{
 display:flex;
-gap:10px;
 align-items:center;
+gap:12px;
 flex-wrap:wrap;
 }
 
+.balance,
 .nav-btn{
-height:46px;
+height:48px;
 padding:0 18px;
+display:flex;
+align-items:center;
+justify-content:center;
 background:#111;
-border:1px solid #222;
-border-radius:12px;
+border:1px solid #232323;
+border-radius:14px;
 color:white;
 font-weight:700;
 }
 
 .nav-btn:hover{
 background:#ff2d2d;
-}
-
-.balance{
-height:46px;
-padding:0 18px;
-display:flex;
-align-items:center;
-background:#111;
-border:1px solid #222;
-border-radius:12px;
-font-weight:800;
 }
 
 /* PAGE */
@@ -199,9 +184,9 @@ display:block;
 }
 
 .section-title{
-font-size:54px;
+font-size:58px;
 font-weight:900;
-margin-bottom:30px;
+margin-bottom:28px;
 }
 
 /* PRODUCTS */
@@ -215,18 +200,18 @@ gap:22px;
 .product-card{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:25px;
+border-radius:28px;
 padding:30px;
 transition:.2s;
 }
 
 .product-card:hover{
-transform:translateY(-5px);
+transform:translateY(-4px);
 border-color:#ff2d2d;
 }
 
 .product-card h2{
-font-size:40px;
+font-size:42px;
 margin-bottom:10px;
 }
 
@@ -236,16 +221,20 @@ margin-bottom:18px;
 }
 
 .price{
-font-size:48px;
+font-size:52px;
 font-weight:900;
 color:#ff2d2d;
-margin-bottom:20px;
+margin-bottom:22px;
 }
 
 .buy-btn{
 width:100%;
-height:56px;
+height:58px;
+border-radius:16px;
 background:#ff2d2d;
+color:white;
+font-size:16px;
+font-weight:800;
 }
 
 /* INVENTORY */
@@ -259,12 +248,12 @@ gap:18px;
 .inventory-item{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:22px;
-padding:24px;
+border-radius:24px;
+padding:25px;
 }
 
 .inventory-item h3{
-font-size:28px;
+font-size:30px;
 margin-bottom:10px;
 }
 
@@ -274,72 +263,112 @@ color:#777;
 
 /* TOPUP */
 
-.topup-box{
-max-width:1000px;
+.topup-wrapper{
+max-width:1100px;
 margin:auto;
-background:#0b0b0b;
+background:#080808;
 border:1px solid #1f1f1f;
-border-radius:30px;
-padding:35px;
+border-radius:35px;
+padding:40px;
 }
 
-.crypto-grid{
+.topup-header{
+margin-bottom:30px;
+}
+
+.topup-header h1{
+font-size:70px;
+font-weight:900;
+margin-bottom:8px;
+}
+
+.topup-header p{
+color:#777;
+font-size:16px;
+}
+
+.coin-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:16px;
-margin-bottom:25px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-bottom:28px;
 }
 
-.crypto-card{
-background:#111;
-border:1px solid #222;
-border-radius:18px;
-padding:24px;
-text-align:center;
+.coin-card{
+height:135px;
+background:#0d0d0d;
+border:1px solid #232323;
+border-radius:24px;
+padding:28px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 cursor:pointer;
 transition:.2s;
 }
 
-.crypto-card.active{
-border-color:#00ff80;
-background:#102018;
+.coin-card.active{
+background:#072117;
+border-color:#00ff95;
+box-shadow:0 0 18px rgba(0,255,149,.15);
 }
 
-.crypto-card h3{
-font-size:24px;
-margin-bottom:6px;
+.coin-card:hover{
+transform:translateY(-3px);
 }
 
-.crypto-card p{
+.coin-card h2{
+font-size:38px;
+margin-bottom:5px;
+}
+
+.coin-card span{
 color:#888;
-font-size:14px;
+font-size:15px;
+}
+
+.amount-input{
+width:100%;
+height:76px;
+background:#0d0d0d;
+border:1px solid #232323;
+border-radius:22px;
+padding:0 22px;
+font-size:24px;
+color:white;
+outline:none;
+margin-bottom:24px;
 }
 
 .quick-grid{
 display:grid;
-grid-template-columns:repeat(6,1fr));
-gap:12px;
-margin-bottom:20px;
+grid-template-columns:repeat(6,1fr);
+gap:14px;
+margin-bottom:28px;
 }
 
 .quick-grid button{
-height:50px;
-background:#111;
-border:1px solid #222;
-border-radius:12px;
+height:60px;
+background:#0d0d0d;
+border:1px solid #232323;
+border-radius:18px;
 color:white;
-font-weight:700;
+font-size:18px;
+font-weight:800;
 }
 
 .quick-grid button:hover{
-background:#ff2d2d;
+border-color:#00ff95;
 }
 
 .topup-btn{
 width:100%;
-height:58px;
+height:72px;
 background:#16a34a;
-font-size:16px;
+border-radius:22px;
+font-size:20px;
+font-weight:900;
+color:white;
 }
 
 /* ADMIN */
@@ -347,8 +376,8 @@ font-size:16px;
 .request-box{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:24px;
-padding:24px;
+border-radius:25px;
+padding:25px;
 margin-bottom:20px;
 }
 
@@ -360,43 +389,53 @@ flex-wrap:wrap;
 gap:20px;
 }
 
+.request-info h2{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.request-info p{
+color:#888;
+margin-bottom:5px;
+}
+
 .request-buttons{
 display:flex;
 gap:10px;
 }
 
 .approve-btn{
+height:50px;
+padding:0 20px;
+border-radius:14px;
 background:#16a34a;
-height:48px;
-padding:0 18px;
+font-weight:800;
+color:white;
 }
 
 .reject-btn{
+height:50px;
+padding:0 20px;
+border-radius:14px;
 background:#ff2d2d;
-height:48px;
-padding:0 18px;
-}
-
-.request-info h2{
-font-size:34px;
-margin-bottom:8px;
-}
-
-.request-info p{
-color:#888;
-margin-bottom:4px;
+font-weight:800;
+color:white;
 }
 
 /* MOBILE */
 
-@media(max-width:700px){
+@media(max-width:900px){
 
 .quick-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
+.topup-header h1{
+font-size:46px;
+}
+
 .section-title{
-font-size:38px;
+font-size:42px;
 }
 
 .navbar{
@@ -464,8 +503,6 @@ Create Account
 <!-- MAIN -->
 
 <div id="mainSite" class="hidden">
-
-<!-- NAV -->
 
 <div class="navbar">
 
@@ -677,43 +714,51 @@ class="inventory-grid"></div>
 
 <div id="topup" class="page">
 
-<div class="topup-box">
+<div class="topup-wrapper">
 
-<h1 class="section-title">
+<div class="topup-header">
+
+<h1>
 Top Up Balance
 </h1>
 
-<div class="crypto-grid">
-
-<div class="crypto-card active">
-
-<h3>BTC</h3>
-
-<p>Bitcoin</p>
+<p>
+Create a balance request for admin approval
+</p>
 
 </div>
 
-<div class="crypto-card">
+<div class="coin-grid">
 
-<h3>LTC</h3>
+<div class="coin-card active">
 
-<p>Litecoin</p>
+<h2>BTC</h2>
 
-</div>
-
-<div class="crypto-card">
-
-<h3>USDT</h3>
-
-<p>Tether</p>
+<span>Bitcoin</span>
 
 </div>
 
-<div class="crypto-card">
+<div class="coin-card">
 
-<h3>SOL</h3>
+<h2>LTC</h2>
 
-<p>Solana</p>
+<span>Litecoin</span>
+
+</div>
+
+<div class="coin-card">
+
+<h2>USDT</h2>
+
+<span>Tether</span>
+
+</div>
+
+<div class="coin-card">
+
+<h2>SOL</h2>
+
+<span>Solana</span>
 
 </div>
 
@@ -722,6 +767,7 @@ Top Up Balance
 <input
 type="number"
 id="topupAmount"
+class="amount-input"
 placeholder="Enter Amount">
 
 <div class="quick-grid">
@@ -831,7 +877,7 @@ showMain();
 
 }
 
-setupCryptoCards();
+setupCoins();
 
 };
 
@@ -923,7 +969,7 @@ document.getElementById("password").value = "";
 
 }
 
-/* 로그인 */
+/* LOGIN */
 
 function login(){
 
@@ -961,7 +1007,7 @@ showMain();
 
 }
 
-/* 메인 표시 */
+/* SHOW */
 
 function showMain(){
 
@@ -986,7 +1032,7 @@ document.getElementById("adminButton")
 
 }
 
-/* 로그아웃 */
+/* LOGOUT */
 
 function logout(){
 
@@ -996,7 +1042,7 @@ location.reload();
 
 }
 
-/* 잔액 업데이트 */
+/* BALANCE */
 
 function updateBalance(){
 
@@ -1005,7 +1051,7 @@ currentUser.balance;
 
 }
 
-/* 유저 저장 */
+/* SAVE */
 
 function saveUsers(){
 
@@ -1033,7 +1079,7 @@ JSON.stringify(currentUser)
 
 }
 
-/* 페이지 전환 */
+/* PAGE */
 
 function showPage(page){
 
@@ -1055,7 +1101,7 @@ renderRequests();
 
 }
 
-/* 구매 */
+/* BUY */
 
 function buyProduct(price,name){
 
@@ -1080,7 +1126,7 @@ alert(name + " Purchased");
 
 }
 
-/* 인벤토리 */
+/* INVENTORY */
 
 function renderInventory(){
 
@@ -1115,16 +1161,16 @@ grid.innerHTML += `
 
 }
 
-/* 코인 카드 */
+/* COINS */
 
-function setupCryptoCards(){
+function setupCoins(){
 
-document.querySelectorAll(".crypto-card")
+document.querySelectorAll(".coin-card")
 .forEach(card => {
 
 card.addEventListener("click", function(){
 
-document.querySelectorAll(".crypto-card")
+document.querySelectorAll(".coin-card")
 .forEach(c => {
 
 c.classList.remove("active");
@@ -1139,7 +1185,7 @@ card.classList.add("active");
 
 }
 
-/* 금액 설정 */
+/* QUICK */
 
 function setAmount(amount){
 
@@ -1148,7 +1194,7 @@ amount;
 
 }
 
-/* 충전 요청 */
+/* REQUEST */
 
 function createRequest(){
 
@@ -1166,7 +1212,7 @@ return;
 }
 
 const crypto =
-document.querySelector(".crypto-card.active h3")
+document.querySelector(".coin-card.active h2")
 .innerText;
 
 requests.push({
@@ -1178,8 +1224,6 @@ user:currentUser.username,
 amount:Number(amount),
 
 crypto:crypto,
-
-status:"Pending",
 
 created:new Date().toLocaleString()
 
@@ -1198,7 +1242,7 @@ renderRequests();
 
 }
 
-/* 관리자 패널 */
+/* RENDER REQUESTS */
 
 function renderRequests(){
 
@@ -1216,8 +1260,6 @@ return;
 
 container.innerHTML = "";
 
-requests.sort((a,b)=>b.id-a.id);
-
 if(requests.length === 0){
 
 container.innerHTML = `
@@ -1232,6 +1274,8 @@ container.innerHTML = `
 return;
 
 }
+
+requests.sort((a,b)=>b.id-a.id);
 
 requests.forEach(req => {
 
@@ -1248,8 +1292,6 @@ container.innerHTML += `
 <p><b>User:</b> ${req.user}</p>
 
 <p><b>Crypto:</b> ${req.crypto}</p>
-
-<p><b>Status:</b> ${req.status}</p>
 
 <p>${req.created}</p>
 
@@ -1285,7 +1327,7 @@ Reject
 
 }
 
-/* 승인 */
+/* APPROVE */
 
 function approveRequest(id){
 
@@ -1349,7 +1391,7 @@ alert("Approved Successfully");
 
 }
 
-/* 거절 */
+/* REJECT */
 
 function rejectRequest(id){
 
