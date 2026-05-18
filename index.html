@@ -6,7 +6,7 @@
 
 <title>i5s Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -57,27 +57,28 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+padding:20px;
 }
 
 .login-box{
 width:430px;
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:30px;
-padding:40px;
+border-radius:32px;
+padding:42px;
 box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:62px;
+font-size:64px;
 font-weight:900;
 color:#ff2d2d;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .login-sub{
 color:#777;
-margin-bottom:25px;
+margin-bottom:28px;
 }
 
 input{
@@ -87,8 +88,8 @@ background:#111;
 border:1px solid #222;
 border-radius:14px;
 padding:0 18px;
-color:white;
 font-size:16px;
+color:white;
 outline:none;
 margin-bottom:15px;
 }
@@ -96,6 +97,7 @@ margin-bottom:15px;
 button{
 border:none;
 cursor:pointer;
+transition:.2s;
 }
 
 .login-btn,
@@ -116,20 +118,28 @@ background:#ff2d2d;
 margin-bottom:12px;
 }
 
+.login-btn:hover{
+opacity:.9;
+}
+
 .register-btn{
 width:100%;
 height:58px;
 background:#151515;
 }
 
+.register-btn:hover{
+background:#222;
+}
+
 .navbar{
-height:80px;
+height:82px;
 background:#080808;
 border-bottom:1px solid #1f1f1f;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 25px;
+padding:0 24px;
 }
 
 .nav-logo{
@@ -146,13 +156,12 @@ flex-wrap:wrap;
 }
 
 .nav-btn{
-height:45px;
-padding:0 20px;
+height:46px;
+padding:0 18px;
 background:#111;
 border:1px solid #222;
 border-radius:12px;
 color:white;
-cursor:pointer;
 font-weight:700;
 }
 
@@ -161,8 +170,8 @@ background:#ff2d2d;
 }
 
 .balance{
-height:45px;
-padding:0 20px;
+height:46px;
+padding:0 18px;
 display:flex;
 align-items:center;
 background:#111;
@@ -183,7 +192,7 @@ display:block;
 .section-title{
 font-size:50px;
 font-weight:900;
-margin-bottom:30px;
+margin-bottom:28px;
 }
 
 .product-grid{
@@ -200,8 +209,13 @@ padding:28px;
 }
 
 .product-card h2{
-font-size:40px;
-margin-bottom:12px;
+font-size:38px;
+margin-bottom:10px;
+}
+
+.product-card p{
+color:#888;
+margin-bottom:18px;
 }
 
 .price{
@@ -226,8 +240,8 @@ gap:18px;
 .inventory-item{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:20px;
-padding:25px;
+border-radius:22px;
+padding:24px;
 }
 
 .inventory-item h3{
@@ -235,8 +249,12 @@ font-size:28px;
 margin-bottom:10px;
 }
 
+.inventory-item p{
+color:#777;
+}
+
 .topup-box{
-max-width:950px;
+max-width:1000px;
 margin:auto;
 background:#0b0b0b;
 border:1px solid #1f1f1f;
@@ -247,7 +265,7 @@ padding:35px;
 .crypto-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+gap:16px;
 margin-bottom:25px;
 }
 
@@ -256,9 +274,8 @@ background:#111;
 border:1px solid #222;
 border-radius:18px;
 padding:22px;
-cursor:pointer;
 text-align:center;
-transition:.2s;
+cursor:pointer;
 }
 
 .crypto-card.active{
@@ -269,6 +286,11 @@ background:#102018;
 .crypto-card h3{
 font-size:24px;
 margin-bottom:5px;
+}
+
+.crypto-card p{
+color:#888;
+font-size:14px;
 }
 
 .quick-grid{
@@ -301,8 +323,8 @@ font-size:16px;
 .request-box{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:22px;
-padding:25px;
+border-radius:24px;
+padding:24px;
 margin-bottom:20px;
 }
 
@@ -310,8 +332,8 @@ margin-bottom:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:20px;
 flex-wrap:wrap;
+gap:20px;
 }
 
 .request-buttons{
@@ -322,13 +344,23 @@ gap:10px;
 .approve-btn{
 background:#16a34a;
 height:48px;
-padding:0 20px;
+padding:0 18px;
 }
 
 .reject-btn{
 background:#ff2d2d;
 height:48px;
-padding:0 20px;
+padding:0 18px;
+}
+
+.request-info h2{
+font-size:34px;
+margin-bottom:8px;
+}
+
+.request-info p{
+color:#888;
+margin-bottom:4px;
 }
 
 @media(max-width:700px){
@@ -339,6 +371,17 @@ grid-template-columns:repeat(2,1fr);
 
 .section-title{
 font-size:38px;
+}
+
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
+}
+
+.nav-right{
+justify-content:center;
 }
 
 }
@@ -352,21 +395,29 @@ font-size:38px;
 
 <div class="login-box">
 
-<div class="logo">i5s</div>
-
-<div class="login-sub">
-Secure Digital Store Login
+<div class="logo">
+i5s
 </div>
 
-<input type="text" id="username" placeholder="Username">
+<div class="login-sub">
+Secure Premium Digital Store
+</div>
 
-<input type="password" id="password" placeholder="Password">
+<input type="text"
+id="username"
+placeholder="Username">
 
-<button class="login-btn" onclick="login()">
+<input type="password"
+id="password"
+placeholder="Password">
+
+<button class="login-btn"
+onclick="login()">
 Login
 </button>
 
-<button class="register-btn" onclick="register()">
+<button class="register-btn"
+onclick="register()">
 Create Account
 </button>
 
@@ -389,15 +440,18 @@ Balance: $
 <span id="balance">0</span>
 </div>
 
-<button class="nav-btn" onclick="showPage('shop')">
+<button class="nav-btn"
+onclick="showPage('shop')">
 Shop
 </button>
 
-<button class="nav-btn" onclick="showPage('inventory')">
+<button class="nav-btn"
+onclick="showPage('inventory')">
 Inventory
 </button>
 
-<button class="nav-btn" onclick="showPage('topup')">
+<button class="nav-btn"
+onclick="showPage('topup')">
 Top Up
 </button>
 
@@ -407,7 +461,8 @@ onclick="showPage('admin')">
 Admin
 </button>
 
-<button class="nav-btn" onclick="logout()">
+<button class="nav-btn"
+onclick="logout()">
 Logout
 </button>
 
@@ -415,7 +470,8 @@ Logout
 
 </div>
 
-<div id="shop" class="page active-page">
+<div id="shop"
+class="page active-page">
 
 <h1 class="section-title">
 Products
@@ -425,6 +481,7 @@ Products
 
 <div class="product-card">
 <h2>1D</h2>
+<p>1 Day Access</p>
 <div class="price">$10</div>
 <button class="buy-btn"
 onclick="buyProduct(10,'1D Access')">
@@ -434,6 +491,7 @@ Purchase
 
 <div class="product-card">
 <h2>3D</h2>
+<p>3 Day Access</p>
 <div class="price">$25</div>
 <button class="buy-btn"
 onclick="buyProduct(25,'3D Access')">
@@ -443,6 +501,7 @@ Purchase
 
 <div class="product-card">
 <h2>5D</h2>
+<p>5 Day Access</p>
 <div class="price">$40</div>
 <button class="buy-btn"
 onclick="buyProduct(40,'5D Access')">
@@ -452,6 +511,7 @@ Purchase
 
 <div class="product-card">
 <h2>7D</h2>
+<p>7 Day Access</p>
 <div class="price">$60</div>
 <button class="buy-btn"
 onclick="buyProduct(60,'7D Access')">
@@ -461,6 +521,7 @@ Purchase
 
 <div class="product-card">
 <h2>10D</h2>
+<p>10 Day Access</p>
 <div class="price">$85</div>
 <button class="buy-btn"
 onclick="buyProduct(85,'10D Access')">
@@ -470,6 +531,7 @@ Purchase
 
 <div class="product-card">
 <h2>Permanent</h2>
+<p>Lifetime Access</p>
 <div class="price">$150</div>
 <button class="buy-btn"
 onclick="buyProduct(150,'Permanent Access')">
@@ -481,7 +543,8 @@ Purchase
 
 </div>
 
-<div id="inventory" class="page">
+<div id="inventory"
+class="page">
 
 <h1 class="section-title">
 Inventory
@@ -492,7 +555,8 @@ class="inventory-grid"></div>
 
 </div>
 
-<div id="topup" class="page">
+<div id="topup"
+class="page">
 
 <div class="topup-box">
 
@@ -565,7 +629,8 @@ Create Payment Request
 
 </div>
 
-<div id="admin" class="page">
+<div id="admin"
+class="page">
 
 <h1 class="section-title">
 Admin Requests
@@ -591,7 +656,7 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-// 관리자 생성
+// 관리자 자동 생성
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
@@ -631,22 +696,26 @@ showMain();
 // 실시간 동기화
 window.addEventListener("storage", function(){
 
-requests =
-JSON.parse(localStorage.getItem("requests")) || [];
-
 users =
 JSON.parse(localStorage.getItem("users")) || [];
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
 if(currentUser){
 
 const updatedUser =
-users.find(u => u.username === currentUser.username);
+users.find(
+u => u.username === currentUser.username
+);
 
 if(updatedUser){
 
 currentUser = updatedUser;
 
 updateBalance();
+
+renderInventory();
 
 }
 
@@ -690,12 +759,10 @@ return;
 }
 
 users.push({
-
 username:username,
 password:password,
 balance:0,
 inventory:[]
-
 });
 
 localStorage.setItem(
@@ -747,7 +814,7 @@ showMain();
 
 }
 
-// 메인 표시
+// 메인 열기
 function showMain(){
 
 document.getElementById("loginPage")
@@ -815,7 +882,7 @@ JSON.stringify(currentUser)
 
 }
 
-// 페이지 이동
+// 페이지 전환
 function showPage(page){
 
 document.querySelectorAll(".page")
@@ -860,7 +927,7 @@ alert(name + " Purchased");
 
 }
 
-// 인벤토리 표시
+// 인벤토리 출력
 function renderInventory(){
 
 const grid =
@@ -913,7 +980,7 @@ card.classList.add("active");
 
 });
 
-// 금액 버튼
+// 금액 선택
 function setAmount(amount){
 
 document.getElementById("topupAmount").value =
@@ -937,7 +1004,7 @@ return;
 
 }
 
-const selectedCrypto =
+const crypto =
 document.querySelector(".crypto-card.active h3")
 .innerText;
 
@@ -949,7 +1016,7 @@ user:currentUser.username,
 
 amount:Number(amount),
 
-crypto:selectedCrypto,
+crypto:crypto,
 
 status:"Pending",
 
@@ -962,15 +1029,15 @@ localStorage.setItem(
 JSON.stringify(requests)
 );
 
-alert("Payment Request Created");
-
 document.getElementById("topupAmount").value = "";
+
+alert("Payment Request Created");
 
 renderRequests();
 
 }
 
-// 관리자 패널 표시
+// 관리자 요청 렌더
 function renderRequests(){
 
 requests =
@@ -987,15 +1054,16 @@ return;
 
 container.innerHTML = "";
 
-// 최신순 정렬
 requests.sort((a,b)=>b.id-a.id);
 
 if(requests.length === 0){
 
 container.innerHTML = `
 <div class="request-box">
+<div class="request-info">
 <h2>No Requests</h2>
 <p>No payment requests found.</p>
+</div>
 </div>
 `;
 
@@ -1011,7 +1079,7 @@ container.innerHTML += `
 
 <div class="request-top">
 
-<div>
+<div class="request-info">
 
 <h2>$${req.amount}</h2>
 
@@ -1093,7 +1161,7 @@ localStorage.setItem(
 JSON.stringify(users)
 );
 
-// 현재 로그인 유저 업데이트
+// 현재 유저 업데이트
 if(currentUser.username === targetUser.username){
 
 currentUser = targetUser;
