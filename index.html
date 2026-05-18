@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>i5s Store</title>
 
-<title>i5s</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,420 +18,372 @@ font-family:'Inter',sans-serif;
 
 body{
 background:#050505;
-background-image:
-radial-gradient(circle at top,
-rgba(0,255,153,0.08),
-transparent 30%);
 color:white;
 overflow-x:hidden;
 }
 
-.hidden{
-display:none !important;
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+top:-200px;
+left:-150px;
+z-index:-1;
 }
 
-/* LOGIN */
+body::after{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+bottom:-200px;
+right:-150px;
+z-index:-1;
+}
 
-.auth-page{
+.hidden{
+display:none!important;
+}
+
+.login-screen{
 width:100%;
 height:100vh;
 display:flex;
+align-items:center;
 justify-content:center;
-align-items:center;
 }
 
-.auth-box{
+.login-box{
 width:420px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
+background:#0d0d0d;
+border:1px solid #222;
 border-radius:30px;
-padding:35px;
+padding:45px;
+box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
-.auth-logo{
-font-size:90px;
+.logo-login,
+.logo{
+font-family:'Orbitron',sans-serif;
 font-weight:900;
-text-align:center;
-letter-spacing:-5px;
-color:#00ff99;
-margin-bottom:25px;
+background:linear-gradient(90deg,#ff2e2e,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.input{
-width:100%;
-height:58px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.08);
-background:#0b0b0b;
-padding-left:18px;
-font-size:16px;
-color:white;
-outline:none;
-margin-bottom:14px;
-}
-
-.input:focus{
-border-color:#00ff99;
-}
-
-.auth-btn{
-width:100%;
-height:58px;
-border:none;
-border-radius:18px;
-background:#00ff99;
-font-size:18px;
-font-weight:800;
-cursor:pointer;
-transition:0.2s;
-}
-
-.auth-btn:hover{
-transform:translateY(-2px);
-}
-
-.switch-text{
-margin-top:16px;
-text-align:center;
-font-size:14px;
-color:#888;
-}
-
-.switch-text span{
-color:#00ff99;
-cursor:pointer;
-font-weight:700;
-}
-
-/* HEADER */
-
-header{
-width:100%;
-height:78px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 35px;
-border-bottom:1px solid rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-position:sticky;
-top:0;
-background:rgba(5,5,5,0.7);
-z-index:999;
+.logo-login{
+font-size:56px;
+margin-bottom:10px;
 }
 
 .logo{
-font-size:62px;
-font-weight:900;
-letter-spacing:-4px;
-color:#00ff99;
+font-size:38px;
 }
 
-.top-right{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.balance-box{
-padding:12px 18px;
-border-radius:16px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-color:#00ff99;
-font-size:16px;
-font-weight:700;
-backdrop-filter:blur(10px);
-}
-
-.top-btn{
-height:48px;
-padding:0 18px;
-border:none;
-border-radius:16px;
-font-size:15px;
-font-weight:800;
-cursor:pointer;
-transition:0.2s;
-}
-
-.topup-btn{
-background:#00ff99;
-color:black;
-}
-
-.logout-btn{
-background:#111;
-color:white;
-border:1px solid rgba(255,255,255,0.06);
-}
-
-.top-btn:hover{
-transform:translateY(-2px);
-}
-
-/* HERO */
-
-.hero{
-width:100%;
-height:520px;
-display:flex;
-align-items:center;
-padding:0 80px;
-position:relative;
-overflow:hidden;
-}
-
-.hero::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:#00ff9920;
-border-radius:50%;
-filter:blur(120px);
-right:-150px;
-top:-150px;
-}
-
-.hero-left{
-position:relative;
-z-index:2;
-}
-
-.hero-badge{
-display:inline-block;
-padding:10px 18px;
-border-radius:999px;
-border:1px solid #00ff99;
-background:#00ff9910;
-color:#00ff99;
-font-size:13px;
-font-weight:700;
+.login-sub{
+color:#777;
 margin-bottom:25px;
 }
 
+input{
+width:100%;
+height:58px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+padding:0 18px;
+color:white;
+margin-bottom:15px;
+outline:none;
+}
+
+.login-btn{
+width:100%;
+height:58px;
+border:none;
+border-radius:14px;
+background:#ff2e2e;
+color:white;
+font-size:16px;
+font-weight:800;
+cursor:pointer;
+}
+
+.register-btn{
+text-align:center;
+color:#999;
+margin-top:18px;
+cursor:pointer;
+}
+
+.navbar{
+height:80px;
+background:#080808;
+border-bottom:1px solid #1b1b1b;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 28px;
+}
+
+.nav-right{
+display:flex;
+gap:12px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.balance,
+.nav-btn,
+.logout-btn{
+height:44px;
+padding:0 22px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+color:white;
+font-weight:700;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.nav-btn,
+.logout-btn{
+cursor:pointer;
+}
+
+.active-btn,
+.nav-btn:hover,
+.logout-btn:hover{
+background:#ff2e2e;
+border-color:#ff2e2e;
+}
+
+.page{
+display:none;
+padding:35px;
+}
+
+.active-page{
+display:block;
+}
+
+.hero{
+background:linear-gradient(135deg,#090909,#190707);
+border:1px solid #221111;
+border-radius:30px;
+padding:60px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:30px;
+margin-bottom:35px;
+}
+
 .hero h1{
-font-size:95px;
-line-height:95px;
+font-size:60px;
 font-weight:900;
-letter-spacing:-6px;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .hero p{
 font-size:18px;
 color:#999;
-margin-bottom:30px;
+max-width:700px;
+line-height:1.7;
 }
 
-.hero-buttons{
-display:flex;
-gap:14px;
+.hero img{
+width:220px;
 }
 
-.hero-main-btn{
+.section-title{
+font-size:38px;
+font-weight:900;
+margin-bottom:25px;
+}
+
+.product-grid,
+.inventory-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
+}
+
+.product-card,
+.inventory-item,
+.request-box{
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:28px;
+padding:30px;
+}
+
+.product-card img{
+width:70px;
+margin-bottom:20px;
+}
+
+.product-card h3,
+.inventory-item h3{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.price{
+font-size:42px;
+font-weight:900;
+color:#ff2e2e;
+margin-bottom:20px;
+}
+
+.buy-btn,
+.create-payment-btn,
+.approve-btn,
+.reject-btn{
+width:100%;
 height:58px;
-padding:0 28px;
 border:none;
-border-radius:18px;
-background:#00ff99;
-font-size:17px;
+border-radius:16px;
+color:white;
+font-size:16px;
 font-weight:800;
 cursor:pointer;
 }
 
-.hero-second-btn{
-height:58px;
-padding:0 28px;
-border:1px solid rgba(255,255,255,0.08);
+.buy-btn,
+.create-payment-btn,
+.approve-btn{
+background:#ff2e2e;
+}
+
+.reject-btn{
+background:#222;
+}
+
+.topup-container{
+max-width:1000px;
+margin:auto;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:30px;
+padding:45px;
+}
+
+.topup-container h1{
+font-size:58px;
+margin-bottom:10px;
+}
+
+.topup-container p{
+color:#888;
+margin-bottom:30px;
+}
+
+.crypto-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+margin-bottom:28px;
+}
+
+.crypto-card{
+background:#101010;
+border:1px solid #222;
+border-radius:20px;
+padding:24px;
+cursor:pointer;
+text-align:center;
+font-weight:800;
+}
+
+.crypto-card.active{
+border-color:#ff2e2e;
+background:#170909;
+}
+
+.amount-box{
+height:65px;
+background:#101010;
+border:1px solid #222;
 border-radius:18px;
-background:#0c0c0c;
+display:flex;
+align-items:center;
+padding:0 22px;
+margin-bottom:20px;
+}
+
+.amount-box input{
+flex:1;
+background:none;
+border:none;
+outline:none;
 color:white;
-font-size:17px;
+font-size:22px;
+margin:0;
+}
+
+.quick-amounts{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:22px;
+}
+
+.quick-amounts button{
+height:55px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+color:white;
 font-weight:700;
 cursor:pointer;
 }
 
-/* PRODUCTS */
-
-.panel{
-padding:40px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-}
-
-.card{
-height:270px;
-border-radius:30px;
-padding:30px;
-position:relative;
-background:
-linear-gradient(180deg,
-rgba(255,255,255,0.03),
-rgba(255,255,255,0.01));
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(14px);
-overflow:hidden;
-transition:0.25s;
-}
-
-.card::before{
-content:"";
-position:absolute;
-width:220px;
-height:220px;
-background:#00ff9920;
-border-radius:50%;
-top:-120px;
-right:-120px;
-filter:blur(20px);
-}
-
-.card:hover{
-transform:translateY(-6px);
-border-color:#00ff99;
-box-shadow:
-0 0 25px rgba(0,255,153,0.12);
-}
-
-.card-title{
-font-size:62px;
-font-weight:900;
-letter-spacing:-4px;
-position:relative;
-z-index:2;
-}
-
-.card-price{
-position:absolute;
-top:28px;
-right:28px;
-font-size:48px;
-font-weight:900;
-color:#00ff99;
-z-index:2;
-}
-
-.purchase-btn{
-position:absolute;
-left:24px;
-right:24px;
-bottom:24px;
-height:58px;
-border:none;
-border-radius:18px;
-background:#00ff99;
-font-size:19px;
-font-weight:900;
-cursor:pointer;
-transition:0.2s;
-}
-
-.purchase-btn:hover{
-transform:scale(1.02);
-}
-
-/* ADMIN */
-
-.admin-panel{
-margin-top:40px;
-padding:28px;
-border-radius:28px;
-background:
-linear-gradient(180deg,
-rgba(255,255,255,0.03),
-rgba(255,255,255,0.01));
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.admin-title{
-font-size:28px;
-font-weight:900;
-margin-bottom:20px;
-color:#00ff99;
-}
-
-.request-list{
-margin-top:20px;
-}
-
-.request-item{
-background:#101010;
-padding:14px;
-border-radius:16px;
-margin-bottom:12px;
+.request-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
-.small-btn{
-padding:10px 16px;
-border:none;
-border-radius:12px;
-background:#00ff99;
-font-weight:800;
-cursor:pointer;
+.request-actions{
+display:flex;
+gap:10px;
 }
 
-/* POPUP */
-
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999;
+.request-actions button{
+width:auto;
+padding:0 18px;
 }
 
-.popup-box{
-width:420px;
-padding:30px;
-border-radius:28px;
-background:#0a0a0a;
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
-}
-
-.popup-title{
-font-size:34px;
-font-weight:900;
-margin-bottom:20px;
-}
-
-@media(max-width:1000px){
+@media(max-width:768px){
 
 .hero{
-padding:0 30px;
-height:430px;
+flex-direction:column;
+text-align:center;
 }
 
 .hero h1{
-font-size:62px;
-line-height:65px;
+font-size:42px;
 }
 
-.cards{
-grid-template-columns:1fr;
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
 }
 
-header{
-padding:0 15px;
-}
-
-.logo{
-font-size:46px;
+.nav-right{
+justify-content:center;
 }
 
 }
@@ -442,212 +393,196 @@ font-size:46px;
 
 <body>
 
-<!-- LOGIN -->
+<div id="loginPage" class="login-screen">
 
-<div id="authPage" class="auth-page">
+<div class="login-box">
 
-<div class="auth-box">
+<h1 class="logo-login">i5s</h1>
 
-<div class="auth-logo">i5s</div>
+<p class="login-sub">
+Secure Digital Store Login
+</p>
 
-<!-- LOGIN -->
+<input type="text" id="username" placeholder="Username">
 
-<div id="loginBox">
+<input type="password" id="password" placeholder="Password">
 
-<input id="loginUser" class="input" placeholder="Username">
-
-<input id="loginPass" type="password" class="input" placeholder="Password">
-
-<button class="auth-btn" onclick="login()">
+<button class="login-btn" onclick="login()">
 Login
 </button>
 
-<div class="switch-text">
-Don't have an account?
-<span onclick="showRegister()">Create Account</span>
-</div>
-
-</div>
-
-<!-- REGISTER -->
-
-<div id="registerBox" class="hidden">
-
-<input id="registerUser" class="input" placeholder="Create Username">
-
-<input id="registerPass" type="password" class="input" placeholder="Create Password">
-
-<button class="auth-btn" onclick="register()">
+<div class="register-btn" onclick="register()">
 Create Account
-</button>
-
-<div class="switch-text">
-Already have an account?
-<span onclick="showLogin()">Login</span>
 </div>
 
 </div>
 
 </div>
 
-</div>
+<div id="mainSite" class="hidden">
 
-<!-- MAIN -->
-
-<div id="panelPage" class="hidden">
-
-<header>
+<div class="navbar">
 
 <div class="logo">i5s</div>
 
-<div class="top-right">
+<div class="nav-right">
 
-<div class="balance-box">
+<div class="balance">
 Balance: $<span id="balance">0</span>
 </div>
 
-<button class="top-btn topup-btn" onclick="openTopup()">
-Request Topup
+<button class="nav-btn active-btn" onclick="showPage('purchase',this)">
+Purchase
 </button>
 
-<button class="top-btn logout-btn" onclick="logout()">
+<button class="nav-btn" onclick="showPage('topup',this)">
+Top Up
+</button>
+
+<button class="nav-btn" onclick="showPage('inventory',this)">
+Inventory
+</button>
+
+<button id="adminBtn" class="nav-btn hidden" onclick="showPage('admin',this)">
+Admin
+</button>
+
+<button class="logout-btn" onclick="logout()">
 Logout
 </button>
 
 </div>
 
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-<div class="hero-badge">
-PREMIUM ACCESS
 </div>
 
-<h1>
-UNDETECTED <br>
-PREMIUM PANEL
-</h1>
+<div id="purchase" class="page active-page">
+
+<div class="hero">
+
+<div>
+
+<h1>Premium Digital Store</h1>
 
 <p>
-Fast. Secure. Premium Experience.
+Modern black & red premium dashboard with balance system,
+inventory and admin approvals.
 </p>
 
-<div class="hero-buttons">
+</div>
 
-<button class="hero-main-btn">
-Get Started
+<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+
+</div>
+
+<h2 class="section-title">Products</h2>
+
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>1D</h3>
+<div class="price">$10</div>
+<button class="buy-btn" onclick="buyProduct(10,'1D Access')">Purchase</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>3D</h3>
+<div class="price">$25</div>
+<button class="buy-btn" onclick="buyProduct(25,'3D Access')">Purchase</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>5D</h3>
+<div class="price">$40</div>
+<button class="buy-btn" onclick="buyProduct(40,'5D Access')">Purchase</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>7D</h3>
+<div class="price">$60</div>
+<button class="buy-btn" onclick="buyProduct(60,'7D Access')">Purchase</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>10D</h3>
+<div class="price">$85</div>
+<button class="buy-btn" onclick="buyProduct(85,'10D Access')">Purchase</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>Permanent</h3>
+<div class="price">$150</div>
+<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">Purchase</button>
+</div>
+
+</div>
+
+</div>
+
+<div id="topup" class="page">
+
+<div class="topup-container">
+
+<h1>Top Up Balance</h1>
+
+<p>Create payment requests for admin approval</p>
+
+<div class="crypto-grid">
+
+<div class="crypto-card active">BTC</div>
+<div class="crypto-card">LTC</div>
+<div class="crypto-card">USDT</div>
+<div class="crypto-card">SOL</div>
+
+</div>
+
+<div class="amount-box">
+
+<span>$</span>
+
+<input type="number" id="topupAmount" placeholder="100">
+
+<span>USD</span>
+
+</div>
+
+<div class="quick-amounts">
+
+<button onclick="setAmount(10)">$10</button>
+<button onclick="setAmount(25)">$25</button>
+<button onclick="setAmount(50)">$50</button>
+<button onclick="setAmount(100)">$100</button>
+<button onclick="setAmount(250)">$250</button>
+<button onclick="setAmount(500)">$500</button>
+
+</div>
+
+<button class="create-payment-btn" onclick="createPaymentRequest()">
+Create Payment Request
 </button>
 
-<button class="hero-second-btn">
-View Products
-</button>
-
 </div>
 
 </div>
 
-</section>
+<div id="inventory" class="page">
 
-<!-- PRODUCTS -->
+<h2 class="section-title">Inventory</h2>
 
-<div class="panel">
-
-<div class="cards">
-
-<div class="card">
-
-<div class="card-title">
-1d
-</div>
-
-<div class="card-price">
-$35
-</div>
-
-<button class="purchase-btn" onclick="buy(35)">
-Purchase
-</button>
+<div id="inventoryGrid" class="inventory-grid"></div>
 
 </div>
 
-<div class="card">
+<div id="admin" class="page">
 
-<div class="card-title">
-3d
-</div>
+<h2 class="section-title">Admin Requests</h2>
 
-<div class="card-price">
-$20
-</div>
-
-<button class="purchase-btn" onclick="buy(20)">
-Purchase
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="card-title">
-5d
-</div>
-
-<div class="card-price">
-$15
-</div>
-
-<button class="purchase-btn" onclick="buy(15)">
-Purchase
-</button>
-
-</div>
-
-</div>
-
-<!-- ADMIN -->
-
-<div id="adminPanel" class="admin-panel hidden">
-
-<div class="admin-title">
-ADMIN PANEL
-</div>
-
-<input id="targetUser" class="input" placeholder="Target Username">
-
-<input id="moneyAmount" class="input" placeholder="Amount">
-
-<button class="auth-btn" onclick="adminAddMoney()">
-Add Balance
-</button>
-
-<div class="request-list" id="requestList"></div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- TOPUP -->
-
-<div class="popup" id="topupPopup">
-
-<div class="popup-box">
-
-<div class="popup-title">
-Request Topup
-</div>
-
-<input id="topupAmount" class="input" placeholder="Enter Amount">
-
-<button class="auth-btn" onclick="submitRequest()">
-Send Request
-</button>
+<div id="requestsContainer"></div>
 
 </div>
 
@@ -655,260 +590,334 @@ Send Request
 
 <script>
 
-const ADMIN_KEY = "F1AX65DvCA45X";
+const ADMIN_USERNAME = "woojun";
+const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let currentUser = null;
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let requests = JSON.parse(localStorage.getItem("requests")) || [];
+let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
-/* CREATE ADMIN */
+function refreshUsers(){
+users = JSON.parse(localStorage.getItem("users")) || [];
+}
 
-function createAdmin(){
+if(!users.find(u=>u.username===ADMIN_USERNAME)){
+users.push({
+username:ADMIN_USERNAME,
+password:ADMIN_PASSWORD,
+balance:0,
+inventory:[]
+});
+localStorage.setItem("users",JSON.stringify(users));
+}
 
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
+window.onload=()=>{
 
-if(!users["admin"]){
+const savedUser =
+JSON.parse(localStorage.getItem("currentUser"));
 
-users["admin"] = {
-
-password: ADMIN_KEY,
-balance: 999999,
-admin: true
-
-};
-
-localStorage.setItem("users", JSON.stringify(users));
-
+if(savedUser){
+currentUser=savedUser;
+showSite();
 }
 
 }
-
-createAdmin();
-
-/* SWITCH */
-
-function showRegister(){
-
-document.getElementById("loginBox")
-.classList.add("hidden");
-
-document.getElementById("registerBox")
-.classList.remove("hidden");
-
-}
-
-function showLogin(){
-
-document.getElementById("registerBox")
-.classList.add("hidden");
-
-document.getElementById("loginBox")
-.classList.remove("hidden");
-
-}
-
-/* REGISTER */
 
 function register(){
 
+refreshUsers();
+
 const username =
-document.getElementById("registerUser").value;
+document.getElementById("username").value.trim();
 
 const password =
-document.getElementById("registerPass").value;
+document.getElementById("password").value.trim();
 
-if(!username || !password){
-
+if(username===""||password===""){
 alert("Fill all fields");
 return;
-
 }
 
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
-
-if(users[username]){
-
+if(users.find(u=>u.username===username)){
 alert("Username already exists");
 return;
-
 }
 
-users[username] = {
-
-password: password,
-balance: 0,
-admin: false
-
+const user={
+username:username,
+password:password,
+balance:0,
+inventory:[]
 };
 
-localStorage.setItem("users", JSON.stringify(users));
+users.push(user);
 
-alert("Account created");
+localStorage.setItem("users",JSON.stringify(users));
+localStorage.setItem("currentUser",JSON.stringify(user));
 
-showLogin();
+currentUser=user;
+
+showSite();
 
 }
-
-/* LOGIN */
 
 function login(){
 
+refreshUsers();
+
 const username =
-document.getElementById("loginUser").value;
+document.getElementById("username").value.trim();
 
 const password =
-document.getElementById("loginPass").value;
+document.getElementById("password").value.trim();
 
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
-
-if(!users[username]){
-
-alert("User not found");
+if(username===""||password===""){
+alert("Fill all fields");
 return;
+}
+
+const user =
+users.find(u =>
+u.username===username &&
+u.password===password
+);
+
+if(!user){
+alert("Invalid Account");
+return;
+}
+
+currentUser=user;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(user)
+);
+
+showSite();
 
 }
 
-if(users[username].password !== password){
+function showSite(){
 
-alert("Wrong password");
-return;
-
-}
-
-currentUser = username;
-
-document.getElementById("authPage")
+document.getElementById("loginPage")
 .classList.add("hidden");
 
-document.getElementById("panelPage")
+document.getElementById("mainSite")
 .classList.remove("hidden");
 
-updateUI();
+updateBalance();
+renderInventory();
+renderRequests();
 
-if(users[username].admin){
-
-document.getElementById("adminPanel")
+if(
+currentUser.username===ADMIN_USERNAME &&
+currentUser.password===ADMIN_PASSWORD
+){
+document.getElementById("adminBtn")
 .classList.remove("hidden");
-
-loadRequests();
-
 }
 
 }
-
-/* LOGOUT */
 
 function logout(){
-
+localStorage.removeItem("currentUser");
 location.reload();
-
 }
 
-/* UPDATE */
-
-function updateUI(){
-
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
-
+function updateBalance(){
 document.getElementById("balance")
-.innerText = users[currentUser].balance;
+.innerText=currentUser.balance;
+}
+
+function saveUser(){
+
+users = users.map(u=>{
+
+if(u.username===currentUser.username){
+return currentUser;
+}
+
+return u;
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
 
 }
 
-/* BUY */
+function showPage(page,btn){
 
-function buy(price){
+document.querySelectorAll(".page")
+.forEach(p=>{
+p.classList.remove("active-page");
+});
 
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
+document.getElementById(page)
+.classList.add("active-page");
 
-if(users[currentUser].balance < price){
+document.querySelectorAll(".nav-btn")
+.forEach(b=>{
+b.classList.remove("active-btn");
+});
 
+btn.classList.add("active-btn");
+
+}
+
+function buyProduct(price,name){
+
+if(currentUser.balance<price){
 alert("Not enough balance");
+return;
+}
+
+currentUser.balance-=price;
+
+currentUser.inventory.push(name);
+
+saveUser();
+
+updateBalance();
+
+renderInventory();
+
+alert("Purchased: "+name);
+
+}
+
+function renderInventory(){
+
+const grid =
+document.getElementById("inventoryGrid");
+
+grid.innerHTML="";
+
+if(currentUser.inventory.length===0){
+
+grid.innerHTML=`
+<div class="inventory-item">
+<h3>Empty</h3>
+<p>No items purchased yet.</p>
+</div>
+`;
+
 return;
 
 }
 
-users[currentUser].balance -= price;
+currentUser.inventory.forEach(item=>{
 
-localStorage.setItem("users", JSON.stringify(users));
+grid.innerHTML += `
+<div class="inventory-item">
+<h3>${item}</h3>
+<p>Purchased Successfully</p>
+</div>
+`;
 
-updateUI();
-
-alert("Purchase successful");
-
-}
-
-/* TOPUP */
-
-function openTopup(){
-
-document.getElementById("topupPopup")
-.style.display = "flex";
+});
 
 }
 
-function submitRequest(){
+document.querySelectorAll(".crypto-card")
+.forEach(card=>{
+
+card.addEventListener("click",()=>{
+
+document.querySelectorAll(".crypto-card")
+.forEach(c=>{
+c.classList.remove("active");
+});
+
+card.classList.add("active");
+
+});
+
+});
+
+function setAmount(amount){
+document.getElementById("topupAmount").value=amount;
+}
+
+function createPaymentRequest(){
 
 const amount =
 document.getElementById("topupAmount").value;
 
-if(!amount){
-
-alert("Enter amount");
+if(!amount || amount<=0){
+alert("Enter valid amount");
 return;
-
 }
-
-const requests =
-JSON.parse(localStorage.getItem("requests") || "[]");
 
 requests.push({
-
-user: currentUser,
-amount: amount
-
+id:Date.now(),
+user:currentUser.username,
+amount:Number(amount)
 });
 
-localStorage.setItem("requests", JSON.stringify(requests));
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
 
-document.getElementById("topupPopup")
-.style.display = "none";
+renderRequests();
 
-alert("Topup request sent");
+alert("Payment Request Created");
 
 }
 
-/* LOAD REQUESTS */
+function renderRequests(){
 
-function loadRequests(){
+const container =
+document.getElementById("requestsContainer");
 
-const requests =
-JSON.parse(localStorage.getItem("requests") || "[]");
+if(!container){
+return;
+}
 
-const div =
-document.getElementById("requestList");
+container.innerHTML="";
 
-div.innerHTML = "";
+requests.forEach(req=>{
 
-requests.forEach((r,index)=>{
+container.innerHTML += `
 
-div.innerHTML += `
+<div class="request-box">
 
-<div class="request-item">
+<div class="request-row">
 
 <div>
-${r.user} requested $${r.amount}
+
+<h2>$${req.amount}</h2>
+
+<p>${req.user}</p>
+
 </div>
 
-<button class="small-btn"
-onclick="approveRequest(${index})">
+<div class="request-actions">
 
+<button
+class="approve-btn"
+onclick="approveRequest(${req.id})">
 Approve
-
 </button>
+
+<button
+class="reject-btn"
+onclick="rejectRequest(${req.id})">
+Reject
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -918,57 +927,57 @@ Approve
 
 }
 
-/* APPROVE */
+function approveRequest(id){
 
-function approveRequest(index){
+const req =
+requests.find(r=>r.id===id);
 
-const requests =
-JSON.parse(localStorage.getItem("requests") || "[]");
-
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
-
-const req = requests[index];
-
-users[req.user].balance += Number(req.amount);
-
-localStorage.setItem("users", JSON.stringify(users));
-
-requests.splice(index,1);
-
-localStorage.setItem("requests", JSON.stringify(requests));
-
-loadRequests();
-
-alert("Balance added");
-
-}
-
-/* ADMIN ADD */
-
-function adminAddMoney(){
-
-const target =
-document.getElementById("targetUser").value;
-
-const amount =
-document.getElementById("moneyAmount").value;
-
-const users =
-JSON.parse(localStorage.getItem("users") || "{}");
-
-if(!users[target]){
-
-alert("User not found");
+if(!req){
 return;
+}
+
+const user =
+users.find(u=>u.username===req.user);
+
+user.balance += Number(req.amount);
+
+if(currentUser.username===user.username){
+currentUser.balance=user.balance;
+updateBalance();
+}
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+requests =
+requests.filter(r=>r.id!==id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Approved");
 
 }
 
-users[target].balance += Number(amount);
+function rejectRequest(id){
 
-localStorage.setItem("users", JSON.stringify(users));
+requests =
+requests.filter(r=>r.id!==id);
 
-alert("Money added");
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Rejected");
 
 }
 
