@@ -18,33 +18,9 @@ font-family:'Inter',sans-serif;
 }
 
 body{
-background:#000;
+background:#050505;
 color:white;
 overflow-x:hidden;
-}
-
-body::before{
-content:'';
-position:fixed;
-top:-300px;
-left:-300px;
-width:700px;
-height:700px;
-background:rgba(255,0,0,.12);
-filter:blur(120px);
-z-index:-1;
-}
-
-body::after{
-content:'';
-position:fixed;
-bottom:-300px;
-right:-300px;
-width:700px;
-height:700px;
-background:rgba(255,0,0,.12);
-filter:blur(120px);
-z-index:-1;
 }
 
 .hidden{
@@ -55,23 +31,22 @@ display:none !important;
 width:100%;
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 }
 
 .login-box{
 width:430px;
-background:#090909;
-border:1px solid #1d1d1d;
+background:#0d0d0d;
+border:1px solid #1f1f1f;
 border-radius:28px;
 padding:40px;
-box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:60px;
+font-size:58px;
 font-weight:900;
-color:#ff3a3a;
+color:#ff2d2d;
 margin-bottom:10px;
 }
 
@@ -82,90 +57,79 @@ margin-bottom:25px;
 
 input{
 width:100%;
-height:60px;
-background:#0f0f0f;
-border:1px solid #1d1d1d;
-border-radius:16px;
-padding:0 20px;
+height:58px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+padding:0 18px;
 color:white;
-font-size:16px;
 margin-bottom:16px;
 outline:none;
+font-size:16px;
 }
 
-button{
+.login-btn,
+.register-btn,
+.buy-btn,
+.topup-btn,
+.approve-btn,
+.reject-btn{
 border:none;
 cursor:pointer;
+border-radius:14px;
+font-weight:800;
+color:white;
 }
 
 .login-btn{
 width:100%;
 height:58px;
 background:#ff2d2d;
-color:white;
-font-size:16px;
-font-weight:800;
-border-radius:16px;
-margin-bottom:14px;
+margin-bottom:12px;
 }
 
 .register-btn{
 width:100%;
 height:58px;
-background:#111;
-color:white;
-font-size:16px;
-font-weight:700;
-border-radius:16px;
+background:#151515;
 }
 
 .navbar{
-height:85px;
+height:80px;
+background:#080808;
+border-bottom:1px solid #1f1f1f;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:0 25px;
-border-bottom:1px solid #161616;
-background:#050505;
-}
-
-.nav-left{
-font-size:40px;
-font-weight:900;
-color:#ff3a3a;
 }
 
 .nav-right{
 display:flex;
-gap:12px;
+gap:10px;
 align-items:center;
 flex-wrap:wrap;
 }
 
 .nav-btn{
-height:46px;
-padding:0 22px;
+height:45px;
+padding:0 20px;
 background:#111;
 border:1px solid #222;
+border-radius:12px;
 color:white;
-border-radius:14px;
-font-weight:700;
-}
-
-.nav-btn:hover{
-background:#ff2d2d;
+cursor:pointer;
 }
 
 .balance{
-padding:0 22px;
-height:46px;
+height:45px;
+padding:0 20px;
 display:flex;
 align-items:center;
-justify-content:center;
 background:#111;
-border-radius:14px;
 border:1px solid #222;
-font-weight:800;
+border-radius:12px;
+font-weight:700;
 }
 
 .page{
@@ -178,145 +142,112 @@ display:block;
 }
 
 .section-title{
-font-size:55px;
+font-size:48px;
 font-weight:900;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:24px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .product-card{
-background:#080808;
-border:1px solid #1b1b1b;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
 border-radius:24px;
 padding:28px;
 }
 
 .product-card h2{
-font-size:42px;
-margin-bottom:15px;
+font-size:38px;
+margin-bottom:12px;
 }
 
 .price{
-font-size:52px;
+font-size:46px;
 font-weight:900;
 color:#ff2d2d;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .buy-btn{
 width:100%;
-height:58px;
+height:55px;
 background:#ff2d2d;
-color:white;
-font-size:17px;
-font-weight:800;
-border-radius:16px;
 }
 
 .inventory-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
 }
 
 .inventory-item{
 background:#0b0b0b;
-border:1px solid #1b1b1b;
+border:1px solid #1f1f1f;
 border-radius:20px;
 padding:25px;
-}
-
-.inventory-item h3{
-font-size:28px;
-margin-bottom:10px;
 }
 
 .topup-box{
 max-width:900px;
 margin:auto;
-background:#090909;
-border:1px solid #1b1b1b;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
 border-radius:28px;
 padding:35px;
-}
-
-.topup-title{
-font-size:50px;
-font-weight:900;
-margin-bottom:8px;
-}
-
-.topup-sub{
-color:#888;
-margin-bottom:35px;
 }
 
 .crypto-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:18px;
+gap:15px;
 margin-bottom:25px;
 }
 
 .crypto-card{
-background:#0f0f0f;
+background:#111;
 border:1px solid #222;
 border-radius:18px;
 padding:22px;
 cursor:pointer;
-transition:.2s;
+text-align:center;
 }
 
 .crypto-card.active{
-border-color:#00ff73;
-background:#0f2418;
-}
-
-.crypto-card h3{
-font-size:24px;
-margin-bottom:6px;
+border-color:#00ff84;
+background:#102017;
 }
 
 .quick-grid{
 display:grid;
 grid-template-columns:repeat(6,1fr);
 gap:12px;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .quick-grid button{
 height:50px;
 background:#111;
 border:1px solid #222;
-border-radius:12px;
 color:white;
-font-weight:700;
-}
-
-.quick-grid button:hover{
-background:#ff2d2d;
+border-radius:12px;
+cursor:pointer;
 }
 
 .topup-btn{
 width:100%;
-height:62px;
-background:#0f7a39;
-color:white;
-font-size:18px;
-font-weight:800;
-border-radius:16px;
+height:58px;
+background:#0f7f3c;
 }
 
 .request-box{
 background:#0b0b0b;
-border:1px solid #1d1d1d;
+border:1px solid #1f1f1f;
 border-radius:22px;
-padding:24px;
+padding:25px;
 margin-bottom:20px;
 }
 
@@ -330,37 +261,19 @@ gap:20px;
 
 .request-buttons{
 display:flex;
-gap:12px;
+gap:10px;
 }
 
 .approve-btn{
-background:#14a44d;
-color:white;
+background:#16a34a;
 height:48px;
 padding:0 20px;
-border-radius:12px;
-font-weight:700;
 }
 
 .reject-btn{
 background:#ff2d2d;
-color:white;
 height:48px;
 padding:0 20px;
-border-radius:12px;
-font-weight:700;
-}
-
-@media(max-width:700px){
-
-.quick-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.section-title{
-font-size:38px;
-}
-
 }
 
 </style>
@@ -398,12 +311,15 @@ Create Account
 
 <div class="navbar">
 
-<div class="nav-left">i5s</div>
+<div class="logo" style="font-size:38px;">
+i5s
+</div>
 
 <div class="nav-right">
 
 <div class="balance">
-Balance: $<span id="balance">0</span>
+Balance: $
+<span id="balance">0</span>
 </div>
 
 <button class="nav-btn" onclick="showPage('shop')">
@@ -418,7 +334,9 @@ Inventory
 Top Up
 </button>
 
-<button class="nav-btn hidden" id="adminButton" onclick="showPage('admin')">
+<button id="adminButton"
+class="nav-btn hidden"
+onclick="showPage('admin')">
 Admin
 </button>
 
@@ -432,14 +350,17 @@ Logout
 
 <div id="shop" class="page active-page">
 
-<h1 class="section-title">Products</h1>
+<h1 class="section-title">
+Products
+</h1>
 
 <div class="product-grid">
 
 <div class="product-card">
 <h2>1D</h2>
 <div class="price">$10</div>
-<button class="buy-btn" onclick="buyProduct(10,'1D Access')">
+<button class="buy-btn"
+onclick="buyProduct(10,'1D Access')">
 Purchase
 </button>
 </div>
@@ -447,7 +368,8 @@ Purchase
 <div class="product-card">
 <h2>3D</h2>
 <div class="price">$25</div>
-<button class="buy-btn" onclick="buyProduct(25,'3D Access')">
+<button class="buy-btn"
+onclick="buyProduct(25,'3D Access')">
 Purchase
 </button>
 </div>
@@ -455,23 +377,26 @@ Purchase
 <div class="product-card">
 <h2>5D</h2>
 <div class="price">$40</div>
-<button class="buy-btn" onclick="buyProduct(40,'5D Access')">
+<button class="buy-btn"
+onclick="buyProduct(40,'5D Access')">
 Purchase
 </button>
 </div>
 
 <div class="product-card">
 <h2>7D</h2>
-<div class="price">$50</div>
-<button class="buy-btn" onclick="buyProduct(50,'7D Access')">
+<div class="price">$60</div>
+<button class="buy-btn"
+onclick="buyProduct(60,'7D Access')">
 Purchase
 </button>
 </div>
 
 <div class="product-card">
 <h2>10D</h2>
-<div class="price">$80</div>
-<button class="buy-btn" onclick="buyProduct(80,'10D Access')">
+<div class="price">$85</div>
+<button class="buy-btn"
+onclick="buyProduct(85,'10D Access')">
 Purchase
 </button>
 </div>
@@ -479,7 +404,8 @@ Purchase
 <div class="product-card">
 <h2>Permanent</h2>
 <div class="price">$150</div>
-<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
+<button class="buy-btn"
+onclick="buyProduct(150,'Permanent Access')">
 Purchase
 </button>
 </div>
@@ -490,9 +416,12 @@ Purchase
 
 <div id="inventory" class="page">
 
-<h1 class="section-title">Inventory</h1>
+<h1 class="section-title">
+Inventory
+</h1>
 
-<div id="inventoryGrid" class="inventory-grid"></div>
+<div id="inventoryGrid"
+class="inventory-grid"></div>
 
 </div>
 
@@ -500,63 +429,65 @@ Purchase
 
 <div class="topup-box">
 
-<div class="topup-title">
-Top Up Your Balance
-</div>
-
-<div class="topup-sub">
-Pay in crypto — choose your coin and network
-</div>
+<h1 class="section-title">
+Top Up
+</h1>
 
 <div class="crypto-grid">
 
 <div class="crypto-card active">
 <h3>BTC</h3>
-<p>Bitcoin</p>
 </div>
 
 <div class="crypto-card">
 <h3>LTC</h3>
-<p>Litecoin</p>
 </div>
 
 <div class="crypto-card">
 <h3>USDT</h3>
-<p>Tether</p>
 </div>
 
 <div class="crypto-card">
 <h3>SOL</h3>
-<p>Solana</p>
-</div>
-
-<div class="crypto-card">
-<h3>BNB</h3>
-<p>BNB Chain</p>
-</div>
-
-<div class="crypto-card">
-<h3>TRX</h3>
-<p>Tron</p>
 </div>
 
 </div>
 
-<input type="number" id="topupAmount" placeholder="Enter Amount">
+<input type="number"
+id="topupAmount"
+placeholder="Amount">
 
 <div class="quick-grid">
 
-<button onclick="setAmount(10)">$10</button>
-<button onclick="setAmount(25)">$25</button>
-<button onclick="setAmount(50)">$50</button>
-<button onclick="setAmount(100)">$100</button>
-<button onclick="setAmount(250)">$250</button>
-<button onclick="setAmount(500)">$500</button>
+<button onclick="setAmount(10)">
+$10
+</button>
+
+<button onclick="setAmount(25)">
+$25
+</button>
+
+<button onclick="setAmount(50)">
+$50
+</button>
+
+<button onclick="setAmount(100)">
+$100
+</button>
+
+<button onclick="setAmount(250)">
+$250
+</button>
+
+<button onclick="setAmount(500)">
+$500
+</button>
 
 </div>
 
-<button class="topup-btn" onclick="createRequest()">
-Create Payment
+<button class="topup-btn"
+onclick="createRequest()">
+Create Payment Request
 </button>
 
 </div>
@@ -565,7 +496,9 @@ Create Payment
 
 <div id="admin" class="page">
 
-<h1 class="section-title">Admin Panel</h1>
+<h1 class="section-title">
+Admin Requests
+</h1>
 
 <div id="requestContainer"></div>
 
@@ -578,10 +511,16 @@ Create Payment
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let users = JSON.parse(localStorage.getItem("users")) || [];
-let requests = JSON.parse(localStorage.getItem("requests")) || [];
-let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
 
+let requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
+
+// 관리자 자동 생성
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
@@ -598,18 +537,7 @@ JSON.stringify(users)
 
 }
 
-window.addEventListener("storage", () => {
-
-users =
-JSON.parse(localStorage.getItem("users")) || [];
-
-requests =
-JSON.parse(localStorage.getItem("requests")) || [];
-
-renderRequests();
-
-});
-
+// 자동 로그인
 window.onload = function(){
 
 users =
@@ -629,6 +557,20 @@ showMain();
 
 };
 
+// 실시간 동기화
+window.addEventListener("storage", function(){
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+renderRequests();
+
+});
+
+// 회원가입
 function register(){
 
 users =
@@ -647,8 +589,11 @@ return;
 
 }
 
-const exists = users.find(
-u => u.username.toLowerCase() === username.toLowerCase()
+const exists =
+users.find(
+u =>
+u.username.toLowerCase() ===
+username.toLowerCase()
 );
 
 if(exists){
@@ -659,10 +604,12 @@ return;
 }
 
 users.push({
+
 username:username,
 password:password,
 balance:0,
 inventory:[]
+
 });
 
 localStorage.setItem(
@@ -677,6 +624,7 @@ document.getElementById("password").value = "";
 
 }
 
+// 로그인
 function login(){
 
 users =
@@ -688,8 +636,10 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-const foundUser = users.find(
-u => u.username === username &&
+const foundUser =
+users.find(
+u =>
+u.username === username &&
 u.password === password
 );
 
@@ -711,6 +661,7 @@ showMain();
 
 }
 
+// 메인 표시
 function showMain(){
 
 document.getElementById("loginPage")
@@ -734,6 +685,7 @@ document.getElementById("adminButton")
 
 }
 
+// 로그아웃
 function logout(){
 
 localStorage.removeItem("currentUser");
@@ -742,6 +694,7 @@ location.reload();
 
 }
 
+// 잔액 표시
 function updateBalance(){
 
 document.getElementById("balance").innerText =
@@ -749,6 +702,7 @@ currentUser.balance;
 
 }
 
+// 유저 저장
 function saveUsers(){
 
 users = users.map(u => {
@@ -775,6 +729,7 @@ JSON.stringify(currentUser)
 
 }
 
+// 페이지 변경
 function showPage(page){
 
 document.querySelectorAll(".page")
@@ -795,6 +750,7 @@ renderRequests();
 
 }
 
+// 구매
 function buyProduct(price,name){
 
 if(currentUser.balance < price){
@@ -818,6 +774,7 @@ alert(name + " Purchased");
 
 }
 
+// 인벤토리 렌더
 function renderInventory(){
 
 const grid =
@@ -851,10 +808,11 @@ grid.innerHTML += `
 
 }
 
+// 코인 선택
 document.querySelectorAll(".crypto-card")
 .forEach(card => {
 
-card.addEventListener("click",function(){
+card.addEventListener("click", function(){
 
 document.querySelectorAll(".crypto-card")
 .forEach(c => {
@@ -869,6 +827,7 @@ card.classList.add("active");
 
 });
 
+// 금액 버튼
 function setAmount(amount){
 
 document.getElementById("topupAmount").value =
@@ -876,6 +835,7 @@ amount;
 
 }
 
+// 충전 요청 생성
 function createRequest(){
 
 requests =
@@ -895,7 +855,7 @@ const selectedCrypto =
 document.querySelector(".crypto-card.active h3")
 .innerText;
 
-requests.push({
+const request = {
 
 id:Date.now(),
 
@@ -909,7 +869,9 @@ status:"Pending",
 
 created:new Date().toLocaleString()
 
-});
+};
+
+requests.push(request);
 
 localStorage.setItem(
 "requests",
@@ -924,6 +886,7 @@ renderRequests();
 
 }
 
+// 관리자 요청 표시
 function renderRequests(){
 
 requests =
@@ -939,6 +902,9 @@ return;
 }
 
 container.innerHTML = "";
+
+// 최신순 정렬
+requests.sort((a,b)=>b.id-a.id);
 
 if(requests.length === 0){
 
@@ -976,14 +942,20 @@ container.innerHTML += `
 
 <div class="request-buttons">
 
-<button class="approve-btn"
+<button
+class="approve-btn"
 onclick="approveRequest(${req.id})">
+
 Approve
+
 </button>
 
-<button class="reject-btn"
+<button
+class="reject-btn"
 onclick="rejectRequest(${req.id})">
+
 Reject
+
 </button>
 
 </div>
@@ -998,6 +970,7 @@ Reject
 
 }
 
+// 승인
 function approveRequest(id){
 
 requests =
@@ -1011,7 +984,6 @@ requests.find(r => r.id === id);
 
 if(!req){
 
-alert("Request Not Found");
 return;
 
 }
@@ -1021,7 +993,6 @@ users.find(u => u.username === req.user);
 
 if(!targetUser){
 
-alert("User Not Found");
 return;
 
 }
@@ -1043,10 +1014,11 @@ JSON.stringify(requests)
 
 renderRequests();
 
-alert("Approved Successfully");
+alert("Approved");
 
 }
 
+// 거절
 function rejectRequest(id){
 
 requests =
