@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>i5s Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
@@ -103,26 +104,40 @@ outline:none;
 font-size:16px;
 }
 
-.login-btn,
+.login-btn{
+width:100%;
+height:58px;
+border:none;
+border-radius:14px;
+background:#ff2e2e;
+color:white;
+font-size:16px;
+font-weight:800;
+cursor:pointer;
+margin-bottom:15px;
+transition:0.2s;
+}
+
+.login-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
 .register-btn{
 width:100%;
 height:58px;
 border:none;
 border-radius:14px;
+background:#151515;
+color:white;
 font-size:16px;
-font-weight:800;
+font-weight:700;
 cursor:pointer;
-margin-bottom:12px;
+transition:0.2s;
 }
 
-.login-btn{
-background:#ff2e2e;
-color:white;
-}
-
-.register-btn{
-background:#171717;
-color:white;
+.register-btn:hover{
+background:#1e1e1e;
 }
 
 .navbar{
@@ -160,6 +175,7 @@ justify-content:center;
 .nav-btn,
 .logout-btn{
 cursor:pointer;
+transition:0.2s;
 }
 
 .active-btn,
@@ -229,6 +245,11 @@ border-radius:28px;
 padding:30px;
 }
 
+.product-card img{
+width:70px;
+margin-bottom:20px;
+}
+
 .product-card h3,
 .inventory-item h3{
 font-size:32px;
@@ -254,6 +275,13 @@ color:white;
 font-size:16px;
 font-weight:800;
 cursor:pointer;
+transition:0.2s;
+}
+
+.buy-btn:hover,
+.create-payment-btn:hover,
+.approve-btn:hover{
+transform:translateY(-2px);
 }
 
 .buy-btn,
@@ -275,6 +303,16 @@ border-radius:30px;
 padding:45px;
 }
 
+.topup-container h1{
+font-size:58px;
+margin-bottom:10px;
+}
+
+.topup-container p{
+color:#888;
+margin-bottom:30px;
+}
+
 .crypto-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -290,6 +328,11 @@ padding:24px;
 cursor:pointer;
 text-align:center;
 font-weight:700;
+transition:0.2s;
+}
+
+.crypto-card:hover{
+transform:translateY(-2px);
 }
 
 .crypto-card.active{
@@ -333,6 +376,48 @@ border-radius:14px;
 color:white;
 font-weight:700;
 cursor:pointer;
+}
+
+.request-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.request-actions{
+display:flex;
+gap:10px;
+}
+
+.request-actions button{
+width:auto;
+padding:0 18px;
+}
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
+}
+
+.nav-right{
+justify-content:center;
+}
+
 }
 
 </style>
@@ -412,16 +497,21 @@ Logout
 <h1>Premium Digital Store</h1>
 
 <p>
-Modern black & red premium dashboard with balance system and inventory.
+Modern black and red premium dashboard with working login, register, inventory and auto login system.
 </p>
 
 </div>
 
+<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+
 </div>
+
+<h2 class="section-title">Products</h2>
 
 <div class="product-grid">
 
 <div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>1D</h3>
 <div class="price">$10</div>
 <button class="buy-btn" onclick="buyProduct(10,'1D Access')">
@@ -430,6 +520,7 @@ Purchase
 </div>
 
 <div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>3D</h3>
 <div class="price">$25</div>
 <button class="buy-btn" onclick="buyProduct(25,'3D Access')">
@@ -438,33 +529,10 @@ Purchase
 </div>
 
 <div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>5D</h3>
 <div class="price">$40</div>
 <button class="buy-btn" onclick="buyProduct(40,'5D Access')">
-Purchase
-</button>
-</div>
-
-<div class="product-card">
-<h3>7D</h3>
-<div class="price">$60</div>
-<button class="buy-btn" onclick="buyProduct(60,'7D Access')">
-Purchase
-</button>
-</div>
-
-<div class="product-card">
-<h3>10D</h3>
-<div class="price">$85</div>
-<button class="buy-btn" onclick="buyProduct(85,'10D Access')">
-Purchase
-</button>
-</div>
-
-<div class="product-card">
-<h3>Permanent</h3>
-<div class="price">$150</div>
-<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
 Purchase
 </button>
 </div>
@@ -477,14 +545,15 @@ Purchase
 
 <div class="topup-container">
 
-<h1 style="margin-bottom:20px;">Top Up Balance</h1>
+<h1>Top Up Balance</h1>
+
+<p>Create payment requests for admin approval</p>
 
 <div class="crypto-grid">
 
 <div class="crypto-card active">BTC</div>
-<div class="crypto-card">LTC</div>
 <div class="crypto-card">USDT</div>
-<div class="crypto-card">SOL</div>
+<div class="crypto-card">LTC</div>
 
 </div>
 
@@ -501,11 +570,8 @@ Purchase
 <div class="quick-amounts">
 
 <button onclick="setAmount(10)">$10</button>
-<button onclick="setAmount(25)">$25</button>
 <button onclick="setAmount(50)">$50</button>
 <button onclick="setAmount(100)">$100</button>
-<button onclick="setAmount(250)">$250</button>
-<button onclick="setAmount(500)">$500</button>
 
 </div>
 
@@ -540,30 +606,17 @@ Create Payment Request
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let users =
-JSON.parse(localStorage.getItem("users")) || [];
-
-let requests =
-JSON.parse(localStorage.getItem("requests")) || [];
-
-let currentUser =
-JSON.parse(localStorage.getItem("currentUser")) || null;
-
-if(!Array.isArray(users)){
-users = [];
-}
-
-if(!Array.isArray(requests)){
-requests = [];
-}
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let requests = JSON.parse(localStorage.getItem("requests")) || [];
+let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
-balance:0,
-inventory:[]
+balance:999999,
+inventory:["Owner Access"]
 });
 
 localStorage.setItem(
@@ -580,6 +633,8 @@ if(currentUser){
 showSite();
 
 }
+
+setupCryptoCards();
 
 };
 
@@ -598,18 +653,8 @@ return;
 
 }
 
-users =
-JSON.parse(localStorage.getItem("users")) || [];
-
-if(!Array.isArray(users)){
-users = [];
-}
-
 const exists = users.find(
-u =>
-u.username &&
-u.username.toLowerCase() ===
-username.toLowerCase()
+u => u.username.toLowerCase() === username.toLowerCase()
 );
 
 if(exists){
@@ -624,7 +669,7 @@ const newUser = {
 username:username,
 password:password,
 balance:0,
-inventory:[]
+inventory:["Starter Package"]
 
 };
 
@@ -635,16 +680,10 @@ localStorage.setItem(
 JSON.stringify(users)
 );
 
-currentUser = newUser;
-
-localStorage.setItem(
-"currentUser",
-JSON.stringify(currentUser)
-);
-
 alert("Account Created Successfully");
 
-showSite();
+document.getElementById("username").value = "";
+document.getElementById("password").value = "";
 
 }
 
@@ -656,8 +695,12 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-users =
-JSON.parse(localStorage.getItem("users")) || [];
+if(username === "" || password === ""){
+
+alert("Fill all fields");
+return;
+
+}
 
 const foundUser = users.find(
 u =>
@@ -672,19 +715,11 @@ return;
 
 }
 
-if(!foundUser.inventory){
-foundUser.inventory = [];
-}
-
-if(!foundUser.balance){
-foundUser.balance = 0;
-}
-
 currentUser = foundUser;
 
 localStorage.setItem(
 "currentUser",
-JSON.stringify(currentUser)
+JSON.stringify(foundUser)
 );
 
 showSite();
@@ -706,16 +741,12 @@ renderInventory();
 renderRequests();
 
 if(
-currentUser.username === ADMIN_USERNAME
+currentUser.username === ADMIN_USERNAME &&
+currentUser.password === ADMIN_PASSWORD
 ){
 
 document.getElementById("adminBtn")
 .classList.remove("hidden");
-
-}else{
-
-document.getElementById("adminBtn")
-.classList.add("hidden");
 
 }
 
@@ -724,7 +755,6 @@ document.getElementById("adminBtn")
 function logout(){
 
 localStorage.removeItem("currentUser");
-
 location.reload();
 
 }
@@ -732,7 +762,7 @@ location.reload();
 function updateBalance(){
 
 document.getElementById("balance")
-.innerText = currentUser.balance || 0;
+.innerText = currentUser.balance;
 
 }
 
@@ -741,9 +771,7 @@ function saveUsers(){
 users = users.map(u => {
 
 if(u.username === currentUser.username){
-
 return currentUser;
-
 }
 
 return u;
@@ -766,9 +794,7 @@ function showPage(page,btn){
 
 document.querySelectorAll(".page")
 .forEach(p => {
-
 p.classList.remove("active-page");
-
 });
 
 document.getElementById(page)
@@ -776,15 +802,11 @@ document.getElementById(page)
 
 document.querySelectorAll(".nav-btn")
 .forEach(b => {
-
 b.classList.remove("active-btn");
-
 });
 
 if(btn){
-
 btn.classList.add("active-btn");
-
 }
 
 }
@@ -819,10 +841,6 @@ document.getElementById("inventoryGrid");
 
 grid.innerHTML = "";
 
-if(!currentUser.inventory){
-currentUser.inventory = [];
-}
-
 if(currentUser.inventory.length === 0){
 
 grid.innerHTML = `
@@ -849,6 +867,8 @@ grid.innerHTML += `
 
 }
 
+function setupCryptoCards(){
+
 document.querySelectorAll(".crypto-card")
 .forEach(card => {
 
@@ -856,9 +876,7 @@ card.addEventListener("click",function(){
 
 document.querySelectorAll(".crypto-card")
 .forEach(c => {
-
 c.classList.remove("active");
-
 });
 
 card.classList.add("active");
@@ -866,6 +884,8 @@ card.classList.add("active");
 });
 
 });
+
+}
 
 function setAmount(amount){
 
@@ -915,11 +935,14 @@ requests.forEach(req => {
 container.innerHTML += `
 <div class="request-box">
 
-<h2>$${req.amount}</h2>
+<div class="request-row">
 
-<p style="margin:10px 0;">
-${req.user}
-</p>
+<div>
+<h2>$${req.amount}</h2>
+<p>${req.user}</p>
+</div>
+
+<div class="request-actions">
 
 <button
 class="approve-btn"
@@ -929,10 +952,13 @@ Approve
 
 <button
 class="reject-btn"
-style="margin-top:10px;"
 onclick="rejectRequest(${req.id})">
 Reject
 </button>
+
+</div>
+
+</div>
 
 </div>
 `;
