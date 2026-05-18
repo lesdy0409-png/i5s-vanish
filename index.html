@@ -29,7 +29,7 @@ top:-300px;
 left:-300px;
 width:700px;
 height:700px;
-background:rgba(255,0,0,.15);
+background:rgba(255,0,0,.12);
 filter:blur(120px);
 z-index:-1;
 }
@@ -41,7 +41,7 @@ bottom:-300px;
 right:-300px;
 width:700px;
 height:700px;
-background:rgba(255,0,0,.15);
+background:rgba(255,0,0,.12);
 filter:blur(120px);
 z-index:-1;
 }
@@ -68,7 +68,7 @@ box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:55px;
+font-size:60px;
 font-weight:900;
 color:#ff3a3a;
 margin-bottom:10px;
@@ -93,8 +93,8 @@ outline:none;
 }
 
 button{
-cursor:pointer;
 border:none;
+cursor:pointer;
 }
 
 .login-btn{
@@ -590,11 +590,23 @@ balance:0,
 inventory:[]
 });
 
-localStorage.setItem("users",JSON.stringify(users));
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
 }
 
 window.onload = function(){
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
 
 if(currentUser){
 
@@ -602,12 +614,15 @@ showMain();
 
 }
 
-}
+};
 
 function register(){
 
-const username = document.getElementById("username").value.trim();
-const password = document.getElementById("password").value.trim();
+const username =
+document.getElementById("username").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
 
 if(username === "" || password === ""){
 
@@ -650,11 +665,18 @@ document.getElementById("password").value = "";
 
 function login(){
 
-const username = document.getElementById("username").value.trim();
-const password = document.getElementById("password").value.trim();
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+const username =
+document.getElementById("username").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
 
 const foundUser = users.find(
-u => u.username === username && u.password === password
+u => u.username === username &&
+u.password === password
 );
 
 if(!foundUser){
@@ -694,6 +716,11 @@ if(currentUser.username === ADMIN_USERNAME){
 document.getElementById("adminButton")
 .classList.remove("hidden");
 
+}else{
+
+document.getElementById("adminButton")
+.classList.add("hidden");
+
 }
 
 }
@@ -701,6 +728,7 @@ document.getElementById("adminButton")
 function logout(){
 
 localStorage.removeItem("currentUser");
+
 location.reload();
 
 }
@@ -806,7 +834,7 @@ currentUser.inventory.forEach(item => {
 grid.innerHTML += `
 <div class="inventory-item">
 <h3>${item}</h3>
-<p>Successfully Purchased</p>
+<p>Purchased Successfully</p>
 </div>
 `;
 
@@ -834,11 +862,15 @@ card.classList.add("active");
 
 function setAmount(amount){
 
-document.getElementById("topupAmount").value = amount;
+document.getElementById("topupAmount").value =
+amount;
 
 }
 
 function createRequest(){
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
 const amount =
 document.getElementById("topupAmount").value;
@@ -850,11 +882,21 @@ return;
 
 }
 
+const selectedCrypto =
+document.querySelector(".crypto-card.active h3")
+.innerText;
+
 const request = {
 
 id:Date.now(),
+
 user:currentUser.username,
-amount:Number(amount)
+
+amount:Number(amount),
+
+crypto:selectedCrypto,
+
+status:"Pending"
 
 };
 
@@ -881,6 +923,12 @@ JSON.parse(localStorage.getItem("requests")) || [];
 const container =
 document.getElementById("requestContainer");
 
+if(!container){
+
+return;
+
+}
+
 container.innerHTML = "";
 
 if(requests.length === 0){
@@ -904,20 +952,31 @@ container.innerHTML += `
 <div class="request-top">
 
 <div>
+
 <h2>$${req.amount}</h2>
-<p>${req.user}</p>
+
+<p>User: ${req.user}</p>
+
+<p>Crypto: ${req.crypto}</p>
+
+<p>Status: ${req.status}</p>
+
 </div>
 
 <div class="request-buttons">
 
 <button class="approve-btn"
 onclick="approveRequest(${req.id})">
+
 Approve
+
 </button>
 
 <button class="reject-btn"
 onclick="rejectRequest(${req.id})">
+
 Reject
+
 </button>
 
 </div>
@@ -956,23 +1015,26 @@ if(targetUser){
 
 targetUser.balance += Number(req.amount);
 
-if(currentUser.username === targetUser.username){
-
-currentUser.balance = targetUser.balance;
-
-localStorage.setItem(
-"currentUser",
-JSON.stringify(currentUser)
-);
-
-}
-
 }
 
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
+
+if(currentUser.username === targetUser.username){
+
+currentUser.balance =
+targetUser.balance;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+updateBalance();
+
+}
 
 requests =
 requests.filter(r => r.id !== id);
@@ -982,8 +1044,6 @@ localStorage.setItem(
 JSON.stringify(requests)
 );
 
-updateBalance();
-
 renderRequests();
 
 alert("Approved Successfully");
@@ -991,6 +1051,9 @@ alert("Approved Successfully");
 }
 
 function rejectRequest(id){
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
 requests =
 requests.filter(r => r.id !== id);
