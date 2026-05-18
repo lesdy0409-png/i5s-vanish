@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>i5s Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -586,7 +587,7 @@ if(!users.find(u => u.username === ADMIN_USERNAME)){
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
-balance:0,
+balance:999999,
 inventory:[]
 });
 
@@ -596,6 +597,18 @@ JSON.stringify(users)
 );
 
 }
+
+window.addEventListener("storage", () => {
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+renderRequests();
+
+});
 
 window.onload = function(){
 
@@ -617,6 +630,9 @@ showMain();
 };
 
 function register(){
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
 const username =
 document.getElementById("username").value.trim();
@@ -642,14 +658,12 @@ return;
 
 }
 
-const newUser = {
+users.push({
 username:username,
 password:password,
 balance:0,
 inventory:[]
-};
-
-users.push(newUser);
+});
 
 localStorage.setItem(
 "users",
@@ -715,11 +729,6 @@ if(currentUser.username === ADMIN_USERNAME){
 
 document.getElementById("adminButton")
 .classList.remove("hidden");
-
-}else{
-
-document.getElementById("adminButton")
-.classList.add("hidden");
 
 }
 
@@ -886,7 +895,7 @@ const selectedCrypto =
 document.querySelector(".crypto-card.active h3")
 .innerText;
 
-const request = {
+requests.push({
 
 id:Date.now(),
 
@@ -896,11 +905,11 @@ amount:Number(amount),
 
 crypto:selectedCrypto,
 
-status:"Pending"
+status:"Pending",
 
-};
+created:new Date().toLocaleString()
 
-requests.push(request);
+});
 
 localStorage.setItem(
 "requests",
@@ -961,22 +970,20 @@ container.innerHTML += `
 
 <p>Status: ${req.status}</p>
 
+<p>${req.created}</p>
+
 </div>
 
 <div class="request-buttons">
 
 <button class="approve-btn"
 onclick="approveRequest(${req.id})">
-
 Approve
-
 </button>
 
 <button class="reject-btn"
 onclick="rejectRequest(${req.id})">
-
 Reject
-
 </button>
 
 </div>
@@ -1004,6 +1011,7 @@ requests.find(r => r.id === id);
 
 if(!req){
 
+alert("Request Not Found");
 return;
 
 }
@@ -1011,30 +1019,19 @@ return;
 const targetUser =
 users.find(u => u.username === req.user);
 
-if(targetUser){
+if(!targetUser){
 
-targetUser.balance += Number(req.amount);
+alert("User Not Found");
+return;
 
 }
+
+targetUser.balance += Number(req.amount);
 
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
-
-if(currentUser.username === targetUser.username){
-
-currentUser.balance =
-targetUser.balance;
-
-localStorage.setItem(
-"currentUser",
-JSON.stringify(currentUser)
-);
-
-updateBalance();
-
-}
 
 requests =
 requests.filter(r => r.id !== id);
