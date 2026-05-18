@@ -30,7 +30,7 @@ top:-250px;
 left:-250px;
 width:600px;
 height:600px;
-background:rgba(255,0,0,.12);
+background:rgba(255,0,0,.15);
 filter:blur(120px);
 z-index:-1;
 }
@@ -42,7 +42,7 @@ bottom:-250px;
 right:-250px;
 width:600px;
 height:600px;
-background:rgba(255,0,0,.12);
+background:rgba(255,0,0,.15);
 filter:blur(120px);
 z-index:-1;
 }
@@ -118,14 +118,14 @@ background:#ff2d2d;
 margin-bottom:12px;
 }
 
-.login-btn:hover{
-opacity:.9;
-}
-
 .register-btn{
 width:100%;
 height:58px;
 background:#151515;
+}
+
+.login-btn:hover{
+opacity:.9;
 }
 
 .register-btn:hover{
@@ -192,12 +192,12 @@ display:block;
 .section-title{
 font-size:50px;
 font-weight:900;
-margin-bottom:28px;
+margin-bottom:30px;
 }
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
@@ -206,6 +206,12 @@ background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:24px;
 padding:28px;
+transition:.2s;
+}
+
+.product-card:hover{
+transform:translateY(-5px);
+border-color:#ff2d2d;
 }
 
 .product-card h2{
@@ -214,7 +220,7 @@ margin-bottom:10px;
 }
 
 .product-card p{
-color:#888;
+color:#777;
 margin-bottom:18px;
 }
 
@@ -276,6 +282,7 @@ border-radius:18px;
 padding:22px;
 text-align:center;
 cursor:pointer;
+transition:.2s;
 }
 
 .crypto-card.active{
@@ -332,8 +339,8 @@ margin-bottom:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
 gap:20px;
+flex-wrap:wrap;
 }
 
 .request-buttons{
@@ -656,7 +663,7 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-// 관리자 자동 생성
+// 관리자 계정 생성
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
@@ -691,9 +698,11 @@ showMain();
 
 }
 
+setupCryptoCards();
+
 };
 
-// 실시간 동기화
+// 다른 창 동기화
 window.addEventListener("storage", function(){
 
 users =
@@ -704,14 +713,14 @@ JSON.parse(localStorage.getItem("requests")) || [];
 
 if(currentUser){
 
-const updatedUser =
+const updated =
 users.find(
 u => u.username === currentUser.username
 );
 
-if(updatedUser){
+if(updated){
 
-currentUser = updatedUser;
+currentUser = updated;
 
 updateBalance();
 
@@ -882,7 +891,7 @@ JSON.stringify(currentUser)
 
 }
 
-// 페이지 전환
+// 페이지 이동
 function showPage(page){
 
 document.querySelectorAll(".page")
@@ -961,7 +970,9 @@ grid.innerHTML += `
 
 }
 
-// 코인 선택
+// 코인 카드 설정
+function setupCryptoCards(){
+
 document.querySelectorAll(".crypto-card")
 .forEach(card => {
 
@@ -979,6 +990,8 @@ card.classList.add("active");
 });
 
 });
+
+}
 
 // 금액 선택
 function setAmount(amount){
@@ -1037,7 +1050,7 @@ renderRequests();
 
 }
 
-// 관리자 요청 렌더
+// 관리자 패널 출력
 function renderRequests(){
 
 requests =
@@ -1152,16 +1165,16 @@ return;
 
 }
 
-// 잔액 추가
+// 돈 추가
 targetUser.balance += Number(req.amount);
 
-// users 저장
+// 저장
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
 
-// 현재 유저 업데이트
+// 현재 로그인 유저 동기화
 if(currentUser.username === targetUser.username){
 
 currentUser = targetUser;
@@ -1175,7 +1188,7 @@ updateBalance();
 
 }
 
-// 요청 삭제
+// 요청 제거
 requests =
 requests.filter(r => r.id !== id);
 
