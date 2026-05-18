@@ -28,7 +28,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,0.12);
+background:rgba(255,0,0,0.15);
 filter:blur(120px);
 top:-200px;
 left:-150px;
@@ -40,7 +40,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,0.12);
+background:rgba(255,0,0,0.15);
 filter:blur(120px);
 bottom:-200px;
 right:-150px;
@@ -78,7 +78,7 @@ background:linear-gradient(90deg,#ff2e2e,#ffffff);
 }
 
 .logo-login{
-font-size:58px;
+font-size:60px;
 margin-bottom:10px;
 }
 
@@ -104,12 +104,12 @@ outline:none;
 font-size:16px;
 }
 
-.login-btn,
-.register-btn{
+.login-btn{
 width:100%;
 height:58px;
 border:none;
 border-radius:14px;
+background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
@@ -117,12 +117,16 @@ cursor:pointer;
 margin-bottom:15px;
 }
 
-.login-btn{
-background:#ff2e2e;
-}
-
 .register-btn{
+width:100%;
+height:58px;
+border:none;
+border-radius:14px;
 background:#151515;
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
 }
 
 .navbar{
@@ -247,142 +251,74 @@ color:#ff2e2e;
 margin-bottom:20px;
 }
 
-.buy-btn{
+.buy-btn,
+.create-payment-btn,
+.approve-btn,
+.reject-btn{
 width:100%;
 height:58px;
 border:none;
 border-radius:16px;
-background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
 cursor:pointer;
 }
 
-.modern-topup{
-max-width:1100px;
+.buy-btn,
+.create-payment-btn,
+.approve-btn{
+background:#ff2e2e;
+}
+
+.reject-btn{
+background:#222;
+}
+
+.topup-container{
+max-width:1000px;
 margin:auto;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:30px;
+padding:45px;
 }
 
-.topup-header{
-text-align:center;
-margin-bottom:35px;
-}
-
-.topup-icon{
-width:70px;
-height:70px;
-margin:auto;
-margin-bottom:20px;
-border-radius:20px;
-background:linear-gradient(135deg,#00ff88,#004422);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-}
-
-.topup-header h1{
-font-size:52px;
+.topup-container h1{
+font-size:58px;
 margin-bottom:10px;
 }
 
-.topup-header p{
-color:#999;
+.topup-container p{
+color:#888;
+margin-bottom:30px;
 }
 
-.topup-card{
-background:#0b0b0b;
-border:1px solid #222;
-border-radius:28px;
-padding:35px;
-}
-
-.topup-section-title{
-font-size:22px;
-font-weight:800;
-margin-top:25px;
-margin-bottom:20px;
-}
-
-.modern-crypto-grid{
+.crypto-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:18px;
+margin-bottom:28px;
 }
 
-.modern-coin{
+.crypto-card{
 background:#101010;
 border:1px solid #222;
 border-radius:20px;
-padding:22px;
+padding:24px;
 cursor:pointer;
-transition:.2s;
-}
-
-.modern-coin:hover{
-border-color:#00ff88;
-}
-
-.active-coin{
-border-color:#00ff88;
-background:#0f1f17;
-box-shadow:0 0 20px rgba(0,255,136,.15);
-}
-
-.coin-top{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:15px;
-}
-
-.coin-icon{
-width:42px;
-height:42px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800;
-}
-
-.btc{background:#2b1800;color:#ff9900;}
-.ltc{background:#0f2b16;color:#00ff88;}
-.bnb{background:#2d2400;color:#ffd000;}
-.trx{background:#2b0000;color:#ff4444;}
-.sol{background:#240033;color:#b266ff;}
-.usdt{background:#002b1c;color:#00ff99;}
-
-.modern-coin h3{
-font-size:20px;
-}
-
-.modern-coin span{
-color:#888;
-font-size:14px;
-}
-
-.modern-coin p{
-margin-top:12px;
-color:#8cc6ff;
-font-size:14px;
-}
-
-.network-box{
-display:inline-flex;
-padding:12px 22px;
-border-radius:14px;
-background:#0f1f17;
-border:1px solid #00ff88;
-color:#00ff88;
+text-align:center;
 font-weight:700;
-margin-bottom:25px;
 }
 
-.modern-amount-box{
-height:70px;
-background:#090909;
+.crypto-card.active{
+border-color:#00ff88;
+background:#062414;
+}
+
+.amount-box{
+height:65px;
+background:#101010;
 border:1px solid #222;
 border-radius:18px;
 display:flex;
@@ -391,58 +327,31 @@ padding:0 22px;
 margin-bottom:20px;
 }
 
-.modern-amount-box input{
+.amount-box input{
 flex:1;
 background:none;
 border:none;
 outline:none;
 color:white;
-font-size:24px;
+font-size:22px;
 margin:0;
 }
 
-.modern-quick-grid{
+.quick-amounts{
 display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:14px;
-margin-bottom:25px;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:22px;
 }
 
-.modern-quick-grid button{
+.quick-amounts button{
 height:55px;
-background:#101010;
+background:#111;
 border:1px solid #222;
 border-radius:14px;
 color:white;
 font-weight:700;
 cursor:pointer;
-}
-
-.discord-box{
-display:flex;
-gap:15px;
-align-items:flex-start;
-background:#0d0d0d;
-border:1px solid #222;
-border-radius:18px;
-padding:20px;
-margin-bottom:25px;
-}
-
-.modern-create-btn{
-width:100%;
-height:65px;
-border:none;
-border-radius:18px;
-background:linear-gradient(90deg,#00aa55,#007744);
-color:white;
-font-size:18px;
-font-weight:800;
-cursor:pointer;
-}
-
-.request-box{
-margin-bottom:20px;
 }
 
 .request-row{
@@ -458,23 +367,33 @@ display:flex;
 gap:10px;
 }
 
-.approve-btn,
-.reject-btn{
-height:50px;
-padding:0 20px;
-border:none;
-border-radius:12px;
-color:white;
-font-weight:800;
-cursor:pointer;
+.request-actions button{
+width:auto;
+padding:0 18px;
 }
 
-.approve-btn{
-background:#00aa55;
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
 }
 
-.reject-btn{
-background:#222;
+.hero h1{
+font-size:42px;
+}
+
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
+}
+
+.nav-right{
+justify-content:center;
+}
+
 }
 
 </style>
@@ -547,38 +466,22 @@ Logout
 
 <div id="purchase" class="page active-page">
 
-<div class="hero">
-
-<div>
-
-<h1>Premium Digital Store</h1>
-
-<p>
-Modern premium digital marketplace with balance system and admin approvals.
-</p>
-
-</div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
-
-</div>
-
 <h2 class="section-title">Products</h2>
 
 <div class="product-grid">
 
 <div class="product-card">
 <h3>7 Days</h3>
-<div class="price">$60</div>
-<button class="buy-btn" onclick="buyProduct(60,'7 Days Access')">
+<div class="price">$50</div>
+<button class="buy-btn" onclick="buyProduct(50,'7 Days Access')">
 Purchase
 </button>
 </div>
 
 <div class="product-card">
 <h3>10 Days</h3>
-<div class="price">$85</div>
-<button class="buy-btn" onclick="buyProduct(85,'10 Days Access')">
+<div class="price">$80</div>
+<button class="buy-btn" onclick="buyProduct(80,'10 Days Access')">
 Purchase
 </button>
 </div>
@@ -595,99 +498,38 @@ Purchase
 
 </div>
 
+<div id="inventory" class="page">
+
+<h2 class="section-title">Inventory</h2>
+
+<div id="inventoryGrid" class="inventory-grid"></div>
+
+</div>
+
 <div id="topup" class="page">
 
-<div class="modern-topup">
+<div class="topup-container">
 
-<div class="topup-header">
+<h1>Top Up</h1>
 
-<div class="topup-icon">💳</div>
+<p>Create a balance request for admin approval</p>
 
-<h1>Top Up Your Balance</h1>
+<div class="crypto-grid">
 
-<p>
-Pay in crypto — choose your coin and network
-</p>
-
-</div>
-
-<div class="topup-card">
-
-<div class="topup-section-title">
-1. Choose currency
-</div>
-
-<div class="modern-crypto-grid">
-
-<div class="modern-coin active-coin" onclick="selectCoin(this,'BTC')">
-<div class="coin-top">
-<div class="coin-icon btc">₿</div>
-<div>
-<h3>BTC</h3>
-<span>Bitcoin</span>
-</div>
-</div>
-<p>$76,783.00</p>
-</div>
-
-<div class="modern-coin" onclick="selectCoin(this,'LTC')">
-<div class="coin-top">
-<div class="coin-icon ltc">Ł</div>
-<div>
-<h3>LTC</h3>
-<span>Litecoin</span>
-</div>
-</div>
-<p>$53.51</p>
-</div>
-
-<div class="modern-coin" onclick="selectCoin(this,'BNB')">
-<div class="coin-top">
-<div class="coin-icon bnb">B</div>
-<div>
-<h3>BNB</h3>
-<span>BNB</span>
-</div>
-</div>
-<p>$638.44</p>
-</div>
-
-<div class="modern-coin" onclick="selectCoin(this,'TRX')">
-<div class="coin-top">
-<div class="coin-icon trx">T</div>
-<div>
-<h3>TRX</h3>
-<span>Tron</span>
-</div>
-</div>
-<p>$0.36</p>
-</div>
+<div class="crypto-card active">BTC</div>
+<div class="crypto-card">LTC</div>
+<div class="crypto-card">USDT</div>
+<div class="crypto-card">SOL</div>
 
 </div>
 
-<div class="topup-section-title">
-2. Network
-</div>
+<div class="amount-box">
 
-<div class="network-box" id="networkText">
-Bitcoin
-</div>
-
-<div class="topup-section-title">
-3. Amount
-</div>
-
-<div class="modern-amount-box">
-
-<span>$</span>
-
-<input type="number" id="topupAmount" placeholder="100">
-
-<div>USD</div>
+<input type="number" id="topupAmount" placeholder="Enter Amount">
 
 </div>
 
-<div class="modern-quick-grid">
+<div class="quick-amounts">
 
 <button onclick="setAmount(10)">$10</button>
 <button onclick="setAmount(25)">$25</button>
@@ -698,32 +540,11 @@ Bitcoin
 
 </div>
 
-<div class="discord-box">
-
-<input type="checkbox">
-
-<div>
-<h4>Send Discord DM notification</h4>
-<p>Receive payment confirmations</p>
-</div>
-
-</div>
-
-<button class="modern-create-btn" onclick="createPaymentRequest()">
-Create Payment
+<button class="create-payment-btn" onclick="createPaymentRequest()">
+Create Request
 </button>
 
 </div>
-
-</div>
-
-</div>
-
-<div id="inventory" class="page">
-
-<h2 class="section-title">Inventory</h2>
-
-<div id="inventoryGrid" class="inventory-grid"></div>
 
 </div>
 
@@ -742,8 +563,6 @@ Create Payment
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let selectedCoin = "BTC";
-
 let users =
 JSON.parse(localStorage.getItem("users")) || [];
 
@@ -758,7 +577,7 @@ if(!users.find(u => u.username === ADMIN_USERNAME)){
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
-balance:999999,
+balance:0,
 inventory:[]
 });
 
@@ -769,7 +588,7 @@ JSON.stringify(users)
 
 }
 
-window.onload = () => {
+window.onload = function(){
 
 if(currentUser){
 
@@ -777,7 +596,7 @@ showSite();
 
 }
 
-};
+}
 
 function register(){
 
@@ -794,10 +613,8 @@ return;
 
 }
 
-const exists =
-users.find(u =>
-u.username.toLowerCase() ===
-username.toLowerCase()
+const exists = users.find(
+u => u.username.toLowerCase() === username.toLowerCase()
 );
 
 if(exists){
@@ -836,9 +653,8 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-const foundUser =
-users.find(u =>
-u.username === username &&
+const foundUser = users.find(
+u => u.username === username &&
 u.password === password
 );
 
@@ -869,15 +685,21 @@ document.getElementById("mainSite")
 .classList.remove("hidden");
 
 updateBalance();
-
 renderInventory();
-
 renderRequests();
 
-if(currentUser.username === ADMIN_USERNAME){
+if(
+currentUser.username === ADMIN_USERNAME &&
+currentUser.password === ADMIN_PASSWORD
+){
 
 document.getElementById("adminBtn")
 .classList.remove("hidden");
+
+}else{
+
+document.getElementById("adminBtn")
+.classList.add("hidden");
 
 }
 
@@ -886,15 +708,14 @@ document.getElementById("adminBtn")
 function logout(){
 
 localStorage.removeItem("currentUser");
-
 location.reload();
 
 }
 
 function updateBalance(){
 
-document.getElementById("balance")
-.innerText = currentUser.balance;
+document.getElementById("balance").innerText =
+Number(currentUser.balance).toFixed(0);
 
 }
 
@@ -903,9 +724,7 @@ function saveUsers(){
 users = users.map(u => {
 
 if(u.username === currentUser.username){
-
 return currentUser;
-
 }
 
 return u;
@@ -927,26 +746,16 @@ JSON.stringify(currentUser)
 function showPage(page,btn){
 
 document.querySelectorAll(".page")
-.forEach(p => {
-
-p.classList.remove("active-page");
-
-});
+.forEach(p => p.classList.remove("active-page"));
 
 document.getElementById(page)
 .classList.add("active-page");
 
 document.querySelectorAll(".nav-btn")
-.forEach(b => {
-
-b.classList.remove("active-btn");
-
-});
+.forEach(b => b.classList.remove("active-btn"));
 
 if(btn){
-
 btn.classList.add("active-btn");
-
 }
 
 }
@@ -1007,28 +816,24 @@ grid.innerHTML += `
 
 }
 
-function selectCoin(element,coin){
+document.querySelectorAll(".crypto-card")
+.forEach(card => {
 
-selectedCoin = coin;
+card.addEventListener("click",function(){
 
-document.querySelectorAll(".modern-coin")
-.forEach(c => {
+document.querySelectorAll(".crypto-card")
+.forEach(c => c.classList.remove("active"));
 
-c.classList.remove("active-coin");
+card.classList.add("active");
 
 });
 
-element.classList.add("active-coin");
-
-document.getElementById("networkText")
-.innerText = coin;
-
-}
+});
 
 function setAmount(amount){
 
-document.getElementById("topupAmount")
-.value = amount;
+document.getElementById("topupAmount").value =
+amount;
 
 }
 
@@ -1047,8 +852,7 @@ return;
 requests.push({
 id:Date.now(),
 user:currentUser.username,
-amount:Number(amount),
-coin:selectedCoin
+amount:Number(amount)
 });
 
 localStorage.setItem(
@@ -1072,14 +876,13 @@ container.innerHTML = "";
 requests.forEach(req => {
 
 container.innerHTML += `
-
 <div class="request-box">
 
 <div class="request-row">
 
 <div>
 <h2>$${req.amount}</h2>
-<p>${req.user} • ${req.coin}</p>
+<p>${req.user}</p>
 </div>
 
 <div class="request-actions">
@@ -1101,7 +904,6 @@ Reject
 </div>
 
 </div>
-
 `;
 
 });
@@ -1113,24 +915,50 @@ function approveRequest(id){
 const req =
 requests.find(r => r.id === id);
 
-if(!req) return;
+if(!req){
+return;
+}
 
 const targetUser =
 users.find(u => u.username === req.user);
 
-if(targetUser){
+if(!targetUser){
+return;
+}
 
 targetUser.balance += Number(req.amount);
+
+users = users.map(u => {
+
+if(u.username === targetUser.username){
+return targetUser;
+}
+
+return u;
+
+});
 
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
 
+if(currentUser.username === targetUser.username){
+
+currentUser = targetUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+updateBalance();
+
 }
 
-requests =
-requests.filter(r => r.id !== id);
+requests = requests.filter(
+r => r.id !== id
+);
 
 localStorage.setItem(
 "requests",
@@ -1139,7 +967,11 @@ JSON.stringify(requests)
 
 renderRequests();
 
-alert("Approved");
+alert(
+req.user +
+" balance charged: $" +
+req.amount
+);
 
 }
 
