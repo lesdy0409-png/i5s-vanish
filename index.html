@@ -19,652 +19,420 @@ font-family:'Inter',sans-serif;
 }
 
 body{
-
 background:#050505;
 color:white;
 overflow-x:hidden;
-
 }
 
-/* BACKGROUND */
+/* BG */
 
 body::before{
-
 content:'';
-
 position:fixed;
-
 width:500px;
 height:500px;
-
 background:rgba(255,0,0,0.08);
-
-filter:blur(100px);
-
+filter:blur(120px);
 top:-200px;
 left:-150px;
-
 z-index:-1;
-
 }
 
 body::after{
-
 content:'';
-
 position:fixed;
-
 width:500px;
 height:500px;
-
 background:rgba(255,0,0,0.08);
-
-filter:blur(100px);
-
+filter:blur(120px);
 bottom:-200px;
 right:-150px;
-
 z-index:-1;
-
 }
 
 /* LOGIN */
 
 .login-screen{
-
 width:100%;
 height:100vh;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 }
 
 .login-box{
-
-width:420px;
-
+width:430px;
 background:#0c0c0c;
-
 border:1px solid #222;
-
-border-radius:28px;
-
+border-radius:30px;
 padding:45px;
-
-box-shadow:0 0 40px rgba(255,0,0,0.12);
-
+box-shadow:0 0 40px rgba(255,0,0,0.15);
 }
 
 .logo-login{
-
-font-size:48px;
-
+font-size:50px;
 font-family:'Orbitron',sans-serif;
-
 font-weight:900;
-
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
-
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 margin-bottom:10px;
-
 }
 
 .login-sub{
-
 color:#777;
-
-margin-bottom:30px;
-
+margin-bottom:28px;
 }
 
 .login-box input{
-
 width:100%;
 height:58px;
-
 background:#111;
-
 border:1px solid #222;
-
-border-radius:14px;
-
+border-radius:15px;
 padding:0 18px;
-
 color:white;
-
 margin-bottom:15px;
-
 outline:none;
-
 }
 
 .login-box button{
-
 width:100%;
 height:58px;
-
 border:none;
-
-border-radius:14px;
-
+border-radius:15px;
 background:#ff2e2e;
-
 color:white;
-
 font-size:16px;
-
 font-weight:800;
-
 cursor:pointer;
+margin-top:10px;
+}
 
+.switch-auth{
+margin-top:18px;
+text-align:center;
+color:#888;
+cursor:pointer;
 }
 
 /* NAVBAR */
 
 .navbar{
-
-height:78px;
-
+height:80px;
 background:#080808;
-
 border-bottom:1px solid #1b1b1b;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:0 28px;
-
 position:sticky;
 top:0;
-
 z-index:100;
-
 }
 
 .logo{
-
-font-size:40px;
-
+font-size:42px;
 font-family:'Orbitron',sans-serif;
-
 font-weight:900;
-
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
-
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 }
 
 .nav-right{
-
 display:flex;
 align-items:center;
 gap:14px;
-
+flex-wrap:wrap;
 }
 
 .balance{
-
 padding:14px 22px;
-
 background:#101010;
-
 border:1px solid #222;
-
 border-radius:16px;
-
 font-weight:700;
-
 }
 
 .nav-btn,
 .logout-btn{
-
 height:44px;
-
 padding:0 24px;
-
 border:none;
-
 border-radius:14px;
-
 background:#111;
-
 color:white;
-
 font-weight:700;
-
 cursor:pointer;
-
 border:1px solid #222;
-
 transition:0.25s;
-
 }
 
 .nav-btn:hover,
 .logout-btn:hover,
 .active-btn{
-
 background:#ff2e2e;
-
 border-color:#ff2e2e;
-
 }
 
 /* PAGE */
 
 .page{
-
 display:none;
-
 padding:35px;
-
 }
 
 .active-page{
-
 display:block;
-
 }
 
 /* HERO */
 
 .hero{
-
 background:linear-gradient(135deg,#090909,#190707);
-
 border:1px solid #221111;
-
 border-radius:30px;
-
 padding:60px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 gap:30px;
-
 margin-bottom:35px;
-
 }
 
 .hero h1{
-
-font-size:70px;
-
+font-size:65px;
 font-weight:900;
-
 margin-bottom:15px;
-
 }
 
 .hero p{
-
 font-size:18px;
-
 color:#999;
-
 max-width:700px;
-
 line-height:1.7;
-
 }
 
 .hero img{
-
-width:240px;
-
+width:220px;
 }
 
 /* TITLES */
 
 .section-title{
-
-font-size:40px;
-
+font-size:38px;
 font-weight:900;
-
 margin-bottom:25px;
-
 }
 
 /* PRODUCTS */
 
 .product-grid{
-
 display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:25px;
-
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
 }
 
 .product-card{
-
 background:#0b0b0b;
-
 border:1px solid #1f1f1f;
-
 border-radius:28px;
-
 padding:30px;
-
 transition:0.25s;
-
 }
 
 .product-card:hover{
-
 transform:translateY(-5px);
-
 border-color:#ff2e2e;
-
 }
 
 .product-card img{
-
 width:70px;
-
 margin-bottom:20px;
-
 }
 
 .product-card h3{
-
 font-size:34px;
-
-margin-bottom:20px;
-
+margin-bottom:15px;
 }
 
 .price{
-
-font-size:44px;
-
+font-size:42px;
 font-weight:900;
-
 color:#ff2e2e;
-
 margin-bottom:20px;
-
 }
 
 .buy-btn{
-
 width:100%;
 height:58px;
-
 border:none;
-
 border-radius:16px;
-
 background:#ff2e2e;
-
 color:white;
-
 font-size:16px;
-
 font-weight:800;
-
 cursor:pointer;
-
 }
 
 /* TOPUP */
 
 .topup-container{
-
 max-width:1000px;
-
 margin:auto;
-
 background:#0b0b0b;
-
 border:1px solid #1f1f1f;
-
 border-radius:30px;
-
 padding:45px;
-
 }
 
 .topup-container h1{
-
-font-size:60px;
-
-margin-bottom:12px;
-
+font-size:58px;
+margin-bottom:10px;
 }
 
 .topup-container p{
-
 color:#888;
-
-margin-bottom:35px;
-
+margin-bottom:30px;
 }
 
 .crypto-grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
 gap:18px;
-
-margin-bottom:30px;
-
+margin-bottom:28px;
 }
 
 .crypto-card{
-
 background:#101010;
-
 border:1px solid #222;
-
 border-radius:20px;
-
-padding:25px;
-
+padding:24px;
 cursor:pointer;
-
 transition:0.25s;
-
 }
 
 .crypto-card.active,
 .crypto-card:hover{
-
 border-color:#ff2e2e;
-
 background:#170909;
-
-}
-
-.crypto-card h2{
-
-font-size:30px;
-
-margin-bottom:5px;
-
-}
-
-.crypto-card span{
-
-color:#888;
-
 }
 
 .amount-box{
-
 height:65px;
-
 background:#101010;
-
 border:1px solid #222;
-
 border-radius:18px;
-
 display:flex;
 align-items:center;
-
 padding:0 22px;
-
-margin-bottom:22px;
-
+margin-bottom:20px;
 }
 
 .amount-box input{
-
 flex:1;
-
 background:none;
-
 border:none;
-
 outline:none;
-
 color:white;
-
 font-size:22px;
-
 padding:0 12px;
-
 }
 
 .quick-amounts{
-
 display:grid;
-
 grid-template-columns:repeat(3,1fr);
-
 gap:15px;
-
-margin-bottom:25px;
-
+margin-bottom:22px;
 }
 
 .quick-amounts button{
-
 height:55px;
-
 background:#111;
-
 border:1px solid #222;
-
 border-radius:14px;
-
 color:white;
-
 font-weight:700;
-
 cursor:pointer;
-
-transition:0.25s;
-
-}
-
-.quick-amounts button:hover{
-
-border-color:#ff2e2e;
-
 }
 
 .create-payment-btn{
-
 width:100%;
-height:62px;
-
+height:60px;
 border:none;
-
 border-radius:18px;
-
 background:#ff2e2e;
-
 color:white;
-
 font-size:17px;
-
 font-weight:800;
-
 cursor:pointer;
+}
 
+/* INVENTORY */
+
+.inventory-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.inventory-item{
+background:#101010;
+border:1px solid #222;
+border-radius:24px;
+padding:25px;
+}
+
+.inventory-item h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.inventory-item p{
+color:#999;
 }
 
 /* ADMIN */
 
 .request-box{
-
 background:#101010;
-
 border:1px solid #222;
-
 border-radius:22px;
-
 padding:25px;
-
 margin-bottom:20px;
-
 }
 
 .request-row{
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 gap:20px;
-
 flex-wrap:wrap;
-
 }
 
 .request-actions{
-
 display:flex;
 gap:12px;
-
 }
 
 .approve-btn,
 .reject-btn{
-
 height:48px;
-
 padding:0 20px;
-
 border:none;
-
 border-radius:14px;
-
 color:white;
-
 font-weight:700;
-
 cursor:pointer;
-
 }
 
 .approve-btn{
-
 background:#ff2e2e;
-
 }
 
 .reject-btn{
-
 background:#2b2b2b;
-
 }
 
 /* MOBILE */
@@ -672,41 +440,27 @@ background:#2b2b2b;
 @media(max-width:900px){
 
 .hero{
-
 flex-direction:column;
 text-align:center;
-
 }
 
 .hero h1{
-
-font-size:50px;
-
+font-size:48px;
 }
 
 .quick-amounts{
-
 grid-template-columns:repeat(2,1fr);
-
 }
 
 .navbar{
-
 flex-direction:column;
-
 height:auto;
-
 padding:20px;
-
 gap:15px;
-
 }
 
 .nav-right{
-
-flex-wrap:wrap;
 justify-content:center;
-
 }
 
 }
@@ -723,21 +477,23 @@ justify-content:center;
 
 <div class="login-box">
 
-<h1 class="logo-login">
-i5s
-</h1>
+<h1 class="logo-login">i5s</h1>
 
 <p class="login-sub">
 Secure Digital Store Login
 </p>
 
-<input type="text" id="loginUser" placeholder="Username">
+<input type="text" id="username" placeholder="Username">
 
-<input type="password" id="loginPass" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">
 Login
 </button>
+
+<div class="switch-auth" onclick="register()">
+Create Account
+</div>
 
 </div>
 
@@ -747,7 +503,7 @@ Login
 
 <div id="mainSite" style="display:none;">
 
-<!-- NAVBAR -->
+<!-- NAV -->
 
 <div class="navbar">
 
@@ -769,6 +525,11 @@ Purchase
 <button class="nav-btn"
 onclick="showPage('topup',this)">
 Top Up
+</button>
+
+<button class="nav-btn"
+onclick="showPage('inventory',this)">
+Inventory
 </button>
 
 <button class="nav-btn"
@@ -800,8 +561,8 @@ Premium Digital Store
 </h1>
 
 <p>
-Modern black and red premium store design with balance system,
-topup requests, admin approvals and responsive layout.
+Modern black & red premium dashboard with persistent balance,
+inventory system, automatic login and admin approval system.
 </p>
 
 </div>
@@ -816,95 +577,47 @@ Products
 
 <div class="product-grid">
 
-<div class="product-card">
+<script>
 
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+const products = [
 
-<h3>1D</h3>
+{name:'1D Access',price:10},
+{name:'3D Access',price:25},
+{name:'5D Access',price:40},
+{name:'7D Access',price:60},
+{name:'10D Access',price:85},
+{name:'Permanent Access',price:150}
 
-<div class="price">$10</div>
+];
 
-<button class="buy-btn"
-onclick="buyProduct(10,'1D Access')">
-Purchase
-</button>
+products.forEach(product=>{
 
-</div>
-
-<div class="product-card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h3>3D</h3>
-
-<div class="price">$25</div>
-
-<button class="buy-btn"
-onclick="buyProduct(25,'3D Access')">
-Purchase
-</button>
-
-</div>
+document.write(`
 
 <div class="product-card">
 
 <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 
-<h3>5D</h3>
+<h3>${product.name}</h3>
 
-<div class="price">$40</div>
+<div class="price">
+$${product.price}
+</div>
 
 <button class="buy-btn"
-onclick="buyProduct(40,'5D Access')">
+onclick="buyProduct(${product.price},'${product.name}')">
+
 Purchase
+
 </button>
 
 </div>
 
-<div class="product-card">
+`);
 
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+});
 
-<h3>7D</h3>
-
-<div class="price">$60</div>
-
-<button class="buy-btn"
-onclick="buyProduct(60,'7D Access')">
-Purchase
-</button>
-
-</div>
-
-<div class="product-card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h3>10D</h3>
-
-<div class="price">$85</div>
-
-<button class="buy-btn"
-onclick="buyProduct(85,'10D Access')">
-Purchase
-</button>
-
-</div>
-
-<div class="product-card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h3>Permanent</h3>
-
-<div class="price">$150</div>
-
-<button class="buy-btn"
-onclick="buyProduct(150,'Permanent Access')">
-Purchase
-</button>
-
-</div>
+</script>
 
 </div>
 
@@ -927,35 +640,23 @@ Select crypto and create payment request
 <div class="crypto-grid">
 
 <div class="crypto-card active">
-
 <h2>BTC</h2>
-
 <span>Bitcoin</span>
-
 </div>
 
 <div class="crypto-card">
-
 <h2>LTC</h2>
-
 <span>Litecoin</span>
-
 </div>
 
 <div class="crypto-card">
-
 <h2>USDT</h2>
-
 <span>Tether</span>
-
 </div>
 
 <div class="crypto-card">
-
 <h2>SOL</h2>
-
 <span>Solana</span>
-
 </div>
 
 </div>
@@ -974,29 +675,12 @@ placeholder="100">
 
 <div class="quick-amounts">
 
-<button onclick="setAmount(10)">
-$10
-</button>
-
-<button onclick="setAmount(25)">
-$25
-</button>
-
-<button onclick="setAmount(50)">
-$50
-</button>
-
-<button onclick="setAmount(100)">
-$100
-</button>
-
-<button onclick="setAmount(250)">
-$250
-</button>
-
-<button onclick="setAmount(500)">
-$500
-</button>
+<button onclick="setAmount(10)">$10</button>
+<button onclick="setAmount(25)">$25</button>
+<button onclick="setAmount(50)">$50</button>
+<button onclick="setAmount(100)">$100</button>
+<button onclick="setAmount(250)">$250</button>
+<button onclick="setAmount(500)">$500</button>
 
 </div>
 
@@ -1011,6 +695,21 @@ Create Payment Request
 
 </div>
 
+<!-- INVENTORY -->
+
+<div id="inventory" class="page">
+
+<h2 class="section-title">
+Inventory
+</h2>
+
+<div class="inventory-grid"
+id="inventoryGrid">
+
+</div>
+
+</div>
+
 <!-- ADMIN -->
 
 <div id="admin" class="page">
@@ -1019,15 +718,15 @@ Create Payment Request
 Admin Requests
 </h2>
 
-<div id="requestsContainer">
-
-</div>
+<div id="requestsContainer"></div>
 
 </div>
 
 </div>
 
 <script>
+
+/* ADMIN */
 
 const adminAccount = {
 
@@ -1036,43 +735,125 @@ password:"F1AX65DvCA45X"
 
 };
 
-let currentUser = null;
+/* USERS */
 
-let balance = 0;
+let users =
+JSON.parse(localStorage.getItem('users')) || [];
 
-let requests = [];
+let currentUser =
+JSON.parse(localStorage.getItem('currentUser'));
+
+/* AUTO LOGIN */
+
+if(currentUser){
+
+showSite();
+
+}
 
 /* LOGIN */
 
 function login(){
 
 const username =
-document.getElementById('loginUser').value;
+document.getElementById('username').value;
 
 const password =
-document.getElementById('loginPass').value;
+document.getElementById('password').value;
 
-currentUser = {
+const user = users.find(u=>
+u.username === username &&
+u.password === password
+);
 
-username:username,
-isAdmin:false
+if(!user){
 
-};
+alert('Invalid account');
 
-if(
-username === adminAccount.username &&
-password === adminAccount.password
-){
-
-currentUser.isAdmin = true;
-
-document.getElementById('adminBtn').style.display='block';
+return;
 
 }
 
-document.getElementById('loginPage').style.display='none';
+currentUser = user;
 
-document.getElementById('mainSite').style.display='block';
+localStorage.setItem(
+'currentUser',
+JSON.stringify(currentUser)
+);
+
+showSite();
+
+}
+
+/* REGISTER */
+
+function register(){
+
+const username =
+document.getElementById('username').value;
+
+const password =
+document.getElementById('password').value;
+
+if(!username || !password){
+
+alert('Fill all fields');
+
+return;
+
+}
+
+if(users.find(u=>u.username===username)){
+
+alert('Username already exists');
+
+return;
+
+}
+
+const newUser = {
+
+username:username,
+password:password,
+balance:0,
+inventory:[]
+
+};
+
+users.push(newUser);
+
+localStorage.setItem(
+'users',
+JSON.stringify(users)
+);
+
+alert('Account created');
+
+}
+
+/* SHOW SITE */
+
+function showSite(){
+
+document.getElementById('loginPage')
+.style.display='none';
+
+document.getElementById('mainSite')
+.style.display='block';
+
+updateBalance();
+
+renderInventory();
+
+if(
+currentUser.username === adminAccount.username &&
+currentUser.password === adminAccount.password
+){
+
+document.getElementById('adminBtn')
+.style.display='block';
+
+}
 
 }
 
@@ -1080,7 +861,18 @@ document.getElementById('mainSite').style.display='block';
 
 function logout(){
 
+localStorage.removeItem('currentUser');
+
 location.reload();
+
+}
+
+/* BALANCE */
+
+function updateBalance(){
+
+document.getElementById('balance')
+.innerText = currentUser.balance;
 
 }
 
@@ -1088,7 +880,8 @@ location.reload();
 
 function showPage(page,btn){
 
-document.querySelectorAll('.page').forEach(p=>{
+document.querySelectorAll('.page')
+.forEach(p=>{
 
 p.classList.remove('active-page');
 
@@ -1112,7 +905,7 @@ btn.classList.add('active-btn');
 
 function buyProduct(price,name){
 
-if(balance < price){
+if(currentUser.balance < price){
 
 alert('Not enough balance');
 
@@ -1120,12 +913,89 @@ return;
 
 }
 
-balance -= price;
+currentUser.balance -= price;
 
-document.getElementById('balance')
-.innerText = balance;
+currentUser.inventory.push(name);
+
+saveUser();
+
+updateBalance();
+
+renderInventory();
 
 alert('Purchased: ' + name);
+
+}
+
+/* SAVE */
+
+function saveUser(){
+
+users = users.map(u=>{
+
+if(u.username === currentUser.username){
+
+return currentUser;
+
+}
+
+return u;
+
+});
+
+localStorage.setItem(
+'users',
+JSON.stringify(users)
+);
+
+localStorage.setItem(
+'currentUser',
+JSON.stringify(currentUser)
+);
+
+}
+
+/* INVENTORY */
+
+function renderInventory(){
+
+const grid =
+document.getElementById('inventoryGrid');
+
+grid.innerHTML='';
+
+if(currentUser.inventory.length === 0){
+
+grid.innerHTML = `
+<div class="inventory-item">
+<h3>Empty</h3>
+<p>No items purchased yet.</p>
+</div>
+`;
+
+return;
+
+}
+
+currentUser.inventory.forEach(item=>{
+
+grid.innerHTML += `
+
+<div class="inventory-item">
+
+<h3>
+${item}
+</h3>
+
+<p>
+Purchased Successfully
+</p>
+
+</div>
+
+`;
+
+});
 
 }
 
@@ -1156,6 +1026,8 @@ document.getElementById('topupAmount')
 
 }
 
+let requests = [];
+
 function createPaymentRequest(){
 
 const amount =
@@ -1172,6 +1044,7 @@ return;
 requests.push({
 
 id:Date.now(),
+user:currentUser.username,
 amount:amount
 
 });
@@ -1209,7 +1082,7 @@ $${req.amount}
 </h2>
 
 <p>
-Pending approval
+${req.user}
 </p>
 
 </div>
@@ -1217,7 +1090,7 @@ Pending approval
 <div class="request-actions">
 
 <button class="approve-btn"
-onclick="approveRequest(${req.id},${req.amount})">
+onclick="approveRequest(${req.id},${req.amount},'${req.user}')">
 
 Approve
 
@@ -1242,12 +1115,25 @@ Reject
 
 }
 
-function approveRequest(id,amount){
+function approveRequest(id,amount,username){
 
-balance += Number(amount);
+const user =
+users.find(u=>u.username===username);
 
-document.getElementById('balance')
-.innerText = balance;
+user.balance += Number(amount);
+
+if(currentUser.username === username){
+
+currentUser.balance = user.balance;
+
+updateBalance();
+
+}
+
+localStorage.setItem(
+'users',
+JSON.stringify(users)
+);
 
 requests = requests.filter(r=>r.id !== id);
 
