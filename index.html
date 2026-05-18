@@ -247,50 +247,93 @@ window.onload = () => {
 
 function register(){
 
-    const username =
-    document.getElementById("username").value.trim();
+const usernameInput =
+document.getElementById("username");
 
-    const password =
-    document.getElementById("password").value.trim();
+const passwordInput =
+document.getElementById("password");
 
-    if(username === "" || password === ""){
+const username =
+usernameInput.value.trim();
 
-        alert("Fill all fields");
-        return;
+const password =
+passwordInput.value.trim();
 
-    }
+if(username === "" || password === ""){
 
-    const exists = users.find(
-        u => u.username.toLowerCase() === username.toLowerCase()
-    );
+alert("Fill all fields");
+return;
 
-    if(exists){
+}
 
-        alert("Username already exists");
-        return;
+if(username.length < 3){
 
-    }
+alert("Username must be at least 3 characters");
+return;
 
-    const newUser = {
+}
 
-        username: username,
-        password: password,
-        balance: 0,
-        inventory: []
+if(password.length < 3){
 
-    };
+alert("Password must be at least 3 characters");
+return;
 
-    users.push(newUser);
+}
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+let savedUsers =
+JSON.parse(localStorage.getItem("users"));
 
-    alert("Account Created Successfully");
+if(!Array.isArray(savedUsers)){
 
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
+savedUsers = [];
+
+}
+
+users = savedUsers;
+
+const exists = users.some(function(user){
+
+return user.username.toLowerCase() ===
+username.toLowerCase();
+
+});
+
+if(exists){
+
+alert("Username already exists");
+return;
+
+}
+
+const newUser = {
+
+username:username,
+password:password,
+balance:0,
+inventory:[]
+
+};
+
+users.push(newUser);
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+currentUser = newUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+usernameInput.value = "";
+passwordInput.value = "";
+
+alert("Account Created Successfully");
+
+showSite();
 
 }
 
