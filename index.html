@@ -26,24 +26,24 @@ overflow-x:hidden;
 body::before{
 content:'';
 position:fixed;
-top:-250px;
+width:700px;
+height:700px;
+background:rgba(255,0,0,.10);
+filter:blur(150px);
+top:-300px;
 left:-250px;
-width:650px;
-height:650px;
-background:rgba(255,0,0,.12);
-filter:blur(140px);
 z-index:-1;
 }
 
 body::after{
 content:'';
 position:fixed;
-bottom:-250px;
+width:700px;
+height:700px;
+background:rgba(255,0,0,.10);
+filter:blur(150px);
+bottom:-300px;
 right:-250px;
-width:650px;
-height:650px;
-background:rgba(255,0,0,.12);
-filter:blur(140px);
 z-index:-1;
 }
 
@@ -65,31 +65,31 @@ padding:20px;
 .login-box{
 width:450px;
 background:#090909;
-border:1px solid #1f1f1f;
-border-radius:34px;
+border:1px solid #1e1e1e;
+border-radius:35px;
 padding:45px;
 box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:72px;
+font-size:78px;
 font-weight:900;
 color:#ff2d2d;
 margin-bottom:8px;
 }
 
 .login-sub{
-font-size:15px;
 color:#777;
-margin-bottom:28px;
+margin-bottom:30px;
+font-size:15px;
 }
 
-input{
+.input{
 width:100%;
-height:60px;
+height:62px;
 background:#111;
-border:1px solid #232323;
-border-radius:16px;
+border:1px solid #222;
+border-radius:18px;
 padding:0 18px;
 color:white;
 font-size:16px;
@@ -97,44 +97,38 @@ outline:none;
 margin-bottom:15px;
 }
 
-button{
+.btn{
+width:100%;
+height:60px;
 border:none;
+border-radius:18px;
+font-size:16px;
+font-weight:800;
 cursor:pointer;
 transition:.2s;
 }
 
 .login-btn{
-width:100%;
-height:60px;
 background:#ff2d2d;
-border-radius:16px;
-font-size:16px;
-font-weight:800;
 color:white;
 margin-bottom:12px;
 }
 
 .register-btn{
-width:100%;
-height:60px;
 background:#151515;
-border-radius:16px;
-font-size:16px;
-font-weight:800;
 color:white;
 }
 
-.login-btn:hover,
-.register-btn:hover{
+.btn:hover{
 transform:translateY(-2px);
 }
 
-/* NAV */
+/* NAVBAR */
 
 .navbar{
 height:85px;
 background:#080808;
-border-bottom:1px solid #1c1c1c;
+border-bottom:1px solid #1a1a1a;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -158,21 +152,21 @@ flex-wrap:wrap;
 .nav-btn{
 height:48px;
 padding:0 18px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#111;
-border:1px solid #232323;
-border-radius:14px;
-color:white;
 font-weight:700;
+color:white;
+cursor:pointer;
+transition:.2s;
 }
 
 .nav-btn:hover{
 background:#ff2d2d;
 }
-
-/* PAGE */
 
 .page{
 display:none;
@@ -211,7 +205,7 @@ border-color:#ff2d2d;
 }
 
 .product-card h2{
-font-size:42px;
+font-size:40px;
 margin-bottom:10px;
 }
 
@@ -221,7 +215,7 @@ margin-bottom:18px;
 }
 
 .price{
-font-size:52px;
+font-size:54px;
 font-weight:900;
 color:#ff2d2d;
 margin-bottom:22px;
@@ -230,18 +224,20 @@ margin-bottom:22px;
 .buy-btn{
 width:100%;
 height:58px;
+border:none;
 border-radius:16px;
 background:#ff2d2d;
 color:white;
 font-size:16px;
 font-weight:800;
+cursor:pointer;
 }
 
 /* INVENTORY */
 
 .inventory-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:18px;
 }
 
@@ -264,7 +260,7 @@ color:#777;
 /* TOPUP */
 
 .topup-wrapper{
-max-width:1100px;
+max-width:1150px;
 margin:auto;
 background:#080808;
 border:1px solid #1f1f1f;
@@ -279,7 +275,7 @@ margin-bottom:30px;
 .topup-header h1{
 font-size:70px;
 font-weight:900;
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
 .topup-header p{
@@ -295,7 +291,7 @@ margin-bottom:28px;
 }
 
 .coin-card{
-height:135px;
+height:140px;
 background:#0d0d0d;
 border:1px solid #232323;
 border-radius:24px;
@@ -310,7 +306,7 @@ transition:.2s;
 .coin-card.active{
 background:#072117;
 border-color:#00ff95;
-box-shadow:0 0 18px rgba(0,255,149,.15);
+box-shadow:0 0 18px rgba(0,255,149,.18);
 }
 
 .coin-card:hover{
@@ -323,8 +319,8 @@ margin-bottom:5px;
 }
 
 .coin-card span{
-color:#888;
 font-size:15px;
+color:#888;
 }
 
 .amount-input{
@@ -337,7 +333,7 @@ padding:0 22px;
 font-size:24px;
 color:white;
 outline:none;
-margin-bottom:24px;
+margin-bottom:25px;
 }
 
 .quick-grid{
@@ -355,6 +351,8 @@ border-radius:18px;
 color:white;
 font-size:18px;
 font-weight:800;
+cursor:pointer;
+transition:.2s;
 }
 
 .quick-grid button:hover{
@@ -363,12 +361,14 @@ border-color:#00ff95;
 
 .topup-btn{
 width:100%;
-height:72px;
-background:#16a34a;
+height:74px;
+border:none;
 border-radius:22px;
+background:#16a34a;
+color:white;
 font-size:20px;
 font-weight:900;
-color:white;
+cursor:pointer;
 }
 
 /* ADMIN */
@@ -406,36 +406,40 @@ gap:10px;
 
 .approve-btn{
 height:50px;
-padding:0 20px;
-border-radius:14px;
+padding:0 22px;
 background:#16a34a;
+border:none;
+border-radius:14px;
 font-weight:800;
 color:white;
+cursor:pointer;
 }
 
 .reject-btn{
 height:50px;
-padding:0 20px;
-border-radius:14px;
+padding:0 22px;
 background:#ff2d2d;
+border:none;
+border-radius:14px;
 font-weight:800;
 color:white;
+cursor:pointer;
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-.quick-grid{
-grid-template-columns:repeat(2,1fr);
+.section-title{
+font-size:42px;
 }
 
 .topup-header h1{
-font-size:46px;
+font-size:48px;
 }
 
-.section-title{
-font-size:42px;
+.quick-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
 .navbar{
@@ -473,15 +477,17 @@ Secure Premium Digital Store
 <input
 type="text"
 id="username"
+class="input"
 placeholder="Username">
 
 <input
 type="password"
 id="password"
+class="input"
 placeholder="Password">
 
 <button
-class="login-btn"
+class="btn login-btn"
 onclick="login()">
 
 Login
@@ -489,7 +495,7 @@ Login
 </button>
 
 <button
-class="register-btn"
+class="btn register-btn"
 onclick="register()">
 
 Create Account
@@ -517,46 +523,36 @@ Balance: $
 <span id="balance">0</span>
 </div>
 
-<button
+<div
 class="nav-btn"
 onclick="showPage('shop')">
-
 Shop
+</div>
 
-</button>
-
-<button
+<div
 class="nav-btn"
 onclick="showPage('inventory')">
-
 Inventory
+</div>
 
-</button>
-
-<button
+<div
 class="nav-btn"
 onclick="showPage('topup')">
-
 Top Up
+</div>
 
-</button>
-
-<button
+<div
 id="adminButton"
 class="nav-btn hidden"
 onclick="showPage('admin')">
-
 Admin
+</div>
 
-</button>
-
-<button
+<div
 class="nav-btn"
 onclick="logout()">
-
 Logout
-
-</button>
+</div>
 
 </div>
 
@@ -573,123 +569,57 @@ Products
 <div class="product-grid">
 
 <div class="product-card">
-
 <h2>1D</h2>
-
 <p>1 Day Access</p>
-
-<div class="price">
-$10
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(10,'1D Access')">
-
+<div class="price">$10</div>
+<button class="buy-btn" onclick="buyProduct(10,'1D Access')">
 Purchase
-
 </button>
-
 </div>
 
 <div class="product-card">
-
 <h2>3D</h2>
-
 <p>3 Day Access</p>
-
-<div class="price">
-$25
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(25,'3D Access')">
-
+<div class="price">$25</div>
+<button class="buy-btn" onclick="buyProduct(25,'3D Access')">
 Purchase
-
 </button>
-
 </div>
 
 <div class="product-card">
-
 <h2>5D</h2>
-
 <p>5 Day Access</p>
-
-<div class="price">
-$40
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(40,'5D Access')">
-
+<div class="price">$40</div>
+<button class="buy-btn" onclick="buyProduct(40,'5D Access')">
 Purchase
-
 </button>
-
 </div>
 
 <div class="product-card">
-
 <h2>7D</h2>
-
 <p>7 Day Access</p>
-
-<div class="price">
-$60
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(60,'7D Access')">
-
+<div class="price">$60</div>
+<button class="buy-btn" onclick="buyProduct(60,'7D Access')">
 Purchase
-
 </button>
-
 </div>
 
 <div class="product-card">
-
 <h2>10D</h2>
-
 <p>10 Day Access</p>
-
-<div class="price">
-$85
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(85,'10D Access')">
-
+<div class="price">$85</div>
+<button class="buy-btn" onclick="buyProduct(85,'10D Access')">
 Purchase
-
 </button>
-
 </div>
 
 <div class="product-card">
-
 <h2>Permanent</h2>
-
 <p>Lifetime Access</p>
-
-<div class="price">
-$150
-</div>
-
-<button
-class="buy-btn"
-onclick="buyProduct(150,'Permanent Access')">
-
+<div class="price">$150</div>
+<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
 Purchase
-
 </button>
-
 </div>
 
 </div>
@@ -723,7 +653,7 @@ Top Up Balance
 </h1>
 
 <p>
-Create a balance request for admin approval
+Create payment requests for admin approval
 </p>
 
 </div>
@@ -731,35 +661,23 @@ Create a balance request for admin approval
 <div class="coin-grid">
 
 <div class="coin-card active">
-
 <h2>BTC</h2>
-
 <span>Bitcoin</span>
-
 </div>
 
 <div class="coin-card">
-
 <h2>LTC</h2>
-
 <span>Litecoin</span>
-
 </div>
 
 <div class="coin-card">
-
 <h2>USDT</h2>
-
 <span>Tether</span>
-
 </div>
 
 <div class="coin-card">
-
 <h2>SOL</h2>
-
 <span>Solana</span>
-
 </div>
 
 </div>
@@ -772,29 +690,12 @@ placeholder="Enter Amount">
 
 <div class="quick-grid">
 
-<button onclick="setAmount(10)">
-$10
-</button>
-
-<button onclick="setAmount(25)">
-$25
-</button>
-
-<button onclick="setAmount(50)">
-$50
-</button>
-
-<button onclick="setAmount(100)">
-$100
-</button>
-
-<button onclick="setAmount(250)">
-$250
-</button>
-
-<button onclick="setAmount(500)">
-$500
-</button>
+<button onclick="setAmount(10)">$10</button>
+<button onclick="setAmount(25)">$25</button>
+<button onclick="setAmount(50)">$50</button>
+<button onclick="setAmount(100)">$100</button>
+<button onclick="setAmount(250)">$250</button>
+<button onclick="setAmount(500)">$500</button>
 
 </div>
 
@@ -815,7 +716,7 @@ Create Payment Request
 <div id="admin" class="page">
 
 <h1 class="section-title">
-Admin Requests
+Admin Panel
 </h1>
 
 <div id="requestContainer"></div>
@@ -838,7 +739,7 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-/* 관리자 생성 */
+/* ADMIN CREATE */
 
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
@@ -858,7 +759,7 @@ JSON.stringify(users)
 
 }
 
-/* 자동 로그인 */
+/* AUTO LOGIN */
 
 window.onload = function(){
 
@@ -881,7 +782,7 @@ setupCoins();
 
 };
 
-/* 실시간 동기화 */
+/* LIVE UPDATE */
 
 window.addEventListener("storage", function(){
 
@@ -914,7 +815,7 @@ renderRequests();
 
 });
 
-/* 회원가입 */
+/* REGISTER */
 
 function register(){
 
@@ -1194,7 +1095,7 @@ amount;
 
 }
 
-/* REQUEST */
+/* CREATE REQUEST */
 
 function createRequest(){
 
@@ -1218,13 +1119,9 @@ document.querySelector(".coin-card.active h2")
 requests.push({
 
 id:Date.now(),
-
 user:currentUser.username,
-
 amount:Number(amount),
-
 crypto:crypto,
-
 created:new Date().toLocaleString()
 
 });
