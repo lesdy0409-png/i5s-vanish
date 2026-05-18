@@ -131,15 +131,7 @@ justify-content:space-between;
 padding:0 28px;
 }
 
-.nav-right{
-display:flex;
-gap:12px;
-align-items:center;
-flex-wrap:wrap;
-}
-
 .balance,
-.nav-btn,
 .logout-btn{
 height:44px;
 padding:0 22px;
@@ -155,6 +147,12 @@ justify-content:center;
 
 .logout-btn{
 cursor:pointer;
+}
+
+.nav-right{
+display:flex;
+gap:12px;
+align-items:center;
 }
 
 .page{
@@ -182,8 +180,8 @@ margin-bottom:15px;
 .hero p{
 font-size:18px;
 color:#999;
-max-width:700px;
 line-height:1.7;
+max-width:700px;
 }
 
 .hero img{
@@ -313,8 +311,8 @@ Logout
 <h1>Premium Digital Store</h1>
 
 <p>
-Modern premium red dashboard with login system,
-inventory system and auto login support.
+Modern premium red dashboard with account system,
+auto login and saved balance support.
 </p>
 
 </div>
@@ -373,9 +371,9 @@ JSON.parse(localStorage.getItem("currentUser")) || null;
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
-username:ADMIN_USERNAME,
-password:ADMIN_PASSWORD,
-balance:0
+username: ADMIN_USERNAME,
+password: ADMIN_PASSWORD,
+balance: 999999
 });
 
 localStorage.setItem(
@@ -400,16 +398,10 @@ showSite();
 
 }
 
-function refreshUsers(){
-
-users =
-JSON.parse(localStorage.getItem("users")) || [];
-
-}
-
 function registerUser(){
 
-refreshUsers();
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
 
 const username =
 document.getElementById("username").value.trim();
@@ -425,7 +417,7 @@ return;
 }
 
 const exists =
-users.find(u => u.username === username);
+users.find(user => user.username === username);
 
 if(exists){
 
@@ -434,15 +426,15 @@ return;
 
 }
 
-const user = {
+const newUser = {
 
-username:username,
-password:password,
-balance:0
+username: username,
+password: password,
+balance: 0
 
 };
 
-users.push(user);
+users.push(newUser);
 
 localStorage.setItem(
 "users",
@@ -451,12 +443,12 @@ JSON.stringify(users)
 
 localStorage.setItem(
 "currentUser",
-JSON.stringify(user)
+JSON.stringify(newUser)
 );
 
-currentUser = user;
+currentUser = newUser;
 
-alert("Account Created");
+alert("Account Created Successfully");
 
 showSite();
 
@@ -464,7 +456,8 @@ showSite();
 
 function login(){
 
-refreshUsers();
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
 const username =
 document.getElementById("username").value.trim();
@@ -534,7 +527,9 @@ document.getElementById("balance")
 users = users.map(u => {
 
 if(u.username === currentUser.username){
+
 return currentUser;
+
 }
 
 return u;
