@@ -24,7 +24,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* BG */
+/* BACKGROUND */
 
 body::before{
 content:'';
@@ -70,7 +70,7 @@ box-shadow:0 0 40px rgba(255,0,0,0.15);
 }
 
 .logo-login{
-font-size:50px;
+font-size:52px;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
@@ -94,6 +94,7 @@ padding:0 18px;
 color:white;
 margin-bottom:15px;
 outline:none;
+font-size:15px;
 }
 
 .login-box button{
@@ -253,7 +254,7 @@ margin-bottom:20px;
 }
 
 .product-card h3{
-font-size:34px;
+font-size:32px;
 margin-bottom:15px;
 }
 
@@ -317,6 +318,15 @@ transition:0.25s;
 .crypto-card:hover{
 border-color:#ff2e2e;
 background:#170909;
+}
+
+.crypto-card h2{
+font-size:28px;
+margin-bottom:5px;
+}
+
+.crypto-card span{
+color:#888;
 }
 
 .amount-box{
@@ -477,21 +487,28 @@ justify-content:center;
 
 <div class="login-box">
 
-<h1 class="logo-login">i5s</h1>
+<h1 class="logo-login">
+i5s
+</h1>
 
 <p class="login-sub">
 Secure Digital Store Login
 </p>
 
-<input type="text" id="username" placeholder="Username">
+<input type="text"
+id="username"
+placeholder="Username">
 
-<input type="password" id="password" placeholder="Password">
+<input type="password"
+id="password"
+placeholder="Password">
 
 <button onclick="login()">
 Login
 </button>
 
-<div class="switch-auth" onclick="register()">
+<div class="switch-auth"
+onclick="register()">
 Create Account
 </div>
 
@@ -499,11 +516,11 @@ Create Account
 
 </div>
 
-<!-- SITE -->
+<!-- MAIN SITE -->
 
 <div id="mainSite" style="display:none;">
 
-<!-- NAV -->
+<!-- NAVBAR -->
 
 <div class="navbar">
 
@@ -561,8 +578,8 @@ Premium Digital Store
 </h1>
 
 <p>
-Modern black & red premium dashboard with persistent balance,
-inventory system, automatic login and admin approval system.
+Modern premium black & red digital store with inventory,
+persistent balance system and admin topup approval.
 </p>
 
 </div>
@@ -577,47 +594,65 @@ Products
 
 <div class="product-grid">
 
-<script>
-
-const products = [
-
-{name:'1D Access',price:10},
-{name:'3D Access',price:25},
-{name:'5D Access',price:40},
-{name:'7D Access',price:60},
-{name:'10D Access',price:85},
-{name:'Permanent Access',price:150}
-
-];
-
-products.forEach(product=>{
-
-document.write(`
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>1D</h3>
+<div class="price">$10</div>
+<button class="buy-btn"
+onclick="buyProduct(10,'1D Access')">
+Purchase
+</button>
+</div>
 
 <div class="product-card">
-
 <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h3>${product.name}</h3>
-
-<div class="price">
-$${product.price}
-</div>
-
+<h3>3D</h3>
+<div class="price">$25</div>
 <button class="buy-btn"
-onclick="buyProduct(${product.price},'${product.name}')">
-
+onclick="buyProduct(25,'3D Access')">
 Purchase
-
 </button>
-
 </div>
 
-`);
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>5D</h3>
+<div class="price">$40</div>
+<button class="buy-btn"
+onclick="buyProduct(40,'5D Access')">
+Purchase
+</button>
+</div>
 
-});
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>7D</h3>
+<div class="price">$60</div>
+<button class="buy-btn"
+onclick="buyProduct(60,'7D Access')">
+Purchase
+</button>
+</div>
 
-</script>
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>10D</h3>
+<div class="price">$85</div>
+<button class="buy-btn"
+onclick="buyProduct(85,'10D Access')">
+Purchase
+</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>Permanent</h3>
+<div class="price">$150</div>
+<button class="buy-btn"
+onclick="buyProduct(150,'Permanent Access')">
+Purchase
+</button>
+</div>
 
 </div>
 
@@ -731,7 +766,9 @@ Admin Requests
 const adminAccount = {
 
 username:"woojun",
-password:"F1AX65DvCA45X"
+password:"F1AX65DvCA45X",
+balance:0,
+inventory:[]
 
 };
 
@@ -740,10 +777,32 @@ password:"F1AX65DvCA45X"
 let users =
 JSON.parse(localStorage.getItem('users')) || [];
 
+/* CREATE ADMIN */
+
+const adminExists =
+users.find(u =>
+u.username === adminAccount.username
+);
+
+if(!adminExists){
+
+users.push(adminAccount);
+
+localStorage.setItem(
+'users',
+JSON.stringify(users)
+);
+
+}
+
+/* CURRENT USER */
+
 let currentUser =
 JSON.parse(localStorage.getItem('currentUser'));
 
 /* AUTO LOGIN */
+
+window.onload = () => {
 
 if(currentUser){
 
@@ -751,25 +810,35 @@ showSite();
 
 }
 
+};
+
 /* LOGIN */
 
 function login(){
 
 const username =
-document.getElementById('username').value;
+document.getElementById('username').value.trim();
 
 const password =
-document.getElementById('password').value;
+document.getElementById('password').value.trim();
 
-const user = users.find(u=>
+if(!username || !password){
+
+alert('Fill all fields');
+return;
+
+}
+
+const user = users.find(u =>
+
 u.username === username &&
 u.password === password
+
 );
 
 if(!user){
 
 alert('Invalid account');
-
 return;
 
 }
@@ -790,23 +859,25 @@ showSite();
 function register(){
 
 const username =
-document.getElementById('username').value;
+document.getElementById('username').value.trim();
 
 const password =
-document.getElementById('password').value;
+document.getElementById('password').value.trim();
 
 if(!username || !password){
 
 alert('Fill all fields');
-
 return;
 
 }
 
-if(users.find(u=>u.username===username)){
+const exists = users.find(
+u => u.username === username
+);
+
+if(exists){
 
 alert('Username already exists');
-
 return;
 
 }
@@ -827,7 +898,7 @@ localStorage.setItem(
 JSON.stringify(users)
 );
 
-alert('Account created');
+alert('Account created successfully');
 
 }
 
@@ -867,7 +938,7 @@ location.reload();
 
 }
 
-/* BALANCE */
+/* UPDATE BALANCE */
 
 function updateBalance(){
 
@@ -901,33 +972,7 @@ btn.classList.add('active-btn');
 
 }
 
-/* BUY */
-
-function buyProduct(price,name){
-
-if(currentUser.balance < price){
-
-alert('Not enough balance');
-
-return;
-
-}
-
-currentUser.balance -= price;
-
-currentUser.inventory.push(name);
-
-saveUser();
-
-updateBalance();
-
-renderInventory();
-
-alert('Purchased: ' + name);
-
-}
-
-/* SAVE */
+/* SAVE USER */
 
 function saveUser(){
 
@@ -955,6 +1000,32 @@ JSON.stringify(currentUser)
 
 }
 
+/* BUY */
+
+function buyProduct(price,name){
+
+if(currentUser.balance < price){
+
+alert('Not enough balance');
+
+return;
+
+}
+
+currentUser.balance -= price;
+
+currentUser.inventory.push(name);
+
+saveUser();
+
+updateBalance();
+
+renderInventory();
+
+alert('Purchased: ' + name);
+
+}
+
 /* INVENTORY */
 
 function renderInventory(){
@@ -967,10 +1038,19 @@ grid.innerHTML='';
 if(currentUser.inventory.length === 0){
 
 grid.innerHTML = `
+
 <div class="inventory-item">
-<h3>Empty</h3>
-<p>No items purchased yet.</p>
+
+<h3>
+Empty
+</h3>
+
+<p>
+No items purchased yet.
+</p>
+
 </div>
+
 `;
 
 return;
@@ -1118,7 +1198,9 @@ Reject
 function approveRequest(id,amount,username){
 
 const user =
-users.find(u=>u.username===username);
+users.find(u =>
+u.username === username
+);
 
 user.balance += Number(amount);
 
