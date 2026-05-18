@@ -19,7 +19,7 @@ font-family:'Inter',sans-serif;
 body{
 background:#050505;
 color:white;
-overflow:hidden;
+overflow-x:hidden;
 }
 
 body::before{
@@ -27,7 +27,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,.15);
+background:rgba(255,0,0,.14);
 filter:blur(120px);
 top:-200px;
 left:-150px;
@@ -39,7 +39,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,.15);
+background:rgba(255,0,0,.14);
 filter:blur(120px);
 bottom:-200px;
 right:-150px;
@@ -56,20 +56,21 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:20px;
 }
 
 .login-box{
 width:430px;
-background:#0d0d0d;
-border:1px solid #1e1e1e;
+background:#0c0c0c;
+border:1px solid #1f1f1f;
 border-radius:30px;
 padding:45px;
-box-shadow:0 0 50px rgba(255,0,0,.1);
+box-shadow:0 0 50px rgba(255,0,0,.15);
 }
 
 .logo{
 font-family:'Orbitron',sans-serif;
-font-size:62px;
+font-size:65px;
 font-weight:900;
 margin-bottom:10px;
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
@@ -80,7 +81,7 @@ background:linear-gradient(90deg,#ff2e2e,#ffffff);
 .sub{
 color:#777;
 margin-bottom:30px;
-font-size:16px;
+font-size:15px;
 }
 
 input{
@@ -88,11 +89,11 @@ width:100%;
 height:60px;
 background:#111;
 border:1px solid #222;
-border-radius:15px;
+border-radius:16px;
 padding:0 20px;
+margin-bottom:15px;
 color:white;
 font-size:16px;
-margin-bottom:15px;
 outline:none;
 transition:.2s;
 }
@@ -102,39 +103,56 @@ border-color:#ff2e2e;
 }
 
 button{
-width:100%;
-height:60px;
 border:none;
-border-radius:15px;
-font-size:16px;
-font-weight:800;
 cursor:pointer;
 transition:.2s;
 }
 
-.login-btn{
-background:#a30d0d;
+.login-btn,
+.register-btn,
+.buy-btn,
+.topup-btn,
+.approve-btn,
+.reject-btn{
+width:100%;
+height:58px;
+border-radius:16px;
+font-size:16px;
+font-weight:800;
 color:white;
-margin-bottom:15px;
 }
 
-.login-btn:hover{
-background:#d81818;
+.login-btn,
+.buy-btn,
+.topup-btn,
+.approve-btn{
+background:#b31212;
+}
+
+.login-btn:hover,
+.buy-btn:hover,
+.topup-btn:hover,
+.approve-btn:hover{
+background:#ff2e2e;
 }
 
 .register-btn{
-background:#151515;
-color:white;
+background:#171717;
+margin-top:15px;
 }
 
 .register-btn:hover{
 background:#222;
 }
 
+.reject-btn{
+background:#222;
+}
+
 .navbar{
 height:80px;
-background:#0a0a0a;
-border-bottom:1px solid #222;
+background:#090909;
+border-bottom:1px solid #1d1d1d;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -143,7 +161,7 @@ padding:0 30px;
 
 .nav-logo{
 font-family:'Orbitron',sans-serif;
-font-size:34px;
+font-size:35px;
 font-weight:900;
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
 -webkit-background-clip:text;
@@ -154,6 +172,7 @@ background:linear-gradient(90deg,#ff2e2e,#ffffff);
 display:flex;
 gap:12px;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .balance,
@@ -163,7 +182,6 @@ padding:0 22px;
 border-radius:14px;
 background:#111;
 border:1px solid #222;
-color:white;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -176,6 +194,7 @@ cursor:pointer;
 
 .nav-btn:hover{
 background:#ff2e2e;
+border-color:#ff2e2e;
 }
 
 .page{
@@ -183,68 +202,119 @@ display:none;
 padding:40px;
 }
 
-.active{
+.active-page{
 display:block;
 }
 
 .hero{
-background:linear-gradient(135deg,#0d0d0d,#180707);
+background:linear-gradient(135deg,#0d0d0d,#190707);
 border:1px solid #222;
 padding:60px;
 border-radius:30px;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 .hero h1{
 font-size:60px;
-margin-bottom:10px;
+font-weight:900;
+margin-bottom:12px;
 }
 
 .hero p{
-font-size:18px;
 color:#888;
+font-size:18px;
+line-height:1.7;
+}
+
+.section-title{
+font-size:40px;
+font-weight:900;
+margin-bottom:25px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
 }
 
 .card{
 background:#0e0e0e;
 border:1px solid #222;
-border-radius:25px;
+border-radius:28px;
 padding:30px;
 }
 
 .card h2{
-font-size:35px;
+font-size:36px;
 margin-bottom:15px;
 }
 
 .price{
-font-size:42px;
+font-size:45px;
 font-weight:900;
 color:#ff2e2e;
+margin-bottom:22px;
+}
+
+.inventory-item,
+.request-box{
+background:#101010;
+border:1px solid #222;
+border-radius:20px;
+padding:25px;
+margin-bottom:15px;
+}
+
+.inventory-item h3{
+margin-bottom:10px;
+}
+
+.topup-box{
+max-width:550px;
+background:#0f0f0f;
+border:1px solid #222;
+padding:35px;
+border-radius:25px;
+}
+
+.topup-box h2{
+margin-bottom:15px;
+font-size:40px;
+}
+
+.topup-box p{
+color:#888;
 margin-bottom:20px;
 }
 
-.buy{
-background:#b31212;
-color:white;
+.request-actions{
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
-.buy:hover{
-background:#ff2e2e;
+.request-actions button{
+flex:1;
 }
 
-.inventory-item{
-background:#101010;
-padding:25px;
-border-radius:20px;
-border:1px solid #222;
-margin-bottom:15px;
+@media(max-width:768px){
+
+.hero{
+padding:35px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
+}
+
 }
 
 </style>
@@ -286,7 +356,7 @@ Create Account
 <div class="nav-right">
 
 <div class="balance">
-$<span id="balance">0</span>
+Balance: $<span id="balance">0</span>
 </div>
 
 <div class="nav-btn" onclick="showPage('shop')">
@@ -297,6 +367,14 @@ Shop
 Inventory
 </div>
 
+<div class="nav-btn" onclick="showPage('topup')">
+Top Up
+</div>
+
+<div id="adminButton" class="nav-btn hidden" onclick="showPage('admin')">
+Admin
+</div>
+
 <div class="nav-btn" onclick="logout()">
 Logout
 </div>
@@ -305,40 +383,67 @@ Logout
 
 </div>
 
-<div id="shop" class="page active">
+<div id="shop" class="page active-page">
 
 <div class="hero">
 
 <h1>Premium Digital Store</h1>
 
 <p>
-Modern red & black premium dashboard
+Modern black & red premium dashboard with auto login,
+inventory system, admin approvals and balance storage.
 </p>
 
 </div>
 
+<h2 class="section-title">Products</h2>
+
 <div class="grid">
 
 <div class="card">
-<h2>1D</h2>
+<h2>1 Day</h2>
 <div class="price">$10</div>
-<button class="buy" onclick="buy(10,'1D Access')">
+<button class="buy-btn" onclick="buyProduct(10,'1 Day Access')">
 Purchase
 </button>
 </div>
 
 <div class="card">
-<h2>3D</h2>
+<h2>3 Day</h2>
 <div class="price">$25</div>
-<button class="buy" onclick="buy(25,'3D Access')">
+<button class="buy-btn" onclick="buyProduct(25,'3 Day Access')">
 Purchase
 </button>
 </div>
 
 <div class="card">
-<h2>5D</h2>
+<h2>5 Day</h2>
 <div class="price">$40</div>
-<button class="buy" onclick="buy(40,'5D Access')">
+<button class="buy-btn" onclick="buyProduct(40,'5 Day Access')">
+Purchase
+</button>
+</div>
+
+<div class="card">
+<h2>7 Day</h2>
+<div class="price">$60</div>
+<button class="buy-btn" onclick="buyProduct(60,'7 Day Access')">
+Purchase
+</button>
+</div>
+
+<div class="card">
+<h2>10 Day</h2>
+<div class="price">$90</div>
+<button class="buy-btn" onclick="buyProduct(90,'10 Day Access')">
+Purchase
+</button>
+</div>
+
+<div class="card">
+<h2>Permanent</h2>
+<div class="price">$150</div>
+<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
 Purchase
 </button>
 </div>
@@ -349,9 +454,37 @@ Purchase
 
 <div id="inventory" class="page">
 
-<h1 style="margin-bottom:20px;">Inventory</h1>
+<h2 class="section-title">Inventory</h2>
 
 <div id="inventoryList"></div>
+
+</div>
+
+<div id="topup" class="page">
+
+<div class="topup-box">
+
+<h2>Top Up</h2>
+
+<p>
+Create a balance request for admin approval
+</p>
+
+<input type="number" id="topupAmount" placeholder="Enter Amount">
+
+<button class="topup-btn" onclick="createTopupRequest()">
+Create Request
+</button>
+
+</div>
+
+</div>
+
+<div id="admin" class="page">
+
+<h2 class="section-title">Admin Requests</h2>
+
+<div id="requestList"></div>
 
 </div>
 
@@ -359,14 +492,29 @@ Purchase
 
 <script>
 
+/* =========================
+ADMIN ACCOUNT
+========================= */
+
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let users = JSON.parse(localStorage.getItem("users")) || [];
+/* =========================
+LOCAL STORAGE
+========================= */
 
-let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
 
-/* 관리자 생성 */
+let requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
+
+/* =========================
+CREATE ADMIN
+========================= */
 
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
@@ -384,7 +532,9 @@ JSON.stringify(users)
 
 }
 
-/* 자동 로그인 */
+/* =========================
+AUTO LOGIN
+========================= */
 
 window.onload = function(){
 
@@ -394,9 +544,11 @@ openSite();
 
 }
 
-}
+};
 
-/* 회원가입 */
+/* =========================
+REGISTER
+========================= */
 
 function register(){
 
@@ -406,21 +558,17 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-/* 핵심 수정 부분 */
+if(username === "" || password === ""){
 
-if(username.length === 0 || password.length === 0){
-
-alert("Please enter username and password");
+alert("Fill all fields");
 return;
 
 }
 
-const exists = users.find(function(user){
-
-return user.username.toLowerCase()
-=== username.toLowerCase();
-
-});
+const exists = users.find(
+u => u.username.toLowerCase()
+=== username.toLowerCase()
+);
 
 if(exists){
 
@@ -452,13 +600,18 @@ localStorage.setItem(
 JSON.stringify(currentUser)
 );
 
+document.getElementById("username").value = "";
+document.getElementById("password").value = "";
+
 alert("Account Created Successfully");
 
 openSite();
 
 }
 
-/* 로그인 */
+/* =========================
+LOGIN
+========================= */
 
 function login(){
 
@@ -468,21 +621,18 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-if(username.length === 0 || password.length === 0){
+if(username === "" || password === ""){
 
-alert("Please enter username and password");
+alert("Fill all fields");
 return;
 
 }
 
-const foundUser = users.find(function(user){
-
-return (
-user.username === username &&
-user.password === password
+const foundUser = users.find(
+u =>
+u.username === username &&
+u.password === password
 );
-
-});
 
 if(!foundUser){
 
@@ -495,14 +645,16 @@ currentUser = foundUser;
 
 localStorage.setItem(
 "currentUser",
-JSON.stringify(foundUser)
+JSON.stringify(currentUser)
 );
 
 openSite();
 
 }
 
-/* 사이트 열기 */
+/* =========================
+OPEN SITE
+========================= */
 
 function openSite(){
 
@@ -516,9 +668,20 @@ updateBalance();
 
 renderInventory();
 
+renderRequests();
+
+if(currentUser.username === ADMIN_USERNAME){
+
+document.getElementById("adminButton")
+.classList.remove("hidden");
+
 }
 
-/* 로그아웃 */
+}
+
+/* =========================
+LOGOUT
+========================= */
 
 function logout(){
 
@@ -528,23 +691,27 @@ location.reload();
 
 }
 
-/* 페이지 */
+/* =========================
+PAGE
+========================= */
 
 function showPage(page){
 
 document.querySelectorAll(".page")
-.forEach(function(p){
+.forEach(p => {
 
-p.classList.remove("active");
+p.classList.remove("active-page");
 
 });
 
 document.getElementById(page)
-.classList.add("active");
+.classList.add("active-page");
 
 }
 
-/* 잔액 */
+/* =========================
+BALANCE
+========================= */
 
 function updateBalance(){
 
@@ -553,19 +720,21 @@ document.getElementById("balance")
 
 }
 
-/* 저장 */
+/* =========================
+SAVE USERS
+========================= */
 
 function saveUsers(){
 
-users = users.map(function(user){
+users = users.map(u => {
 
-if(user.username === currentUser.username){
+if(u.username === currentUser.username){
 
 return currentUser;
 
 }
 
-return user;
+return u;
 
 });
 
@@ -581,9 +750,11 @@ JSON.stringify(currentUser)
 
 }
 
-/* 구매 */
+/* =========================
+BUY PRODUCT
+========================= */
 
-function buy(price,name){
+function buyProduct(price,name){
 
 if(currentUser.balance < price){
 
@@ -606,20 +777,23 @@ alert("Purchased: " + name);
 
 }
 
-/* 인벤토리 */
+/* =========================
+INVENTORY
+========================= */
 
 function renderInventory(){
 
-const inventory =
+const list =
 document.getElementById("inventoryList");
 
-inventory.innerHTML = "";
+list.innerHTML = "";
 
 if(currentUser.inventory.length === 0){
 
-inventory.innerHTML = `
+list.innerHTML = `
 <div class="inventory-item">
-No items purchased yet
+<h3>Empty</h3>
+<p>No items purchased yet.</p>
 </div>
 `;
 
@@ -627,15 +801,184 @@ return;
 
 }
 
-currentUser.inventory.forEach(function(item){
+currentUser.inventory.forEach(item => {
 
-inventory.innerHTML += `
+list.innerHTML += `
 <div class="inventory-item">
-${item}
+<h3>${item}</h3>
+<p>Purchased Successfully</p>
 </div>
 `;
 
 });
+
+}
+
+/* =========================
+TOPUP REQUEST
+========================= */
+
+function createTopupRequest(){
+
+const amount =
+document.getElementById("topupAmount").value;
+
+if(amount === "" || Number(amount) <= 0){
+
+alert("Enter valid amount");
+return;
+
+}
+
+requests.push({
+
+id:Date.now(),
+user:currentUser.username,
+amount:Number(amount)
+
+});
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+document.getElementById("topupAmount").value = "";
+
+renderRequests();
+
+alert("Request Created");
+
+}
+
+/* =========================
+RENDER REQUESTS
+========================= */
+
+function renderRequests(){
+
+const requestList =
+document.getElementById("requestList");
+
+if(!requestList) return;
+
+requestList.innerHTML = "";
+
+if(requests.length === 0){
+
+requestList.innerHTML = `
+<div class="request-box">
+No Requests
+</div>
+`;
+
+return;
+
+}
+
+requests.forEach(req => {
+
+requestList.innerHTML += `
+
+<div class="request-box">
+
+<h2>$${req.amount}</h2>
+
+<p style="margin-top:10px;">
+User: ${req.user}
+</p>
+
+<div class="request-actions">
+
+<button
+class="approve-btn"
+onclick="approveRequest(${req.id})">
+
+Approve
+
+</button>
+
+<button
+class="reject-btn"
+onclick="rejectRequest(${req.id})">
+
+Reject
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* =========================
+APPROVE REQUEST
+========================= */
+
+function approveRequest(id){
+
+const req =
+requests.find(r => r.id === id);
+
+if(!req) return;
+
+const targetUser =
+users.find(u => u.username === req.user);
+
+if(targetUser){
+
+targetUser.balance += Number(req.amount);
+
+if(currentUser.username === targetUser.username){
+
+currentUser.balance =
+targetUser.balance;
+
+}
+
+}
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Approved");
+
+}
+
+/* =========================
+REJECT REQUEST
+========================= */
+
+function rejectRequest(id){
+
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Rejected");
 
 }
 
