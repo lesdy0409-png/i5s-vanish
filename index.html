@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>i5s Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,6 +20,7 @@ body{
 background:#050505;
 color:white;
 overflow-x:hidden;
+min-height:100vh;
 }
 
 body::before{
@@ -56,6 +57,7 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:20px;
 }
 
 .login-box{
@@ -67,25 +69,19 @@ padding:45px;
 box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
-.logo-login,
 .logo{
 font-family:'Orbitron',sans-serif;
+font-size:56px;
 font-weight:900;
+text-align:center;
+margin-bottom:10px;
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.logo-login{
-font-size:56px;
-margin-bottom:10px;
-}
-
-.logo{
-font-size:38px;
-}
-
-.login-sub{
+.sub{
+text-align:center;
 color:#777;
 margin-bottom:25px;
 }
@@ -100,67 +96,78 @@ padding:0 18px;
 color:white;
 margin-bottom:15px;
 outline:none;
+font-size:16px;
+}
+
+button{
+cursor:pointer;
+border:none;
 }
 
 .login-btn{
 width:100%;
 height:58px;
-border:none;
 border-radius:14px;
 background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
-cursor:pointer;
 }
 
 .register-btn{
+margin-top:16px;
 text-align:center;
-color:#999;
-margin-top:18px;
+color:#aaa;
 cursor:pointer;
 }
 
 .navbar{
 height:80px;
 background:#080808;
-border-bottom:1px solid #1b1b1b;
+border-bottom:1px solid #1c1c1c;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 28px;
+padding:0 30px;
 }
 
-.balance,
-.logout-btn{
-height:44px;
-padding:0 22px;
-background:#111;
-border:1px solid #222;
-border-radius:14px;
-color:white;
-font-weight:700;
-display:flex;
-align-items:center;
-justify-content:center;
+.logo-nav{
+font-family:'Orbitron',sans-serif;
+font-size:36px;
+font-weight:900;
+background:linear-gradient(90deg,#ff2e2e,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.logout-btn{
-cursor:pointer;
-}
-
-.nav-right{
+.right{
 display:flex;
 gap:12px;
 align-items:center;
 }
 
-.page{
+.balance,
+.logout{
+height:45px;
+padding:0 20px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+display:flex;
+align-items:center;
+font-weight:700;
+}
+
+.logout{
+cursor:pointer;
+}
+
+.main{
 padding:35px;
 }
 
 .hero{
-background:linear-gradient(135deg,#090909,#190707);
+background:linear-gradient(135deg,#090909,#1a0606);
 border:1px solid #221111;
 border-radius:30px;
 padding:60px;
@@ -172,44 +179,44 @@ margin-bottom:35px;
 }
 
 .hero h1{
-font-size:60px;
+font-size:58px;
 font-weight:900;
 margin-bottom:15px;
 }
 
 .hero p{
-font-size:18px;
 color:#999;
+font-size:18px;
 line-height:1.7;
-max-width:700px;
+max-width:650px;
 }
 
 .hero img{
 width:220px;
 }
 
-.section-title{
-font-size:38px;
+.title{
+font-size:36px;
 font-weight:900;
 margin-bottom:25px;
 }
 
-.product-grid{
+.products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:22px;
 }
 
-.product-card{
+.card{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:28px;
 padding:30px;
 }
 
-.product-card h3{
-font-size:32px;
-margin-bottom:15px;
+.card h3{
+font-size:34px;
+margin-bottom:14px;
 }
 
 .price{
@@ -219,16 +226,14 @@ color:#ff2e2e;
 margin-bottom:20px;
 }
 
-.buy-btn{
+.buy{
 width:100%;
-height:58px;
-border:none;
-border-radius:16px;
+height:56px;
+border-radius:14px;
 background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
-cursor:pointer;
 }
 
 @media(max-width:768px){
@@ -260,11 +265,11 @@ gap:15px;
 
 <div class="login-box">
 
-<h1 class="logo-login">i5s</h1>
+<div class="logo">i5s</div>
 
-<p class="login-sub">
+<div class="sub">
 Secure Digital Store Login
-</p>
+</div>
 
 <input type="text" id="username" placeholder="Username">
 
@@ -274,7 +279,7 @@ Secure Digital Store Login
 Login
 </button>
 
-<div class="register-btn" onclick="registerUser()">
+<div class="register-btn" onclick="createAccount()">
 Create Account
 </div>
 
@@ -282,37 +287,39 @@ Create Account
 
 </div>
 
-<div id="mainSite" class="hidden">
+<div id="mainPage" class="hidden">
 
 <div class="navbar">
 
-<div class="logo">i5s</div>
+<div class="logo-nav">
+i5s
+</div>
 
-<div class="nav-right">
+<div class="right">
 
 <div class="balance">
 Balance: $<span id="balance">0</span>
 </div>
 
-<button class="logout-btn" onclick="logout()">
+<div class="logout" onclick="logout()">
 Logout
-</button>
-
 </div>
 
 </div>
 
-<div class="page">
+</div>
+
+<div class="main">
 
 <div class="hero">
 
 <div>
 
-<h1>Premium Digital Store</h1>
+<h1>Premium Store</h1>
 
 <p>
-Modern premium red dashboard with account system,
-auto login and saved balance support.
+Modern black & red premium digital store with account system,
+saved login and balance support.
 </p>
 
 </div>
@@ -321,32 +328,32 @@ auto login and saved balance support.
 
 </div>
 
-<h2 class="section-title">
+<div class="title">
 Products
-</h2>
+</div>
 
-<div class="product-grid">
+<div class="products">
 
-<div class="product-card">
+<div class="card">
 <h3>1D</h3>
 <div class="price">$10</div>
-<button class="buy-btn" onclick="buyProduct(10)">
+<button class="buy" onclick="buy(10)">
 Purchase
 </button>
 </div>
 
-<div class="product-card">
+<div class="card">
 <h3>3D</h3>
 <div class="price">$25</div>
-<button class="buy-btn" onclick="buyProduct(25)">
+<button class="buy" onclick="buy(25)">
 Purchase
 </button>
 </div>
 
-<div class="product-card">
+<div class="card">
 <h3>Permanent</h3>
 <div class="price">$150</div>
-<button class="buy-btn" onclick="buyProduct(150)">
+<button class="buy" onclick="buy(150)">
 Purchase
 </button>
 </div>
@@ -362,46 +369,44 @@ Purchase
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let users =
-JSON.parse(localStorage.getItem("users")) || [];
+function loadUsers(){
+return JSON.parse(localStorage.getItem("users")) || [];
+}
 
-let currentUser =
-JSON.parse(localStorage.getItem("currentUser")) || null;
+function saveUsers(users){
+localStorage.setItem("users",JSON.stringify(users));
+}
 
-if(!users.find(u => u.username === ADMIN_USERNAME)){
+let users = loadUsers();
+
+if(!users.some(u => u.username === ADMIN_USERNAME)){
 
 users.push({
-username: ADMIN_USERNAME,
-password: ADMIN_PASSWORD,
-balance: 999999
+username:ADMIN_USERNAME,
+password:ADMIN_PASSWORD,
+balance:999999
 });
 
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
+saveUsers(users);
 
 }
 
-window.onload = () => {
-
-const savedUser =
+let currentUser =
 JSON.parse(localStorage.getItem("currentUser"));
 
-if(savedUser){
+window.onload = function(){
 
-currentUser = savedUser;
+if(currentUser){
 
-showSite();
-
-}
+showMain();
 
 }
 
-function registerUser(){
+}
 
-let users =
-JSON.parse(localStorage.getItem("users")) || [];
+function createAccount(){
+
+let users = loadUsers();
 
 const username =
 document.getElementById("username").value.trim();
@@ -417,7 +422,7 @@ return;
 }
 
 const exists =
-users.find(user => user.username === username);
+users.some(user => user.username === username);
 
 if(exists){
 
@@ -428,18 +433,15 @@ return;
 
 const newUser = {
 
-username: username,
-password: password,
-balance: 0
+username:username,
+password:password,
+balance:0
 
 };
 
 users.push(newUser);
 
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
+saveUsers(users);
 
 localStorage.setItem(
 "currentUser",
@@ -448,16 +450,15 @@ JSON.stringify(newUser)
 
 currentUser = newUser;
 
-alert("Account Created Successfully");
+alert("Account Created");
 
-showSite();
+showMain();
 
 }
 
 function login(){
 
-users =
-JSON.parse(localStorage.getItem("users")) || [];
+let users = loadUsers();
 
 const username =
 document.getElementById("username").value.trim();
@@ -485,20 +486,20 @@ localStorage.setItem(
 JSON.stringify(user)
 );
 
-showSite();
+showMain();
 
 }
 
-function showSite(){
+function showMain(){
 
 document.getElementById("loginPage")
 .classList.add("hidden");
 
-document.getElementById("mainSite")
+document.getElementById("mainPage")
 .classList.remove("hidden");
 
 document.getElementById("balance")
-.innerText = currentUser.balance;
+.innerText = currentUser.balance || 0;
 
 }
 
@@ -510,7 +511,7 @@ location.reload();
 
 }
 
-function buyProduct(price){
+function buy(price){
 
 if(currentUser.balance < price){
 
@@ -524,6 +525,8 @@ currentUser.balance -= price;
 document.getElementById("balance")
 .innerText = currentUser.balance;
 
+let users = loadUsers();
+
 users = users.map(u => {
 
 if(u.username === currentUser.username){
@@ -536,10 +539,7 @@ return u;
 
 });
 
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
+saveUsers(users);
 
 localStorage.setItem(
 "currentUser",
