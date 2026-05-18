@@ -217,17 +217,11 @@ gap:22px;
 }
 
 .product-card,
-.inventory-item,
-.request-box{
+.inventory-item{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:28px;
 padding:30px;
-}
-
-.product-card img{
-width:70px;
-margin-bottom:20px;
 }
 
 .product-card h3,
@@ -243,137 +237,19 @@ color:#ff2e2e;
 margin-bottom:20px;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn,
-.reject-btn{
+.buy-btn{
 width:100%;
 height:58px;
 border:none;
 border-radius:16px;
+background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
 cursor:pointer;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn{
-background:#ff2e2e;
-}
-
-.reject-btn{
-background:#222;
-}
-
-.topup-container{
-max-width:1000px;
-margin:auto;
-background:#0b0b0b;
-border:1px solid #1f1f1f;
-border-radius:30px;
-padding:45px;
-}
-
-.topup-container h1{
-font-size:58px;
-margin-bottom:10px;
-}
-
-.topup-container p{
-color:#888;
-margin-bottom:30px;
-}
-
-.crypto-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:18px;
-margin-bottom:28px;
-}
-
-.crypto-card{
-background:#101010;
-border:1px solid #222;
-border-radius:20px;
-padding:24px;
-cursor:pointer;
-text-align:center;
-font-weight:800;
-}
-
-.crypto-card.active{
-border-color:#ff2e2e;
-background:#170909;
-}
-
-.amount-box{
-height:65px;
-background:#101010;
-border:1px solid #222;
-border-radius:18px;
-display:flex;
-align-items:center;
-padding:0 22px;
-margin-bottom:20px;
-}
-
-.amount-box input{
-flex:1;
-background:none;
-border:none;
-outline:none;
-color:white;
-font-size:22px;
-margin:0;
-}
-
-.quick-amounts{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-bottom:22px;
-}
-
-.quick-amounts button{
-height:55px;
-background:#111;
-border:1px solid #222;
-border-radius:14px;
-color:white;
-font-weight:700;
-cursor:pointer;
-}
-
-.request-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.request-actions{
-display:flex;
-gap:10px;
-}
-
-.request-actions button{
-width:auto;
-padding:0 18px;
-}
-
 @media(max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.hero h1{
-font-size:42px;
-}
 
 .navbar{
 height:auto;
@@ -382,8 +258,13 @@ flex-direction:column;
 gap:15px;
 }
 
-.nav-right{
-justify-content:center;
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero h1{
+font-size:42px;
 }
 
 }
@@ -431,20 +312,8 @@ Create Account
 Balance: $<span id="balance">0</span>
 </div>
 
-<button class="nav-btn active-btn" onclick="showPage('purchase',this)">
+<button class="nav-btn active-btn">
 Purchase
-</button>
-
-<button class="nav-btn" onclick="showPage('topup',this)">
-Top Up
-</button>
-
-<button class="nav-btn" onclick="showPage('inventory',this)">
-Inventory
-</button>
-
-<button id="adminBtn" class="nav-btn hidden" onclick="showPage('admin',this)">
-Admin
 </button>
 
 <button class="logout-btn" onclick="logout()">
@@ -455,7 +324,7 @@ Logout
 
 </div>
 
-<div id="purchase" class="page active-page">
+<div class="page active-page">
 
 <div class="hero">
 
@@ -464,8 +333,8 @@ Logout
 <h1>Premium Digital Store</h1>
 
 <p>
-Modern black & red premium dashboard with balance system,
-inventory and admin approvals.
+Modern premium red dashboard with login system,
+inventory system and auto login support.
 </p>
 
 </div>
@@ -479,110 +348,30 @@ inventory and admin approvals.
 <div class="product-grid">
 
 <div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>1D</h3>
 <div class="price">$10</div>
-<button class="buy-btn" onclick="buyProduct(10,'1D Access')">Purchase</button>
+<button class="buy-btn" onclick="buyProduct(10,'1D Access')">
+Purchase
+</button>
 </div>
 
 <div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>3D</h3>
 <div class="price">$25</div>
-<button class="buy-btn" onclick="buyProduct(25,'3D Access')">Purchase</button>
+<button class="buy-btn" onclick="buyProduct(25,'3D Access')">
+Purchase
+</button>
 </div>
 
 <div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-<h3>5D</h3>
-<div class="price">$40</div>
-<button class="buy-btn" onclick="buyProduct(40,'5D Access')">Purchase</button>
-</div>
-
-<div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-<h3>7D</h3>
-<div class="price">$60</div>
-<button class="buy-btn" onclick="buyProduct(60,'7D Access')">Purchase</button>
-</div>
-
-<div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-<h3>10D</h3>
-<div class="price">$85</div>
-<button class="buy-btn" onclick="buyProduct(85,'10D Access')">Purchase</button>
-</div>
-
-<div class="product-card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>Permanent</h3>
 <div class="price">$150</div>
-<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">Purchase</button>
-</div>
-
-</div>
-
-</div>
-
-<div id="topup" class="page">
-
-<div class="topup-container">
-
-<h1>Top Up Balance</h1>
-
-<p>Create payment requests for admin approval</p>
-
-<div class="crypto-grid">
-
-<div class="crypto-card active">BTC</div>
-<div class="crypto-card">LTC</div>
-<div class="crypto-card">USDT</div>
-<div class="crypto-card">SOL</div>
-
-</div>
-
-<div class="amount-box">
-
-<span>$</span>
-
-<input type="number" id="topupAmount" placeholder="100">
-
-<span>USD</span>
-
-</div>
-
-<div class="quick-amounts">
-
-<button onclick="setAmount(10)">$10</button>
-<button onclick="setAmount(25)">$25</button>
-<button onclick="setAmount(50)">$50</button>
-<button onclick="setAmount(100)">$100</button>
-<button onclick="setAmount(250)">$250</button>
-<button onclick="setAmount(500)">$500</button>
-
-</div>
-
-<button class="create-payment-btn" onclick="createPaymentRequest()">
-Create Payment Request
+<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
+Purchase
 </button>
-
 </div>
 
 </div>
-
-<div id="inventory" class="page">
-
-<h2 class="section-title">Inventory</h2>
-
-<div id="inventoryGrid" class="inventory-grid"></div>
-
-</div>
-
-<div id="admin" class="page">
-
-<h2 class="section-title">Admin Requests</h2>
-
-<div id="requestsContainer"></div>
 
 </div>
 
@@ -590,25 +379,32 @@ Create Payment Request
 
 <script>
 
+localStorage.removeItem("users");
+localStorage.removeItem("currentUser");
+
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-let users = JSON.parse(localStorage.getItem("users")) || [];
-let requests = JSON.parse(localStorage.getItem("requests")) || [];
-let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
 
-function refreshUsers(){
-users = JSON.parse(localStorage.getItem("users")) || [];
-}
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
 
 if(!users.find(u=>u.username===ADMIN_USERNAME)){
+
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
 balance:0,
 inventory:[]
 });
-localStorage.setItem("users",JSON.stringify(users));
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
 }
 
 window.onload=()=>{
@@ -617,9 +413,19 @@ const savedUser =
 JSON.parse(localStorage.getItem("currentUser"));
 
 if(savedUser){
+
 currentUser=savedUser;
+
 showSite();
+
 }
+
+}
+
+function refreshUsers(){
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
 }
 
@@ -634,26 +440,39 @@ const password =
 document.getElementById("password").value.trim();
 
 if(username===""||password===""){
+
 alert("Fill all fields");
 return;
+
 }
 
 if(users.find(u=>u.username===username)){
+
 alert("Username already exists");
 return;
+
 }
 
 const user={
+
 username:username,
 password:password,
 balance:0,
 inventory:[]
+
 };
 
 users.push(user);
 
-localStorage.setItem("users",JSON.stringify(users));
-localStorage.setItem("currentUser",JSON.stringify(user));
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(user)
+);
 
 currentUser=user;
 
@@ -672,19 +491,23 @@ const password =
 document.getElementById("password").value.trim();
 
 if(username===""||password===""){
+
 alert("Fill all fields");
 return;
+
 }
 
 const user =
-users.find(u =>
+users.find(u=>
 u.username===username &&
 u.password===password
 );
 
 if(!user){
+
 alert("Invalid Account");
 return;
+
 }
 
 currentUser=user;
@@ -706,278 +529,36 @@ document.getElementById("loginPage")
 document.getElementById("mainSite")
 .classList.remove("hidden");
 
-updateBalance();
-renderInventory();
-renderRequests();
-
-if(
-currentUser.username===ADMIN_USERNAME &&
-currentUser.password===ADMIN_PASSWORD
-){
-document.getElementById("adminBtn")
-.classList.remove("hidden");
-}
+document.getElementById("balance")
+.innerText=currentUser.balance;
 
 }
 
 function logout(){
+
 localStorage.removeItem("currentUser");
+
 location.reload();
-}
-
-function updateBalance(){
-document.getElementById("balance")
-.innerText=currentUser.balance;
-}
-
-function saveUser(){
-
-users = users.map(u=>{
-
-if(u.username===currentUser.username){
-return currentUser;
-}
-
-return u;
-
-});
-
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
-
-localStorage.setItem(
-"currentUser",
-JSON.stringify(currentUser)
-);
-
-}
-
-function showPage(page,btn){
-
-document.querySelectorAll(".page")
-.forEach(p=>{
-p.classList.remove("active-page");
-});
-
-document.getElementById(page)
-.classList.add("active-page");
-
-document.querySelectorAll(".nav-btn")
-.forEach(b=>{
-b.classList.remove("active-btn");
-});
-
-btn.classList.add("active-btn");
 
 }
 
 function buyProduct(price,name){
 
 if(currentUser.balance<price){
+
 alert("Not enough balance");
 return;
+
 }
 
-currentUser.balance-=price;
+currentUser.balance -= price;
 
-currentUser.inventory.push(name);
-
-saveUser();
-
-updateBalance();
-
-renderInventory();
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
 
 alert("Purchased: "+name);
-
-}
-
-function renderInventory(){
-
-const grid =
-document.getElementById("inventoryGrid");
-
-grid.innerHTML="";
-
-if(currentUser.inventory.length===0){
-
-grid.innerHTML=`
-<div class="inventory-item">
-<h3>Empty</h3>
-<p>No items purchased yet.</p>
-</div>
-`;
-
-return;
-
-}
-
-currentUser.inventory.forEach(item=>{
-
-grid.innerHTML += `
-<div class="inventory-item">
-<h3>${item}</h3>
-<p>Purchased Successfully</p>
-</div>
-`;
-
-});
-
-}
-
-document.querySelectorAll(".crypto-card")
-.forEach(card=>{
-
-card.addEventListener("click",()=>{
-
-document.querySelectorAll(".crypto-card")
-.forEach(c=>{
-c.classList.remove("active");
-});
-
-card.classList.add("active");
-
-});
-
-});
-
-function setAmount(amount){
-document.getElementById("topupAmount").value=amount;
-}
-
-function createPaymentRequest(){
-
-const amount =
-document.getElementById("topupAmount").value;
-
-if(!amount || amount<=0){
-alert("Enter valid amount");
-return;
-}
-
-requests.push({
-id:Date.now(),
-user:currentUser.username,
-amount:Number(amount)
-});
-
-localStorage.setItem(
-"requests",
-JSON.stringify(requests)
-);
-
-renderRequests();
-
-alert("Payment Request Created");
-
-}
-
-function renderRequests(){
-
-const container =
-document.getElementById("requestsContainer");
-
-if(!container){
-return;
-}
-
-container.innerHTML="";
-
-requests.forEach(req=>{
-
-container.innerHTML += `
-
-<div class="request-box">
-
-<div class="request-row">
-
-<div>
-
-<h2>$${req.amount}</h2>
-
-<p>${req.user}</p>
-
-</div>
-
-<div class="request-actions">
-
-<button
-class="approve-btn"
-onclick="approveRequest(${req.id})">
-Approve
-</button>
-
-<button
-class="reject-btn"
-onclick="rejectRequest(${req.id})">
-Reject
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-function approveRequest(id){
-
-const req =
-requests.find(r=>r.id===id);
-
-if(!req){
-return;
-}
-
-const user =
-users.find(u=>u.username===req.user);
-
-user.balance += Number(req.amount);
-
-if(currentUser.username===user.username){
-currentUser.balance=user.balance;
-updateBalance();
-}
-
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
-
-requests =
-requests.filter(r=>r.id!==id);
-
-localStorage.setItem(
-"requests",
-JSON.stringify(requests)
-);
-
-renderRequests();
-
-alert("Approved");
-
-}
-
-function rejectRequest(id){
-
-requests =
-requests.filter(r=>r.id!==id);
-
-localStorage.setItem(
-"requests",
-JSON.stringify(requests)
-);
-
-renderRequests();
-
-alert("Rejected");
 
 }
 
