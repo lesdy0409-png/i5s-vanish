@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>i5s</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#050505;
+background-image:
+radial-gradient(circle at top,
+rgba(0,255,153,0.08),
+transparent 30%);
+color:white;
+overflow-x:hidden;
+}
+
+.hidden{
+display:none !important;
+}
+
+/* LOGIN */
+
+.auth-page{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.auth-box{
+width:420px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+border-radius:30px;
+padding:35px;
+}
+
+.auth-logo{
+font-size:90px;
+font-weight:900;
+text-align:center;
+letter-spacing:-5px;
+color:#00ff99;
+margin-bottom:25px;
+}
+
+.input{
+width:100%;
+height:58px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.08);
+background:#0b0b0b;
+padding-left:18px;
+font-size:16px;
+color:white;
+outline:none;
+margin-bottom:14px;
+}
+
+.input:focus{
+border-color:#00ff99;
+}
+
+.auth-btn{
+width:100%;
+height:58px;
+border:none;
+border-radius:18px;
+background:#00ff99;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+transition:0.2s;
+}
+
+.auth-btn:hover{
+transform:translateY(-2px);
+}
+
+.switch-text{
+margin-top:16px;
+text-align:center;
+font-size:14px;
+color:#888;
+}
+
+.switch-text span{
+color:#00ff99;
+cursor:pointer;
+font-weight:700;
+}
+
+/* HEADER */
+
+header{
+width:100%;
+height:78px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 35px;
+border-bottom:1px solid rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+position:sticky;
+top:0;
+background:rgba(5,5,5,0.7);
+z-index:999;
+}
+
+.logo{
+font-size:62px;
+font-weight:900;
+letter-spacing:-4px;
+color:#00ff99;
+}
+
+.top-right{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.balance-box{
+padding:12px 18px;
+border-radius:16px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+color:#00ff99;
+font-size:16px;
+font-weight:700;
+backdrop-filter:blur(10px);
+}
+
+.top-btn{
+height:48px;
+padding:0 18px;
+border:none;
+border-radius:16px;
+font-size:15px;
+font-weight:800;
+cursor:pointer;
+transition:0.2s;
+}
+
+.topup-btn{
+background:#00ff99;
+color:black;
+}
+
+.logout-btn{
+background:#111;
+color:white;
+border:1px solid rgba(255,255,255,0.06);
+}
+
+.top-btn:hover{
+transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+width:100%;
+height:520px;
+display:flex;
+align-items:center;
+padding:0 80px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#00ff9920;
+border-radius:50%;
+filter:blur(120px);
+right:-150px;
+top:-150px;
+}
+
+.hero-left{
+position:relative;
+z-index:2;
+}
+
+.hero-badge{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+border:1px solid #00ff99;
+background:#00ff9910;
+color:#00ff99;
+font-size:13px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:95px;
+line-height:95px;
+font-weight:900;
+letter-spacing:-6px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+color:#999;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:14px;
+}
+
+.hero-main-btn{
+height:58px;
+padding:0 28px;
+border:none;
+border-radius:18px;
+background:#00ff99;
+font-size:17px;
+font-weight:800;
+cursor:pointer;
+}
+
+.hero-second-btn{
+height:58px;
+padding:0 28px;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:18px;
+background:#0c0c0c;
+color:white;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* PRODUCTS */
+
+.panel{
+padding:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.card{
+height:270px;
+border-radius:30px;
+padding:30px;
+position:relative;
+background:
+linear-gradient(180deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.01));
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+overflow:hidden;
+transition:0.25s;
+}
+
+.card::before{
+content:"";
+position:absolute;
+width:220px;
+height:220px;
+background:#00ff9920;
+border-radius:50%;
+top:-120px;
+right:-120px;
+filter:blur(20px);
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:#00ff99;
+box-shadow:
+0 0 25px rgba(0,255,153,0.12);
+}
+
+.card-title{
+font-size:62px;
+font-weight:900;
+letter-spacing:-4px;
+position:relative;
+z-index:2;
+}
+
+.card-price{
+position:absolute;
+top:28px;
+right:28px;
+font-size:48px;
+font-weight:900;
+color:#00ff99;
+z-index:2;
+}
+
+.purchase-btn{
+position:absolute;
+left:24px;
+right:24px;
+bottom:24px;
+height:58px;
+border:none;
+border-radius:18px;
+background:#00ff99;
+font-size:19px;
+font-weight:900;
+cursor:pointer;
+transition:0.2s;
+}
+
+.purchase-btn:hover{
+transform:scale(1.02);
+}
+
+/* ADMIN */
+
+.admin-panel{
+margin-top:40px;
+padding:28px;
+border-radius:28px;
+background:
+linear-gradient(180deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.01));
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.admin-title{
+font-size:28px;
+font-weight:900;
+margin-bottom:20px;
+color:#00ff99;
+}
+
+.request-list{
+margin-top:20px;
+}
+
+.request-item{
+background:#101010;
+padding:14px;
+border-radius:16px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.small-btn{
+padding:10px 16px;
+border:none;
+border-radius:12px;
+background:#00ff99;
+font-weight:800;
+cursor:pointer;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-box{
+width:420px;
+padding:30px;
+border-radius:28px;
+background:#0a0a0a;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+}
+
+.popup-title{
+font-size:34px;
+font-weight:900;
+margin-bottom:20px;
+}
+
+@media(max-width:1000px){
+
+.hero{
+padding:0 30px;
+height:430px;
+}
+
+.hero h1{
+font-size:62px;
+line-height:65px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+header{
+padding:0 15px;
+}
+
+.logo{
+font-size:46px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="authPage" class="auth-page">
+
+<div class="auth-box">
+
+<div class="auth-logo">i5s</div>
+
+<!-- LOGIN -->
+
+<div id="loginBox">
+
+<input id="loginUser" class="input" placeholder="Username">
+
+<input id="loginPass" type="password" class="input" placeholder="Password">
+
+<button class="auth-btn" onclick="login()">
+Login
+</button>
+
+<div class="switch-text">
+Don't have an account?
+<span onclick="showRegister()">Create Account</span>
+</div>
+
+</div>
+
+<!-- REGISTER -->
+
+<div id="registerBox" class="hidden">
+
+<input id="registerUser" class="input" placeholder="Create Username">
+
+<input id="registerPass" type="password" class="input" placeholder="Create Password">
+
+<button class="auth-btn" onclick="register()">
+Create Account
+</button>
+
+<div class="switch-text">
+Already have an account?
+<span onclick="showLogin()">Login</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div id="panelPage" class="hidden">
+
+<header>
+
+<div class="logo">i5s</div>
+
+<div class="top-right">
+
+<div class="balance-box">
+Balance: $<span id="balance">0</span>
+</div>
+
+<button class="top-btn topup-btn" onclick="openTopup()">
+Request Topup
+</button>
+
+<button class="top-btn logout-btn" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<div class="hero-badge">
+PREMIUM ACCESS
+</div>
+
+<h1>
+UNDETECTED <br>
+PREMIUM PANEL
+</h1>
+
+<p>
+Fast. Secure. Premium Experience.
+</p>
+
+<div class="hero-buttons">
+
+<button class="hero-main-btn">
+Get Started
+</button>
+
+<button class="hero-second-btn">
+View Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<div class="panel">
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-title">
+1d
+</div>
+
+<div class="card-price">
+$35
+</div>
+
+<button class="purchase-btn" onclick="buy(35)">
+Purchase
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+3d
+</div>
+
+<div class="card-price">
+$20
+</div>
+
+<button class="purchase-btn" onclick="buy(20)">
+Purchase
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+5d
+</div>
+
+<div class="card-price">
+$15
+</div>
+
+<button class="purchase-btn" onclick="buy(15)">
+Purchase
+</button>
+
+</div>
+
+</div>
+
+<!-- ADMIN -->
+
+<div id="adminPanel" class="admin-panel hidden">
+
+<div class="admin-title">
+ADMIN PANEL
+</div>
+
+<input id="targetUser" class="input" placeholder="Target Username">
+
+<input id="moneyAmount" class="input" placeholder="Amount">
+
+<button class="auth-btn" onclick="adminAddMoney()">
+Add Balance
+</button>
+
+<div class="request-list" id="requestList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TOPUP -->
+
+<div class="popup" id="topupPopup">
+
+<div class="popup-box">
+
+<div class="popup-title">
+Request Topup
+</div>
+
+<input id="topupAmount" class="input" placeholder="Enter Amount">
+
+<button class="auth-btn" onclick="submitRequest()">
+Send Request
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const ADMIN_KEY = "F1AX65DvCA45X";
+
+let currentUser = null;
+
+/* CREATE ADMIN */
+
+function createAdmin(){
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+if(!users["admin"]){
+
+users["admin"] = {
+
+password: ADMIN_KEY,
+balance: 999999,
+admin: true
+
+};
+
+localStorage.setItem("users", JSON.stringify(users));
+
+}
+
+}
+
+createAdmin();
+
+/* SWITCH */
+
+function showRegister(){
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.getElementById("registerBox")
+.classList.remove("hidden");
+
+}
+
+function showLogin(){
+
+document.getElementById("registerBox")
+.classList.add("hidden");
+
+document.getElementById("loginBox")
+.classList.remove("hidden");
+
+}
+
+/* REGISTER */
+
+function register(){
+
+const username =
+document.getElementById("registerUser").value;
+
+const password =
+document.getElementById("registerPass").value;
+
+if(!username || !password){
+
+alert("Fill all fields");
+return;
+
+}
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+if(users[username]){
+
+alert("Username already exists");
+return;
+
+}
+
+users[username] = {
+
+password: password,
+balance: 0,
+admin: false
+
+};
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Account created");
+
+showLogin();
+
+}
+
+/* LOGIN */
+
+function login(){
+
+const username =
+document.getElementById("loginUser").value;
+
+const password =
+document.getElementById("loginPass").value;
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+if(!users[username]){
+
+alert("User not found");
+return;
+
+}
+
+if(users[username].password !== password){
+
+alert("Wrong password");
+return;
+
+}
+
+currentUser = username;
+
+document.getElementById("authPage")
+.classList.add("hidden");
+
+document.getElementById("panelPage")
+.classList.remove("hidden");
+
+updateUI();
+
+if(users[username].admin){
+
+document.getElementById("adminPanel")
+.classList.remove("hidden");
+
+loadRequests();
+
+}
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+location.reload();
+
+}
+
+/* UPDATE */
+
+function updateUI(){
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+document.getElementById("balance")
+.innerText = users[currentUser].balance;
+
+}
+
+/* BUY */
+
+function buy(price){
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+if(users[currentUser].balance < price){
+
+alert("Not enough balance");
+return;
+
+}
+
+users[currentUser].balance -= price;
+
+localStorage.setItem("users", JSON.stringify(users));
+
+updateUI();
+
+alert("Purchase successful");
+
+}
+
+/* TOPUP */
+
+function openTopup(){
+
+document.getElementById("topupPopup")
+.style.display = "flex";
+
+}
+
+function submitRequest(){
+
+const amount =
+document.getElementById("topupAmount").value;
+
+if(!amount){
+
+alert("Enter amount");
+return;
+
+}
+
+const requests =
+JSON.parse(localStorage.getItem("requests") || "[]");
+
+requests.push({
+
+user: currentUser,
+amount: amount
+
+});
+
+localStorage.setItem("requests", JSON.stringify(requests));
+
+document.getElementById("topupPopup")
+.style.display = "none";
+
+alert("Topup request sent");
+
+}
+
+/* LOAD REQUESTS */
+
+function loadRequests(){
+
+const requests =
+JSON.parse(localStorage.getItem("requests") || "[]");
+
+const div =
+document.getElementById("requestList");
+
+div.innerHTML = "";
+
+requests.forEach((r,index)=>{
+
+div.innerHTML += `
+
+<div class="request-item">
+
+<div>
+${r.user} requested $${r.amount}
+</div>
+
+<button class="small-btn"
+onclick="approveRequest(${index})">
+
+Approve
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* APPROVE */
+
+function approveRequest(index){
+
+const requests =
+JSON.parse(localStorage.getItem("requests") || "[]");
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+const req = requests[index];
+
+users[req.user].balance += Number(req.amount);
+
+localStorage.setItem("users", JSON.stringify(users));
+
+requests.splice(index,1);
+
+localStorage.setItem("requests", JSON.stringify(requests));
+
+loadRequests();
+
+alert("Balance added");
+
+}
+
+/* ADMIN ADD */
+
+function adminAddMoney(){
+
+const target =
+document.getElementById("targetUser").value;
+
+const amount =
+document.getElementById("moneyAmount").value;
+
+const users =
+JSON.parse(localStorage.getItem("users") || "{}");
+
+if(!users[target]){
+
+alert("User not found");
+return;
+
+}
+
+users[target].balance += Number(amount);
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Money added");
+
+}
+
+</script>
+
+</body>
+</html>
