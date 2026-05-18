@@ -7,29 +7,26 @@
 
 <style>
 
-*{
+body{
 margin:0;
-padding:0;
-box-sizing:border-box;
+background:#050505;
 font-family:Arial;
+color:white;
 }
 
-body{
-background:#050505;
-color:white;
+.login-page{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
-.container{
-width:420px;
+.login-box{
+width:400px;
 background:#111;
-padding:35px;
-border-radius:25px;
+padding:40px;
+border-radius:20px;
 border:1px solid #333;
-box-shadow:0 0 30px rgba(255,0,0,0.2);
 }
 
 .logo{
@@ -40,8 +37,8 @@ margin-bottom:10px;
 }
 
 .sub{
-color:#888;
-margin-bottom:25px;
+color:#777;
+margin-bottom:20px;
 }
 
 input{
@@ -49,23 +46,23 @@ width:100%;
 height:55px;
 background:#1a1a1a;
 border:1px solid #333;
-border-radius:12px;
+border-radius:10px;
 padding:0 15px;
-color:white;
-font-size:15px;
 margin-bottom:15px;
-outline:none;
+color:white;
+font-size:16px;
+box-sizing:border-box;
 }
 
 button{
 width:100%;
 height:55px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .login-btn{
@@ -78,11 +75,9 @@ background:#222;
 color:white;
 }
 
-#storePage{
+#store{
 display:none;
-width:100%;
-height:100vh;
-padding:40px;
+padding:30px;
 }
 
 .navbar{
@@ -94,37 +89,31 @@ margin-bottom:30px;
 
 .balance{
 background:#111;
-padding:14px 20px;
-border-radius:12px;
+padding:15px 20px;
+border-radius:10px;
 border:1px solid #333;
 }
 
-.logout-btn{
+.logout{
 background:#ff2e2e;
-padding:14px 20px;
-border-radius:12px;
-border:none;
 color:white;
-font-weight:bold;
+padding:15px 20px;
+border:none;
+border-radius:10px;
 cursor:pointer;
 }
 
 .card{
 background:#111;
 border:1px solid #333;
-padding:30px;
+padding:25px;
 border-radius:20px;
 margin-bottom:20px;
-}
-
-.card h2{
-margin-bottom:15px;
 }
 
 .buy-btn{
 background:#ff2e2e;
 color:white;
-height:50px;
 margin-top:15px;
 }
 
@@ -133,7 +122,9 @@ margin-top:15px;
 
 <body>
 
-<div id="loginPage" class="container">
+<div id="loginPage" class="login-page">
+
+<div class="login-box">
 
 <div class="logo">
 i5s
@@ -157,7 +148,9 @@ Create Account
 
 </div>
 
-<div id="storePage">
+</div>
+
+<div id="store">
 
 <div class="navbar">
 
@@ -171,7 +164,7 @@ i5s Store
 Balance: $<span id="balance">0</span>
 </div>
 
-<button class="logout-btn" onclick="logout()">
+<button class="logout" onclick="logout()">
 Logout
 </button>
 
@@ -207,33 +200,13 @@ Purchase
 
 </div>
 
-<div class="card">
-
-<h2>
-3D Access
-</h2>
-
-<p>
-Price: $25
-</p>
-
-<button class="buy-btn" onclick="buyItem(25)">
-Purchase
-</button>
-
-</div>
-
 </div>
 
 <script>
 
-let users = JSON.parse(
-localStorage.getItem("users")
-) || [];
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-let currentUser = JSON.parse(
-localStorage.getItem("currentUser")
-) || null;
+let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
 if(currentUser){
 openStore(currentUser);
@@ -241,24 +214,16 @@ openStore(currentUser);
 
 function registerUser(){
 
-const username = document
-.getElementById("username")
-.value
-.trim();
+const username = document.getElementById("username").value.trim();
 
-const password = document
-.getElementById("password")
-.value
-.trim();
+const password = document.getElementById("password").value.trim();
 
 if(username === "" || password === ""){
 alert("Fill all fields");
 return;
 }
 
-const exists = users.find(
-user => user.username === username
-);
+const exists = users.find(user => user.username === username);
 
 if(exists){
 alert("Username already exists");
@@ -273,10 +238,7 @@ balance: 0
 
 users.push(newUser);
 
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
+localStorage.setItem("users", JSON.stringify(users));
 
 alert("Account created successfully");
 
@@ -284,18 +246,11 @@ alert("Account created successfully");
 
 function login(){
 
-const username = document
-.getElementById("username")
-.value
-.trim();
+const username = document.getElementById("username").value.trim();
 
-const password = document
-.getElementById("password")
-.value
-.trim();
+const password = document.getElementById("password").value.trim();
 
-const foundUser = users.find(
-user =>
+const foundUser = users.find(user =>
 user.username === username &&
 user.password === password
 );
@@ -305,10 +260,7 @@ alert("Invalid login");
 return;
 }
 
-localStorage.setItem(
-"currentUser",
-JSON.stringify(foundUser)
-);
+localStorage.setItem("currentUser", JSON.stringify(foundUser));
 
 openStore(foundUser);
 
@@ -316,26 +268,20 @@ openStore(foundUser);
 
 function openStore(user){
 
-document.getElementById("loginPage")
-.style.display = "none";
+document.getElementById("loginPage").style.display = "none";
 
-document.getElementById("storePage")
-.style.display = "block";
+document.getElementById("store").style.display = "block";
 
-document.getElementById("welcomeText")
-.innerText =
+document.getElementById("welcomeText").innerText =
 "Logged in as " + user.username;
 
-document.getElementById("balance")
-.innerText = user.balance;
+document.getElementById("balance").innerText = user.balance;
 
 }
 
 function logout(){
 
-localStorage.removeItem(
-"currentUser"
-);
+localStorage.removeItem("currentUser");
 
 location.reload();
 
@@ -343,39 +289,30 @@ location.reload();
 
 function buyItem(price){
 
-const savedUser = JSON.parse(
-localStorage.getItem("currentUser")
-);
+let user = JSON.parse(localStorage.getItem("currentUser"));
 
-if(savedUser.balance < price){
+if(user.balance < price){
 alert("Not enough balance");
 return;
 }
 
-savedUser.balance -= price;
+user.balance -= price;
 
-document.getElementById("balance")
-.innerText = savedUser.balance;
+document.getElementById("balance").innerText = user.balance;
 
-localStorage.setItem(
-"currentUser",
-JSON.stringify(savedUser)
-);
+localStorage.setItem("currentUser", JSON.stringify(user));
 
-users = users.map(user => {
+users = users.map(u => {
 
-if(user.username === savedUser.username){
-return savedUser;
+if(u.username === user.username){
+return user;
 }
 
-return user;
+return u;
 
 });
 
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
+localStorage.setItem("users", JSON.stringify(users));
 
 alert("Purchased");
 
