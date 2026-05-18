@@ -115,12 +115,6 @@ font-size:16px;
 font-weight:800;
 cursor:pointer;
 margin-bottom:15px;
-transition:0.2s;
-}
-
-.login-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 0 20px rgba(255,0,0,0.4);
 }
 
 .register-btn{
@@ -133,11 +127,6 @@ color:white;
 font-size:16px;
 font-weight:700;
 cursor:pointer;
-transition:0.2s;
-}
-
-.register-btn:hover{
-background:#1e1e1e;
 }
 
 .navbar{
@@ -175,7 +164,6 @@ justify-content:center;
 .nav-btn,
 .logout-btn{
 cursor:pointer;
-transition:0.2s;
 }
 
 .active-btn,
@@ -275,13 +263,6 @@ color:white;
 font-size:16px;
 font-weight:800;
 cursor:pointer;
-transition:0.2s;
-}
-
-.buy-btn:hover,
-.create-payment-btn:hover,
-.approve-btn:hover{
-transform:translateY(-2px);
 }
 
 .buy-btn,
@@ -328,11 +309,6 @@ padding:24px;
 cursor:pointer;
 text-align:center;
 font-weight:700;
-transition:0.2s;
-}
-
-.crypto-card:hover{
-transform:translateY(-2px);
 }
 
 .crypto-card.active{
@@ -497,7 +473,7 @@ Logout
 <h1>Premium Digital Store</h1>
 
 <p>
-Modern black and red premium dashboard with working login, register, inventory and auto login system.
+Modern black & red premium dashboard with balance system and inventory.
 </p>
 
 </div>
@@ -552,8 +528,8 @@ Purchase
 <div class="crypto-grid">
 
 <div class="crypto-card active">BTC</div>
-<div class="crypto-card">USDT</div>
 <div class="crypto-card">LTC</div>
+<div class="crypto-card">USDT</div>
 
 </div>
 
@@ -570,8 +546,8 @@ Purchase
 <div class="quick-amounts">
 
 <button onclick="setAmount(10)">$10</button>
+<button onclick="setAmount(25)">$25</button>
 <button onclick="setAmount(50)">$50</button>
-<button onclick="setAmount(100)">$100</button>
 
 </div>
 
@@ -610,13 +586,15 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 let requests = JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
+/* 관리자 계정 생성 */
+
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
 balance:999999,
-inventory:["Owner Access"]
+inventory:[]
 });
 
 localStorage.setItem(
@@ -626,6 +604,8 @@ JSON.stringify(users)
 
 }
 
+/* 자동 로그인 */
+
 window.onload = function(){
 
 if(currentUser){
@@ -634,9 +614,9 @@ showSite();
 
 }
 
-setupCryptoCards();
+}
 
-};
+/* 회원가입 */
 
 function register(){
 
@@ -653,9 +633,12 @@ return;
 
 }
 
-const exists = users.find(
-u => u.username.toLowerCase() === username.toLowerCase()
-);
+const exists = users.find(function(user){
+
+return user.username.toLowerCase()
+=== username.toLowerCase();
+
+});
 
 if(exists){
 
@@ -669,7 +652,7 @@ const newUser = {
 username:username,
 password:password,
 balance:0,
-inventory:["Starter Package"]
+inventory:[]
 
 };
 
@@ -680,12 +663,22 @@ localStorage.setItem(
 JSON.stringify(users)
 );
 
+/* 자동 로그인 */
+
+currentUser = newUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
 alert("Account Created Successfully");
 
-document.getElementById("username").value = "";
-document.getElementById("password").value = "";
+showSite();
 
 }
+
+/* 로그인 */
 
 function login(){
 
@@ -702,11 +695,14 @@ return;
 
 }
 
-const foundUser = users.find(
-u =>
-u.username === username &&
-u.password === password
+const foundUser = users.find(function(user){
+
+return (
+user.username === username &&
+user.password === password
 );
+
+});
 
 if(!foundUser){
 
@@ -725,6 +721,8 @@ JSON.stringify(foundUser)
 showSite();
 
 }
+
+/* 사이트 표시 */
 
 function showSite(){
 
@@ -748,16 +746,26 @@ currentUser.password === ADMIN_PASSWORD
 document.getElementById("adminBtn")
 .classList.remove("hidden");
 
+}else{
+
+document.getElementById("adminBtn")
+.classList.add("hidden");
+
 }
 
 }
+
+/* 로그아웃 */
 
 function logout(){
 
 localStorage.removeItem("currentUser");
+
 location.reload();
 
 }
+
+/* 잔액 */
 
 function updateBalance(){
 
@@ -766,15 +774,19 @@ document.getElementById("balance")
 
 }
 
+/* 저장 */
+
 function saveUsers(){
 
-users = users.map(u => {
+users = users.map(function(user){
 
-if(u.username === currentUser.username){
+if(user.username === currentUser.username){
+
 return currentUser;
+
 }
 
-return u;
+return user;
 
 });
 
@@ -790,26 +802,36 @@ JSON.stringify(currentUser)
 
 }
 
+/* 페이지 */
+
 function showPage(page,btn){
 
 document.querySelectorAll(".page")
-.forEach(p => {
+.forEach(function(p){
+
 p.classList.remove("active-page");
+
 });
 
 document.getElementById(page)
 .classList.add("active-page");
 
 document.querySelectorAll(".nav-btn")
-.forEach(b => {
+.forEach(function(b){
+
 b.classList.remove("active-btn");
+
 });
 
 if(btn){
+
 btn.classList.add("active-btn");
+
 }
 
 }
+
+/* 구매 */
 
 function buyProduct(price,name){
 
@@ -834,6 +856,8 @@ alert("Purchased: " + name);
 
 }
 
+/* 인벤토리 */
+
 function renderInventory(){
 
 const grid =
@@ -854,7 +878,7 @@ return;
 
 }
 
-currentUser.inventory.forEach(item => {
+currentUser.inventory.forEach(function(item){
 
 grid.innerHTML += `
 <div class="inventory-item">
@@ -867,16 +891,18 @@ grid.innerHTML += `
 
 }
 
-function setupCryptoCards(){
+/* 코인 */
 
 document.querySelectorAll(".crypto-card")
-.forEach(card => {
+.forEach(function(card){
 
 card.addEventListener("click",function(){
 
 document.querySelectorAll(".crypto-card")
-.forEach(c => {
+.forEach(function(c){
+
 c.classList.remove("active");
+
 });
 
 card.classList.add("active");
@@ -885,7 +911,7 @@ card.classList.add("active");
 
 });
 
-}
+/* 금액 */
 
 function setAmount(amount){
 
@@ -894,10 +920,13 @@ document.getElementById("topupAmount")
 
 }
 
+/* 충전 */
+
 function createPaymentRequest(){
 
 const amount =
-document.getElementById("topupAmount").value;
+document.getElementById("topupAmount")
+.value;
 
 if(amount === "" || Number(amount) <= 0){
 
@@ -907,9 +936,11 @@ return;
 }
 
 requests.push({
+
 id:Date.now(),
 user:currentUser.username,
 amount:Number(amount)
+
 });
 
 localStorage.setItem(
@@ -923,14 +954,22 @@ alert("Payment Request Created");
 
 }
 
+/* 요청 */
+
 function renderRequests(){
 
 const container =
 document.getElementById("requestsContainer");
 
+if(!container){
+
+return;
+
+}
+
 container.innerHTML = "";
 
-requests.forEach(req => {
+requests.forEach(function(req){
 
 container.innerHTML += `
 <div class="request-box">
@@ -967,31 +1006,46 @@ Reject
 
 }
 
+/* 승인 */
+
 function approveRequest(id){
 
 const req =
-requests.find(r => r.id === id);
+requests.find(function(r){
+
+return r.id === id;
+
+});
 
 if(!req){
+
 return;
+
 }
 
 const targetUser =
-users.find(u => u.username === req.user);
+users.find(function(u){
+
+return u.username === req.user;
+
+});
 
 if(targetUser){
 
 targetUser.balance += Number(req.amount);
+
+}
 
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
 
-}
+requests = requests.filter(function(r){
 
-requests =
-requests.filter(r => r.id !== id);
+return r.id !== id;
+
+});
 
 localStorage.setItem(
 "requests",
@@ -1004,10 +1058,15 @@ alert("Approved");
 
 }
 
+/* 거절 */
+
 function rejectRequest(id){
 
-requests =
-requests.filter(r => r.id !== id);
+requests = requests.filter(function(r){
+
+return r.id !== id;
+
+});
 
 localStorage.setItem(
 "requests",
