@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>i5s Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
@@ -28,7 +27,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,0.15);
+background:rgba(255,0,0,0.12);
 filter:blur(120px);
 top:-200px;
 left:-150px;
@@ -40,7 +39,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,0.15);
+background:rgba(255,0,0,0.12);
 filter:blur(120px);
 bottom:-200px;
 right:-150px;
@@ -57,6 +56,7 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:20px;
 }
 
 .login-box{
@@ -78,12 +78,12 @@ background:linear-gradient(90deg,#ff2e2e,#ffffff);
 }
 
 .logo-login{
-font-size:60px;
+font-size:58px;
 margin-bottom:10px;
 }
 
 .logo{
-font-size:38px;
+font-size:34px;
 }
 
 .login-sub{
@@ -104,6 +104,14 @@ outline:none;
 font-size:16px;
 }
 
+button{
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
 .login-btn{
 width:100%;
 height:58px;
@@ -114,7 +122,7 @@ color:white;
 font-size:16px;
 font-weight:800;
 cursor:pointer;
-margin-bottom:15px;
+margin-bottom:14px;
 }
 
 .register-btn{
@@ -182,37 +190,8 @@ padding:35px;
 display:block;
 }
 
-.hero{
-background:linear-gradient(135deg,#090909,#190707);
-border:1px solid #221111;
-border-radius:30px;
-padding:60px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:30px;
-margin-bottom:35px;
-}
-
-.hero h1{
-font-size:60px;
-font-weight:900;
-margin-bottom:15px;
-}
-
-.hero p{
-font-size:18px;
-color:#999;
-max-width:700px;
-line-height:1.7;
-}
-
-.hero img{
-width:220px;
-}
-
 .section-title{
-font-size:38px;
+font-size:42px;
 font-weight:900;
 margin-bottom:25px;
 }
@@ -226,21 +205,17 @@ gap:22px;
 
 .product-card,
 .inventory-item,
-.request-box{
+.request-box,
+.topup-container{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:28px;
 padding:30px;
 }
 
-.product-card img{
-width:70px;
-margin-bottom:20px;
-}
-
 .product-card h3,
 .inventory-item h3{
-font-size:32px;
+font-size:30px;
 margin-bottom:15px;
 }
 
@@ -276,20 +251,17 @@ background:#222;
 }
 
 .topup-container{
-max-width:1000px;
+max-width:950px;
 margin:auto;
-background:#0b0b0b;
-border:1px solid #1f1f1f;
-border-radius:30px;
-padding:45px;
 }
 
-.topup-container h1{
-font-size:58px;
+.topup-title{
+font-size:54px;
+font-weight:900;
 margin-bottom:10px;
 }
 
-.topup-container p{
+.topup-sub{
 color:#888;
 margin-bottom:30px;
 }
@@ -307,13 +279,12 @@ border:1px solid #222;
 border-radius:20px;
 padding:24px;
 cursor:pointer;
-text-align:center;
 font-weight:700;
 }
 
 .crypto-card.active{
 border-color:#00ff88;
-background:#062414;
+background:#0d2518;
 }
 
 .amount-box{
@@ -372,16 +343,16 @@ width:auto;
 padding:0 18px;
 }
 
-@media(max-width:768px){
-
-.hero{
-flex-direction:column;
+.empty-box{
+padding:35px;
+border-radius:25px;
+background:#0d0d0d;
+border:1px solid #222;
+color:#777;
 text-align:center;
 }
 
-.hero h1{
-font-size:42px;
-}
+@media(max-width:768px){
 
 .navbar{
 height:auto;
@@ -392,6 +363,14 @@ gap:15px;
 
 .nav-right{
 justify-content:center;
+}
+
+.section-title{
+font-size:32px;
+}
+
+.topup-title{
+font-size:42px;
 }
 
 }
@@ -440,7 +419,7 @@ Balance: $
 <span id="balance">0</span>
 </div>
 
-<button class="nav-btn active-btn" onclick="showPage('purchase',this)">
+<button class="nav-btn active-btn" onclick="showPage('shop',this)">
 Shop
 </button>
 
@@ -464,7 +443,7 @@ Logout
 
 </div>
 
-<div id="purchase" class="page active-page">
+<div id="shop" class="page active-page">
 
 <h2 class="section-title">Products</h2>
 
@@ -510,9 +489,11 @@ Purchase
 
 <div class="topup-container">
 
-<h1>Top Up</h1>
+<h1 class="topup-title">Top Up Balance</h1>
 
-<p>Create a balance request for admin approval</p>
+<p class="topup-sub">
+Create a payment request for admin approval
+</p>
 
 <div class="crypto-grid">
 
@@ -541,7 +522,7 @@ Purchase
 </div>
 
 <button class="create-payment-btn" onclick="createPaymentRequest()">
-Create Request
+Create Payment Request
 </button>
 
 </div>
@@ -590,13 +571,20 @@ JSON.stringify(users)
 
 window.onload = function(){
 
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
+
 if(currentUser){
-
 showSite();
-
 }
 
-}
+};
 
 function register(){
 
@@ -647,6 +635,9 @@ document.getElementById("password").value = "";
 
 function login(){
 
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
 const username =
 document.getElementById("username").value.trim();
 
@@ -669,7 +660,7 @@ currentUser = foundUser;
 
 localStorage.setItem(
 "currentUser",
-JSON.stringify(foundUser)
+JSON.stringify(currentUser)
 );
 
 showSite();
@@ -758,6 +749,10 @@ if(btn){
 btn.classList.add("active-btn");
 }
 
+if(page === "admin"){
+renderRequests();
+}
+
 }
 
 function buyProduct(price,name){
@@ -839,6 +834,9 @@ amount;
 
 function createPaymentRequest(){
 
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
 const amount =
 document.getElementById("topupAmount").value;
 
@@ -850,9 +848,13 @@ return;
 }
 
 requests.push({
+
 id:Date.now(),
+
 user:currentUser.username,
+
 amount:Number(amount)
+
 });
 
 localStorage.setItem(
@@ -860,22 +862,44 @@ localStorage.setItem(
 JSON.stringify(requests)
 );
 
-renderRequests();
+document.getElementById("topupAmount").value = "";
 
 alert("Payment Request Created");
+
+renderRequests();
 
 }
 
 function renderRequests(){
 
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
 const container =
 document.getElementById("requestsContainer");
 
+if(!container){
+return;
+}
+
 container.innerHTML = "";
+
+if(requests.length === 0){
+
+container.innerHTML = `
+<div class="empty-box">
+No payment requests
+</div>
+`;
+
+return;
+
+}
 
 requests.forEach(req => {
 
 container.innerHTML += `
+
 <div class="request-box">
 
 <div class="request-row">
@@ -904,6 +928,7 @@ Reject
 </div>
 
 </div>
+
 `;
 
 });
@@ -911,6 +936,12 @@ Reject
 }
 
 function approveRequest(id){
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
 const req =
 requests.find(r => r.id === id);
@@ -928,22 +959,14 @@ return;
 
 targetUser.balance += Number(req.amount);
 
-users = users.map(u => {
-
-if(u.username === targetUser.username){
-return targetUser;
-}
-
-return u;
-
-});
-
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
 
-if(currentUser.username === targetUser.username){
+if(
+currentUser.username === targetUser.username
+){
 
 currentUser = targetUser;
 
@@ -956,9 +979,8 @@ updateBalance();
 
 }
 
-requests = requests.filter(
-r => r.id !== id
-);
+requests =
+requests.filter(r => r.id !== id);
 
 localStorage.setItem(
 "requests",
@@ -968,14 +990,17 @@ JSON.stringify(requests)
 renderRequests();
 
 alert(
-req.user +
-" balance charged: $" +
-req.amount
+"$" + req.amount +
+" added to " +
+req.user
 );
 
 }
 
 function rejectRequest(id){
+
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
 requests =
 requests.filter(r => r.id !== id);
