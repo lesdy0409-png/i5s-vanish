@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>i5s Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,7 +21,6 @@ body{
 background:#050505;
 color:white;
 overflow-x:hidden;
-min-height:100vh;
 }
 
 body::before{
@@ -28,7 +28,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,.12);
+background:rgba(255,0,0,0.15);
 filter:blur(120px);
 top:-200px;
 left:-150px;
@@ -40,7 +40,7 @@ content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:rgba(255,0,0,.12);
+background:rgba(255,0,0,0.15);
 filter:blur(120px);
 bottom:-200px;
 right:-150px;
@@ -48,7 +48,7 @@ z-index:-1;
 }
 
 .hidden{
-display:none!important;
+display:none !important;
 }
 
 .login-screen{
@@ -57,7 +57,6 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:20px;
 }
 
 .login-box{
@@ -66,22 +65,28 @@ background:#0d0d0d;
 border:1px solid #222;
 border-radius:30px;
 padding:45px;
-box-shadow:0 0 40px rgba(255,0,0,.15);
+box-shadow:0 0 40px rgba(255,0,0,0.15);
 }
 
+.logo-login,
 .logo{
 font-family:'Orbitron',sans-serif;
-font-size:56px;
 font-weight:900;
-text-align:center;
-margin-bottom:10px;
 background:linear-gradient(90deg,#ff2e2e,#ffffff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.sub{
-text-align:center;
+.logo-login{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.logo{
+font-size:38px;
+}
+
+.login-sub{
 color:#777;
 margin-bottom:25px;
 }
@@ -99,75 +104,86 @@ outline:none;
 font-size:16px;
 }
 
-button{
-cursor:pointer;
-border:none;
-}
-
 .login-btn{
 width:100%;
 height:58px;
+border:none;
 border-radius:14px;
 background:#ff2e2e;
 color:white;
 font-size:16px;
 font-weight:800;
+cursor:pointer;
+margin-bottom:15px;
 }
 
 .register-btn{
-margin-top:16px;
-text-align:center;
-color:#aaa;
+width:100%;
+height:58px;
+border:none;
+border-radius:14px;
+background:#151515;
+color:white;
+font-size:16px;
+font-weight:700;
 cursor:pointer;
 }
 
 .navbar{
 height:80px;
 background:#080808;
-border-bottom:1px solid #1c1c1c;
+border-bottom:1px solid #1b1b1b;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 30px;
+padding:0 28px;
 }
 
-.logo-nav{
-font-family:'Orbitron',sans-serif;
-font-size:36px;
-font-weight:900;
-background:linear-gradient(90deg,#ff2e2e,#ffffff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.right{
+.nav-right{
 display:flex;
 gap:12px;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .balance,
-.logout{
-height:45px;
-padding:0 20px;
+.nav-btn,
+.logout-btn{
+height:44px;
+padding:0 22px;
 background:#111;
 border:1px solid #222;
 border-radius:14px;
+color:white;
+font-weight:700;
 display:flex;
 align-items:center;
-font-weight:700;
+justify-content:center;
 }
 
-.logout{
+.nav-btn,
+.logout-btn{
 cursor:pointer;
 }
 
-.main{
+.active-btn,
+.nav-btn:hover,
+.logout-btn:hover{
+background:#ff2e2e;
+border-color:#ff2e2e;
+}
+
+.page{
+display:none;
 padding:35px;
 }
 
+.active-page{
+display:block;
+}
+
 .hero{
-background:linear-gradient(135deg,#090909,#1a0606);
+background:linear-gradient(135deg,#090909,#190707);
 border:1px solid #221111;
 border-radius:30px;
 padding:60px;
@@ -179,44 +195,53 @@ margin-bottom:35px;
 }
 
 .hero h1{
-font-size:58px;
+font-size:60px;
 font-weight:900;
 margin-bottom:15px;
 }
 
 .hero p{
-color:#999;
 font-size:18px;
+color:#999;
+max-width:700px;
 line-height:1.7;
-max-width:650px;
 }
 
 .hero img{
 width:220px;
 }
 
-.title{
-font-size:36px;
+.section-title{
+font-size:38px;
 font-weight:900;
 margin-bottom:25px;
 }
 
-.products{
+.product-grid,
+.inventory-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:22px;
 }
 
-.card{
+.product-card,
+.inventory-item,
+.request-box{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:28px;
 padding:30px;
 }
 
-.card h3{
-font-size:34px;
-margin-bottom:14px;
+.product-card img{
+width:70px;
+margin-bottom:20px;
+}
+
+.product-card h3,
+.inventory-item h3{
+font-size:32px;
+margin-bottom:15px;
 }
 
 .price{
@@ -226,14 +251,125 @@ color:#ff2e2e;
 margin-bottom:20px;
 }
 
-.buy{
+.buy-btn,
+.create-payment-btn,
+.approve-btn,
+.reject-btn{
 width:100%;
-height:56px;
-border-radius:14px;
-background:#ff2e2e;
+height:58px;
+border:none;
+border-radius:16px;
 color:white;
 font-size:16px;
 font-weight:800;
+cursor:pointer;
+}
+
+.buy-btn,
+.create-payment-btn,
+.approve-btn{
+background:#ff2e2e;
+}
+
+.reject-btn{
+background:#222;
+}
+
+.topup-container{
+max-width:1000px;
+margin:auto;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:30px;
+padding:45px;
+}
+
+.topup-container h1{
+font-size:58px;
+margin-bottom:10px;
+}
+
+.topup-container p{
+color:#888;
+margin-bottom:30px;
+}
+
+.crypto-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+margin-bottom:28px;
+}
+
+.crypto-card{
+background:#101010;
+border:1px solid #222;
+border-radius:20px;
+padding:24px;
+cursor:pointer;
+text-align:center;
+font-weight:700;
+}
+
+.crypto-card.active{
+border-color:#ff2e2e;
+background:#170909;
+}
+
+.amount-box{
+height:65px;
+background:#101010;
+border:1px solid #222;
+border-radius:18px;
+display:flex;
+align-items:center;
+padding:0 22px;
+margin-bottom:20px;
+}
+
+.amount-box input{
+flex:1;
+background:none;
+border:none;
+outline:none;
+color:white;
+font-size:22px;
+margin:0;
+}
+
+.quick-amounts{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:22px;
+}
+
+.quick-amounts button{
+height:55px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+color:white;
+font-weight:700;
+cursor:pointer;
+}
+
+.request-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.request-actions{
+display:flex;
+gap:10px;
+}
+
+.request-actions button{
+width:auto;
+padding:0 18px;
 }
 
 @media(max-width:768px){
@@ -254,6 +390,10 @@ flex-direction:column;
 gap:15px;
 }
 
+.nav-right{
+justify-content:center;
+}
+
 }
 
 </style>
@@ -265,11 +405,11 @@ gap:15px;
 
 <div class="login-box">
 
-<div class="logo">i5s</div>
+<h1 class="logo-login">i5s</h1>
 
-<div class="sub">
+<p class="login-sub">
 Secure Digital Store Login
-</div>
+</p>
 
 <input type="text" id="username" placeholder="Username">
 
@@ -279,47 +419,61 @@ Secure Digital Store Login
 Login
 </button>
 
-<div class="register-btn" onclick="createAccount()">
+<button class="register-btn" onclick="register()">
 Create Account
-</div>
+</button>
 
 </div>
 
 </div>
 
-<div id="mainPage" class="hidden">
+<div id="mainSite" class="hidden">
 
 <div class="navbar">
 
-<div class="logo-nav">
-i5s
-</div>
+<div class="logo">i5s</div>
 
-<div class="right">
+<div class="nav-right">
 
 <div class="balance">
-Balance: $<span id="balance">0</span>
+Balance: $
+<span id="balance">0</span>
 </div>
 
-<div class="logout" onclick="logout()">
+<button class="nav-btn active-btn" onclick="showPage('purchase',this)">
+Purchase
+</button>
+
+<button class="nav-btn" onclick="showPage('topup',this)">
+Top Up
+</button>
+
+<button class="nav-btn" onclick="showPage('inventory',this)">
+Inventory
+</button>
+
+<button id="adminBtn" class="nav-btn hidden" onclick="showPage('admin',this)">
+Admin
+</button>
+
+<button class="logout-btn" onclick="logout()">
 Logout
-</div>
+</button>
 
 </div>
 
 </div>
 
-<div class="main">
+<div id="purchase" class="page active-page">
 
 <div class="hero">
 
 <div>
 
-<h1>Premium Store</h1>
+<h1>Premium Digital Store</h1>
 
 <p>
-Modern black & red premium digital store with account system,
-saved login and balance support.
+Modern black & red premium dashboard with balance system and inventory.
 </p>
 
 </div>
@@ -328,37 +482,127 @@ saved login and balance support.
 
 </div>
 
-<div class="title">
-Products
-</div>
+<h2 class="section-title">Products</h2>
 
-<div class="products">
+<div class="product-grid">
 
-<div class="card">
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>1D</h3>
 <div class="price">$10</div>
-<button class="buy" onclick="buy(10)">
+<button class="buy-btn" onclick="buyProduct(10,'1D Access')">
 Purchase
 </button>
 </div>
 
-<div class="card">
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>3D</h3>
 <div class="price">$25</div>
-<button class="buy" onclick="buy(25)">
+<button class="buy-btn" onclick="buyProduct(25,'3D Access')">
 Purchase
 </button>
 </div>
 
-<div class="card">
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>5D</h3>
+<div class="price">$40</div>
+<button class="buy-btn" onclick="buyProduct(40,'5D Access')">
+Purchase
+</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>7D</h3>
+<div class="price">$60</div>
+<button class="buy-btn" onclick="buyProduct(60,'7D Access')">
+Purchase
+</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>10D</h3>
+<div class="price">$85</div>
+<button class="buy-btn" onclick="buyProduct(85,'10D Access')">
+Purchase
+</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h3>Permanent</h3>
 <div class="price">$150</div>
-<button class="buy" onclick="buy(150)">
+<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
 Purchase
 </button>
 </div>
 
 </div>
+
+</div>
+
+<div id="topup" class="page">
+
+<div class="topup-container">
+
+<h1>Top Up Balance</h1>
+
+<p>Create payment requests for admin approval</p>
+
+<div class="crypto-grid">
+
+<div class="crypto-card active">BTC</div>
+<div class="crypto-card">LTC</div>
+<div class="crypto-card">USDT</div>
+<div class="crypto-card">SOL</div>
+
+</div>
+
+<div class="amount-box">
+
+<span>$</span>
+
+<input type="number" id="topupAmount" placeholder="100">
+
+<span>USD</span>
+
+</div>
+
+<div class="quick-amounts">
+
+<button onclick="setAmount(10)">$10</button>
+<button onclick="setAmount(25)">$25</button>
+<button onclick="setAmount(50)">$50</button>
+<button onclick="setAmount(100)">$100</button>
+<button onclick="setAmount(250)">$250</button>
+<button onclick="setAmount(500)">$500</button>
+
+</div>
+
+<button class="create-payment-btn" onclick="createPaymentRequest()">
+Create Payment Request
+</button>
+
+</div>
+
+</div>
+
+<div id="inventory" class="page">
+
+<h2 class="section-title">Inventory</h2>
+
+<div id="inventoryGrid" class="inventory-grid"></div>
+
+</div>
+
+<div id="admin" class="page">
+
+<h2 class="section-title">Admin Requests</h2>
+
+<div id="requestsContainer"></div>
 
 </div>
 
@@ -369,185 +613,355 @@ Purchase
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
-function loadUsers(){
-return JSON.parse(localStorage.getItem("users")) || [];
-}
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let requests = JSON.parse(localStorage.getItem("requests")) || [];
+let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
-function saveUsers(users){
-localStorage.setItem("users",JSON.stringify(users));
-}
-
-let users = loadUsers();
-
-if(!users.some(u => u.username === ADMIN_USERNAME)){
+if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
-balance:999999
+balance:0,
+inventory:[]
 });
 
-saveUsers(users);
-
+localStorage.setItem("users",JSON.stringify(users));
 }
-
-let currentUser =
-JSON.parse(localStorage.getItem("currentUser"));
 
 window.onload = function(){
 
 if(currentUser){
-
-showMain();
-
+showSite();
 }
 
 }
 
-function createAccount(){
+function register(){
 
-let users = loadUsers();
-
-const username =
-document.getElementById("username").value.trim();
-
-const password =
-document.getElementById("password").value.trim();
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value.trim();
 
 if(username === "" || password === ""){
 
 alert("Fill all fields");
 return;
-
 }
 
-const exists =
-users.some(user => user.username === username);
+const exists = users.find(
+u => u.username.toLowerCase() === username.toLowerCase()
+);
 
 if(exists){
 
 alert("Username already exists");
 return;
-
 }
 
 const newUser = {
-
 username:username,
 password:password,
-balance:0
-
+balance:0,
+inventory:[]
 };
 
 users.push(newUser);
 
-saveUsers(users);
-
 localStorage.setItem(
-"currentUser",
-JSON.stringify(newUser)
+"users",
+JSON.stringify(users)
 );
 
-currentUser = newUser;
+alert("Account Created Successfully");
 
-alert("Account Created");
-
-showMain();
-
+document.getElementById("username").value = "";
+document.getElementById("password").value = "";
 }
 
 function login(){
 
-let users = loadUsers();
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value.trim();
 
-const username =
-document.getElementById("username").value.trim();
-
-const password =
-document.getElementById("password").value.trim();
-
-const user =
-users.find(u =>
-u.username === username &&
-u.password === password
+const foundUser = users.find(
+u => u.username === username && u.password === password
 );
 
-if(!user){
+if(!foundUser){
 
 alert("Invalid Account");
 return;
-
 }
 
-currentUser = user;
+currentUser = foundUser;
 
 localStorage.setItem(
 "currentUser",
-JSON.stringify(user)
+JSON.stringify(foundUser)
 );
 
-showMain();
-
+showSite();
 }
 
-function showMain(){
+function showSite(){
 
-document.getElementById("loginPage")
-.classList.add("hidden");
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("mainSite").classList.remove("hidden");
 
-document.getElementById("mainPage")
-.classList.remove("hidden");
+updateBalance();
+renderInventory();
+renderRequests();
 
-document.getElementById("balance")
-.innerText = currentUser.balance || 0;
+if(
+currentUser.username === ADMIN_USERNAME &&
+currentUser.password === ADMIN_PASSWORD
+){
 
+document.getElementById("adminBtn").classList.remove("hidden");
+
+}else{
+
+document.getElementById("adminBtn").classList.add("hidden");
+}
 }
 
 function logout(){
 
 localStorage.removeItem("currentUser");
-
 location.reload();
-
 }
 
-function buy(price){
+function updateBalance(){
 
-if(currentUser.balance < price){
-
-alert("Not enough balance");
-return;
-
+document.getElementById("balance").innerText =
+currentUser.balance;
 }
 
-currentUser.balance -= price;
-
-document.getElementById("balance")
-.innerText = currentUser.balance;
-
-let users = loadUsers();
+function saveUsers(){
 
 users = users.map(u => {
 
 if(u.username === currentUser.username){
-
 return currentUser;
-
 }
 
 return u;
-
 });
 
-saveUsers(users);
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
 localStorage.setItem(
 "currentUser",
 JSON.stringify(currentUser)
 );
+}
 
-alert("Purchased");
+function showPage(page,btn){
 
+document.querySelectorAll(".page")
+.forEach(p => p.classList.remove("active-page"));
+
+document.getElementById(page)
+.classList.add("active-page");
+
+document.querySelectorAll(".nav-btn")
+.forEach(b => b.classList.remove("active-btn"));
+
+if(btn){
+btn.classList.add("active-btn");
+}
+}
+
+function buyProduct(price,name){
+
+if(currentUser.balance < price){
+
+alert("Not enough balance");
+return;
+}
+
+currentUser.balance -= price;
+
+currentUser.inventory.push(name);
+
+saveUsers();
+
+updateBalance();
+
+renderInventory();
+
+alert("Purchased: " + name);
+}
+
+function renderInventory(){
+
+const grid = document.getElementById("inventoryGrid");
+
+grid.innerHTML = "";
+
+if(currentUser.inventory.length === 0){
+
+grid.innerHTML = `
+<div class="inventory-item">
+<h3>Empty</h3>
+<p>No items purchased yet.</p>
+</div>
+`;
+
+return;
+}
+
+currentUser.inventory.forEach(item => {
+
+grid.innerHTML += `
+<div class="inventory-item">
+<h3>${item}</h3>
+<p>Purchased Successfully</p>
+</div>
+`;
+
+});
+}
+
+document.querySelectorAll(".crypto-card")
+.forEach(card => {
+
+card.addEventListener("click",function(){
+
+document.querySelectorAll(".crypto-card")
+.forEach(c => c.classList.remove("active"));
+
+card.classList.add("active");
+
+});
+});
+
+function setAmount(amount){
+
+document.getElementById("topupAmount").value = amount;
+}
+
+function createPaymentRequest(){
+
+const amount =
+document.getElementById("topupAmount").value;
+
+if(amount === "" || Number(amount) <= 0){
+
+alert("Enter valid amount");
+return;
+}
+
+requests.push({
+id:Date.now(),
+user:currentUser.username,
+amount:Number(amount)
+});
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Payment Request Created");
+}
+
+function renderRequests(){
+
+const container =
+document.getElementById("requestsContainer");
+
+if(!container) return;
+
+container.innerHTML = "";
+
+requests.forEach(req => {
+
+container.innerHTML += `
+<div class="request-box">
+
+<div class="request-row">
+
+<div>
+<h2>$${req.amount}</h2>
+<p>${req.user}</p>
+</div>
+
+<div class="request-actions">
+
+<button
+class="approve-btn"
+onclick="approveRequest(${req.id})">
+Approve
+</button>
+
+<button
+class="reject-btn"
+onclick="rejectRequest(${req.id})">
+Reject
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+}
+
+function approveRequest(id){
+
+const req =
+requests.find(r => r.id === id);
+
+if(!req) return;
+
+const targetUser =
+users.find(u => u.username === req.user);
+
+if(targetUser){
+
+targetUser.balance += Number(req.amount);
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+}
+
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Approved");
+}
+
+function rejectRequest(id){
+
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Rejected");
 }
 
 </script>
