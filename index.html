@@ -23,6 +23,30 @@ color:white;
 overflow-x:hidden;
 }
 
+body::before{
+content:'';
+position:fixed;
+top:-250px;
+left:-250px;
+width:600px;
+height:600px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+bottom:-250px;
+right:-250px;
+width:600px;
+height:600px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+z-index:-1;
+}
+
 .hidden{
 display:none !important;
 }
@@ -31,20 +55,21 @@ display:none !important;
 width:100%;
 height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 }
 
 .login-box{
 width:430px;
-background:#0d0d0d;
+background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:28px;
+border-radius:30px;
 padding:40px;
+box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-font-size:58px;
+font-size:62px;
 font-weight:900;
 color:#ff2d2d;
 margin-bottom:10px;
@@ -63,9 +88,14 @@ border:1px solid #222;
 border-radius:14px;
 padding:0 18px;
 color:white;
-margin-bottom:16px;
-outline:none;
 font-size:16px;
+outline:none;
+margin-bottom:15px;
+}
+
+button{
+border:none;
+cursor:pointer;
 }
 
 .login-btn,
@@ -74,8 +104,6 @@ font-size:16px;
 .topup-btn,
 .approve-btn,
 .reject-btn{
-border:none;
-cursor:pointer;
 border-radius:14px;
 font-weight:800;
 color:white;
@@ -104,6 +132,12 @@ align-items:center;
 padding:0 25px;
 }
 
+.nav-logo{
+font-size:38px;
+font-weight:900;
+color:#ff2d2d;
+}
+
 .nav-right{
 display:flex;
 gap:10px;
@@ -119,6 +153,11 @@ border:1px solid #222;
 border-radius:12px;
 color:white;
 cursor:pointer;
+font-weight:700;
+}
+
+.nav-btn:hover{
+background:#ff2d2d;
 }
 
 .balance{
@@ -129,7 +168,7 @@ align-items:center;
 background:#111;
 border:1px solid #222;
 border-radius:12px;
-font-weight:700;
+font-weight:800;
 }
 
 .page{
@@ -142,9 +181,9 @@ display:block;
 }
 
 .section-title{
-font-size:48px;
+font-size:50px;
 font-weight:900;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
 .product-grid{
@@ -161,7 +200,7 @@ padding:28px;
 }
 
 .product-card h2{
-font-size:38px;
+font-size:40px;
 margin-bottom:12px;
 }
 
@@ -191,12 +230,17 @@ border-radius:20px;
 padding:25px;
 }
 
+.inventory-item h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
 .topup-box{
-max-width:900px;
+max-width:950px;
 margin:auto;
 background:#0b0b0b;
 border:1px solid #1f1f1f;
-border-radius:28px;
+border-radius:30px;
 padding:35px;
 }
 
@@ -214,11 +258,17 @@ border-radius:18px;
 padding:22px;
 cursor:pointer;
 text-align:center;
+transition:.2s;
 }
 
 .crypto-card.active{
-border-color:#00ff84;
-background:#102017;
+border-color:#00ff80;
+background:#102018;
+}
+
+.crypto-card h3{
+font-size:24px;
+margin-bottom:5px;
 }
 
 .quick-grid{
@@ -232,15 +282,20 @@ margin-bottom:20px;
 height:50px;
 background:#111;
 border:1px solid #222;
-color:white;
 border-radius:12px;
-cursor:pointer;
+color:white;
+font-weight:700;
+}
+
+.quick-grid button:hover{
+background:#ff2d2d;
 }
 
 .topup-btn{
 width:100%;
 height:58px;
 background:#0f7f3c;
+font-size:16px;
 }
 
 .request-box{
@@ -255,8 +310,8 @@ margin-bottom:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
 gap:20px;
+flex-wrap:wrap;
 }
 
 .request-buttons{
@@ -274,6 +329,18 @@ padding:0 20px;
 background:#ff2d2d;
 height:48px;
 padding:0 20px;
+}
+
+@media(max-width:700px){
+
+.quick-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.section-title{
+font-size:38px;
+}
+
 }
 
 </style>
@@ -311,7 +378,7 @@ Create Account
 
 <div class="navbar">
 
-<div class="logo" style="font-size:38px;">
+<div class="nav-logo">
 i5s
 </div>
 
@@ -430,32 +497,36 @@ class="inventory-grid"></div>
 <div class="topup-box">
 
 <h1 class="section-title">
-Top Up
+Top Up Balance
 </h1>
 
 <div class="crypto-grid">
 
 <div class="crypto-card active">
 <h3>BTC</h3>
+<p>Bitcoin</p>
 </div>
 
 <div class="crypto-card">
 <h3>LTC</h3>
+<p>Litecoin</p>
 </div>
 
 <div class="crypto-card">
 <h3>USDT</h3>
+<p>Tether</p>
 </div>
 
 <div class="crypto-card">
 <h3>SOL</h3>
+<p>Solana</p>
 </div>
 
 </div>
 
 <input type="number"
 id="topupAmount"
-placeholder="Amount">
+placeholder="Enter Amount">
 
 <div class="quick-grid">
 
@@ -520,7 +591,7 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-// 관리자 자동 생성
+// 관리자 생성
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
@@ -565,6 +636,21 @@ JSON.parse(localStorage.getItem("requests")) || [];
 
 users =
 JSON.parse(localStorage.getItem("users")) || [];
+
+if(currentUser){
+
+const updatedUser =
+users.find(u => u.username === currentUser.username);
+
+if(updatedUser){
+
+currentUser = updatedUser;
+
+updateBalance();
+
+}
+
+}
 
 renderRequests();
 
@@ -694,7 +780,7 @@ location.reload();
 
 }
 
-// 잔액 표시
+// 잔액 업데이트
 function updateBalance(){
 
 document.getElementById("balance").innerText =
@@ -729,7 +815,7 @@ JSON.stringify(currentUser)
 
 }
 
-// 페이지 변경
+// 페이지 이동
 function showPage(page){
 
 document.querySelectorAll(".page")
@@ -750,7 +836,7 @@ renderRequests();
 
 }
 
-// 구매
+// 상품 구매
 function buyProduct(price,name){
 
 if(currentUser.balance < price){
@@ -774,7 +860,7 @@ alert(name + " Purchased");
 
 }
 
-// 인벤토리 렌더
+// 인벤토리 표시
 function renderInventory(){
 
 const grid =
@@ -855,7 +941,7 @@ const selectedCrypto =
 document.querySelector(".crypto-card.active h3")
 .innerText;
 
-const request = {
+requests.push({
 
 id:Date.now(),
 
@@ -869,9 +955,7 @@ status:"Pending",
 
 created:new Date().toLocaleString()
 
-};
-
-requests.push(request);
+});
 
 localStorage.setItem(
 "requests",
@@ -886,7 +970,7 @@ renderRequests();
 
 }
 
-// 관리자 요청 표시
+// 관리자 패널 표시
 function renderRequests(){
 
 requests =
@@ -911,6 +995,7 @@ if(requests.length === 0){
 container.innerHTML = `
 <div class="request-box">
 <h2>No Requests</h2>
+<p>No payment requests found.</p>
 </div>
 `;
 
@@ -930,11 +1015,11 @@ container.innerHTML += `
 
 <h2>$${req.amount}</h2>
 
-<p>User: ${req.user}</p>
+<p><b>User:</b> ${req.user}</p>
 
-<p>Crypto: ${req.crypto}</p>
+<p><b>Crypto:</b> ${req.crypto}</p>
 
-<p>Status: ${req.status}</p>
+<p><b>Status:</b> ${req.status}</p>
 
 <p>${req.created}</p>
 
@@ -984,6 +1069,7 @@ requests.find(r => r.id === id);
 
 if(!req){
 
+alert("Request Not Found");
 return;
 
 }
@@ -993,17 +1079,35 @@ users.find(u => u.username === req.user);
 
 if(!targetUser){
 
+alert("User Not Found");
 return;
 
 }
 
+// 잔액 추가
 targetUser.balance += Number(req.amount);
 
+// users 저장
 localStorage.setItem(
 "users",
 JSON.stringify(users)
 );
 
+// 현재 로그인 유저 업데이트
+if(currentUser.username === targetUser.username){
+
+currentUser = targetUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+updateBalance();
+
+}
+
+// 요청 삭제
 requests =
 requests.filter(r => r.id !== id);
 
@@ -1014,7 +1118,7 @@ JSON.stringify(requests)
 
 renderRequests();
 
-alert("Approved");
+alert("Approved Successfully");
 
 }
 
