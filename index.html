@@ -153,25 +153,12 @@ align-items:center;
 justify-content:center;
 }
 
-.nav-btn,
 .logout-btn{
 cursor:pointer;
 }
 
-.active-btn,
-.nav-btn:hover,
-.logout-btn:hover{
-background:#ff2e2e;
-border-color:#ff2e2e;
-}
-
 .page{
-display:none;
 padding:35px;
-}
-
-.active-page{
-display:block;
 }
 
 .hero{
@@ -209,23 +196,20 @@ font-weight:900;
 margin-bottom:25px;
 }
 
-.product-grid,
-.inventory-grid{
+.product-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:22px;
 }
 
-.product-card,
-.inventory-item{
+.product-card{
 background:#0b0b0b;
 border:1px solid #1f1f1f;
 border-radius:28px;
 padding:30px;
 }
 
-.product-card h3,
-.inventory-item h3{
+.product-card h3{
 font-size:32px;
 margin-bottom:15px;
 }
@@ -251,13 +235,6 @@ cursor:pointer;
 
 @media(max-width:768px){
 
-.navbar{
-height:auto;
-padding:20px;
-flex-direction:column;
-gap:15px;
-}
-
 .hero{
 flex-direction:column;
 text-align:center;
@@ -265,6 +242,13 @@ text-align:center;
 
 .hero h1{
 font-size:42px;
+}
+
+.navbar{
+height:auto;
+padding:20px;
+flex-direction:column;
+gap:15px;
 }
 
 }
@@ -292,7 +276,7 @@ Secure Digital Store Login
 Login
 </button>
 
-<div class="register-btn" onclick="register()">
+<div class="register-btn" onclick="registerUser()">
 Create Account
 </div>
 
@@ -312,10 +296,6 @@ Create Account
 Balance: $<span id="balance">0</span>
 </div>
 
-<button class="nav-btn active-btn">
-Purchase
-</button>
-
 <button class="logout-btn" onclick="logout()">
 Logout
 </button>
@@ -324,7 +304,7 @@ Logout
 
 </div>
 
-<div class="page active-page">
+<div class="page">
 
 <div class="hero">
 
@@ -343,14 +323,16 @@ inventory system and auto login support.
 
 </div>
 
-<h2 class="section-title">Products</h2>
+<h2 class="section-title">
+Products
+</h2>
 
 <div class="product-grid">
 
 <div class="product-card">
 <h3>1D</h3>
 <div class="price">$10</div>
-<button class="buy-btn" onclick="buyProduct(10,'1D Access')">
+<button class="buy-btn" onclick="buyProduct(10)">
 Purchase
 </button>
 </div>
@@ -358,7 +340,7 @@ Purchase
 <div class="product-card">
 <h3>3D</h3>
 <div class="price">$25</div>
-<button class="buy-btn" onclick="buyProduct(25,'3D Access')">
+<button class="buy-btn" onclick="buyProduct(25)">
 Purchase
 </button>
 </div>
@@ -366,7 +348,7 @@ Purchase
 <div class="product-card">
 <h3>Permanent</h3>
 <div class="price">$150</div>
-<button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
+<button class="buy-btn" onclick="buyProduct(150)">
 Purchase
 </button>
 </div>
@@ -379,9 +361,6 @@ Purchase
 
 <script>
 
-localStorage.removeItem("users");
-localStorage.removeItem("currentUser");
-
 const ADMIN_USERNAME = "woojun";
 const ADMIN_PASSWORD = "F1AX65DvCA45X";
 
@@ -391,13 +370,12 @@ JSON.parse(localStorage.getItem("users")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
-if(!users.find(u=>u.username===ADMIN_USERNAME)){
+if(!users.find(u => u.username === ADMIN_USERNAME)){
 
 users.push({
 username:ADMIN_USERNAME,
 password:ADMIN_PASSWORD,
-balance:0,
-inventory:[]
+balance:0
 });
 
 localStorage.setItem(
@@ -407,14 +385,14 @@ JSON.stringify(users)
 
 }
 
-window.onload=()=>{
+window.onload = () => {
 
 const savedUser =
 JSON.parse(localStorage.getItem("currentUser"));
 
 if(savedUser){
 
-currentUser=savedUser;
+currentUser = savedUser;
 
 showSite();
 
@@ -429,7 +407,7 @@ JSON.parse(localStorage.getItem("users")) || [];
 
 }
 
-function register(){
+function registerUser(){
 
 refreshUsers();
 
@@ -439,26 +417,28 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-if(username===""||password===""){
+if(username === "" || password === ""){
 
 alert("Fill all fields");
 return;
 
 }
 
-if(users.find(u=>u.username===username)){
+const exists =
+users.find(u => u.username === username);
+
+if(exists){
 
 alert("Username already exists");
 return;
 
 }
 
-const user={
+const user = {
 
 username:username,
 password:password,
-balance:0,
-inventory:[]
+balance:0
 
 };
 
@@ -474,7 +454,9 @@ localStorage.setItem(
 JSON.stringify(user)
 );
 
-currentUser=user;
+currentUser = user;
+
+alert("Account Created");
 
 showSite();
 
@@ -490,17 +472,10 @@ document.getElementById("username").value.trim();
 const password =
 document.getElementById("password").value.trim();
 
-if(username===""||password===""){
-
-alert("Fill all fields");
-return;
-
-}
-
 const user =
-users.find(u=>
-u.username===username &&
-u.password===password
+users.find(u =>
+u.username === username &&
+u.password === password
 );
 
 if(!user){
@@ -510,7 +485,7 @@ return;
 
 }
 
-currentUser=user;
+currentUser = user;
 
 localStorage.setItem(
 "currentUser",
@@ -530,7 +505,7 @@ document.getElementById("mainSite")
 .classList.remove("hidden");
 
 document.getElementById("balance")
-.innerText=currentUser.balance;
+.innerText = currentUser.balance;
 
 }
 
@@ -542,9 +517,9 @@ location.reload();
 
 }
 
-function buyProduct(price,name){
+function buyProduct(price){
 
-if(currentUser.balance<price){
+if(currentUser.balance < price){
 
 alert("Not enough balance");
 return;
@@ -553,12 +528,30 @@ return;
 
 currentUser.balance -= price;
 
+document.getElementById("balance")
+.innerText = currentUser.balance;
+
+users = users.map(u => {
+
+if(u.username === currentUser.username){
+return currentUser;
+}
+
+return u;
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
 localStorage.setItem(
 "currentUser",
 JSON.stringify(currentUser)
 );
 
-alert("Purchased: "+name);
+alert("Purchased");
 
 }
 
